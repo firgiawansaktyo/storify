@@ -1,0 +1,212 @@
+@import 'tailwindcss';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+@font-face {
+  font-family: 'CircularSpotify';
+  src: url('/public/fonts/CircularSpotifyText-Book.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'CircularSpotify', var(--font-sans);
+  background-color: var(--spotify-black);
+  color: var(--spotify-white);
+}
+
+:root {
+  --spotify-green: #1DB954 ;
+  --spotify-black: #121212;
+  --spotify-gray-bold: #212121;
+  --spotify-gray-semibold: #535353;
+  --spotify-gray: #b3b3b3;
+  --spotify-white: #fff;
+}
+
+.podcast-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.podcast-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("/public/podcasts/podcast.jpg");
+    background-size: cover;
+    filter: blur(50px);
+    transform: scale(3);
+    height: 30%;
+}
+
+.podcast-cover {
+  width: 100%;
+  max-width: 200px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  position: relative;
+}
+
+.button-spotify {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.podcast-label {
+  gap: 8px;
+}
+
+.podcast-title {
+  margin: 8px 0;
+}
+
+.podcast-text {
+  position : relative;
+}
+
+.podcast-duration {
+  gap: 24px;
+  position : relative;
+}
+
+.container-storify {
+  padding-top: 10px;
+  padding-left: 24px;
+  padding-right: 24px;
+  gap: 24px;
+}
+
+.bride-groom {
+    gap: 10px;
+}
+
+.bride {
+    border-radius: 8px;
+}
+
+.groom {
+    border-radius: 8px;
+}
+
+.bride-name {
+    margin-top: 5px;
+}
+
+.bride-parent {
+    margin-top: -10px;
+}
+
+.groom-name {
+    margin-top: 5px;
+}
+
+.groom-parent {
+    margin-top: -10px;
+}
+
+.episode-text {
+  margin-top: -5px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.galleries {
+  border-radius: 8px;
+}
+
+.info-flipped {
+  transform: scaleY(-1);
+}
+
+.timeline {
+  padding-top: 10px;
+  padding-left: 24px;
+  padding-right: 24px;
+  gap: 24px;
+}
+
+.throwback-cover {
+    position: relative;
+    overflow: hidden;
+  }
+
+.throwback-cover::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("/public/episodes/borntodie.jpg");
+    background-size: cover;
+    filter: blur(80px);
+    transform: scale(3);
+    height: 50%;
+}
+
+.landing-cover {
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+  }
+
+.landing-cover::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("https://slametandfatma.wedding/galeri/nikahfix.jpg");
+    background-size: cover;
+    background-position: center;
+    filter: blur(80px);
+    transform: scale(3);
+    z-index: -2;
+}
+
+.landing-cover::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent, #121212 60%, #121212 100%);
+  z-index: -1;
+}
+
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+#carousel {
+  scroll-snap-type: x mandatory;
+}
+.carousel-card {
+  scroll-snap-align: center;
+}
+
+#carousel-throwback {
+  scroll-snap-type: x mandatory;
+}
+.carousel-card-throwback {
+  scroll-snap-align: center;
+}
+
+.show-more-btn {
+  position: absolute;
+  bottom: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
