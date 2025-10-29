@@ -28,6 +28,7 @@
         "@fortawesome/fontawesome-free": "^6.7.2",
         "@popperjs/core": "^2.11.8",
         "@tailwindcss/cli": "^4.1.10",
+        "@vercel/nft": "^0.30.3",
         "alpinejs": "^3.14.9",
         "ansi-regex": "^5.0.1",
         "ansi-styles": "^4.3.0",

@@ -13,9 +13,16 @@
 /.zed
 /auth.json
 /node_modules
+/public/albums
+/public/audio
 /public/build
-/public/hot
+/public/episodes
+/public/invitation
+/public/podcasts
 /public/storage
+/public/hot
+/public/throwback
+/public/videos
 /storage/*.key
 /storage/pail
 /vendor
