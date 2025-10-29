@@ -1,15 +1,20 @@
 <?php
-require __DIR__ . '/../vendor/autoload.php';
 
+use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Router;
 
-$app = require __DIR__ . '/../bootstrap/app.php';
-$router = $app['router'];
+define('LARAVEL_START', microtime(true));
 
-$router->get('/', function () {
-    return response()->json(['message' => 'Hello, World!']);
-});
+// Determine if the application is in maintenance mode...
+if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php')) {
+    require $maintenance;
+}
 
-$response = $router->dispatch(Request::capture());
-echo $response->getContent();
+// Register the Composer autoloader...
+require __DIR__.'/../vendor/autoload.php';
+
+// Bootstrap Laravel and handle the request...
+/** @var Application $app */
+$app = require_once __DIR__.'/../bootstrap/app.php';
+
+$app->handleRequest(Request::capture());
