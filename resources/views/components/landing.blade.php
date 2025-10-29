@@ -24,7 +24,7 @@
                 <div class="relative px-4 pt-4">
                     <img src="{{ asset('storage/' . $wedding->wedding_landing_image) }}" alt="Landing Image" class="w-80 h-auto mx-auto object-cover"/>
                     <div class="absolute top-6 left-6 right-6 flex items-center justify-between">
-                        <img src="{{ asset('logo/swan-pink.png') }}" alt="Storify Logo" class="w-8 sm:w-9 md:w-10 lg:w-11" />
+                        <img src="{{ asset('logo/swan-pink.png') }}" alt="Sweet Vows Logo" class="w-8 sm:w-9 md:w-10 lg:w-11" />
                         <h2 class="font-extrabold text-lg sm:text-xl md:text-2xl lg:text-3xl text-[#f4b9c9] drop-shadow-md text-right">
                             Wedding Day
                         </h2>
@@ -36,7 +36,7 @@
                     <div class="px-6 flex flew-row items-center py-1">
                         <img 
                             src="{{ asset('logo/swan-rounded.png') }}" 
-                            alt="Storify Logo" 
+                            alt="Sweet Vows Logo" 
                             class="w-6"/>
                         <span class="px-2 text-md text-[var(--spotify-gray)]">Picked for <span class="font-bold text-[var(--spotify-white)]">{{ $wedding->name }}</span>
                         </span>                        

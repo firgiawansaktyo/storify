@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="64x64">
-  <title>Storify</title>
+  <title>Sweet Vows</title>
   @vite(['resources/css/admin.css', 'resources/js/admin.js'])
 </head>
 <body>
@@ -21,12 +21,12 @@
                                 <div class="flex items-center justify-center">
                                     <img 
                                     src="{{ asset('logo/swan.png') }}" 
-                                    alt="Storify Logo" 
+                                    alt="Sweet Vows Logo" 
                                     class="py-2"
                                     width="100"
                                     height="100"
                                     />
-                                    <span class="pl-2 relative text-5xl font-semibold text-[var(--spotify-white)]">Storify</span>
+                                    <span class="pl-2 relative text-5xl font-semibold text-[var(--spotify-white)]">Sweet Vows</span>
                                 </div>
                             </div>
                             <div class="col-lg-6 text-center justify-center justify-self-center items-center">

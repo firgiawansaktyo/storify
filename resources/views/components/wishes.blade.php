@@ -1,4 +1,4 @@
-<div class="container-storify bg-[var(--spotify-gray-bold)] p-4">
+<div class="container-sweetvows bg-[var(--spotify-gray-bold)] p-4">
   <h2 class="text-xl font-bold text-white mb-4">Wish For The Couple</h2>
 
   @if(session('success'))

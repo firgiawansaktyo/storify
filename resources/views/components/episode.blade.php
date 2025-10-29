@@ -33,7 +33,7 @@
         <div class="flex flew-row items-center">
           <img 
             src="{{ asset('logo/swan-rounded.png') }}" 
-            alt="Storify Logo" 
+            alt="Sweet Vows Logo" 
             class="w-6"/>
           <span class="px-1 text-sm text-[var(--spotify-gray)]">Picked for <span class="font-bold text-[var(--spotify-white)]">{{ $wedding->name }}</span></span>
           <span class="px-1 text-sm text-[var(--spotify-gray)]">•</span>

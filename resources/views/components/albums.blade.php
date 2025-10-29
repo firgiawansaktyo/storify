@@ -1,4 +1,4 @@
-<div x-data class="container-storify bg-[var(--spotify-gray-bold)]">
+<div x-data class="container-sweetvows bg-[var(--spotify-gray-bold)]">
     <h2 class="text-xl font-bold">Albums</h2>
     <div class="relative w-full max-w-xl">
 

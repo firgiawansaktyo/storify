@@ -5,10 +5,10 @@
     <div class="sidebar-brand-icon">
         <img 
         src="{{ asset('logo/swan-rounded.png') }}" 
-        alt="Storify Logo" 
+        alt="Sweet Vows Logo" 
         class="w-10"/>
     </div>
-    <div class="sidebar-brand-text mx-2">Storify Panel</div>
+    <div class="sidebar-brand-text mx-2">Sweet Vows Panel</div>
 </a>
 
 <!-- Divider -->

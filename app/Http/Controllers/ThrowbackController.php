@@ -17,7 +17,7 @@ class ThrowbackController extends Controller
     {
         $loggedUser = Auth::id();
         $user = User::find($loggedUser);
-        if($user->username == 'adminstorify') {
+        if($user->username == 'adminsweetvows') {
             $throwbacks = Throwback::orderBy('created_at', 'asc')->get();
         }
         else {

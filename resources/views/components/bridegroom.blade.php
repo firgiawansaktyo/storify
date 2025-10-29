@@ -1,4 +1,4 @@
-<div class="container-storify bg-[var(--spotify-gray-bold)]">
+<div class="container-sweetvows bg-[var(--spotify-gray-bold)]">
     <h2 class="text-xl font-bold">Bride & Groom</h2>
     <div class="grid grid-cols-2 bride-groom">
         <div>
