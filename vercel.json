@@ -7,58 +7,6 @@
     },
     "routes": [
         {
-            "src": "/albums/(.*)",
-            "dest": "/public/albums/"
-        },
-        {
-            "src": "/audio/(.*)",
-            "dest": "/public/audio/"
-        },
-        {
-            "src": "/bank/(.*)",
-            "dest": "/public/bank/"
-        },
-        {
-            "src": "/build/(.*)",
-            "dest": "/public/build/"
-        },
-        {
-            "src": "/episodes/(.*)",
-            "dest": "/public/episodes/"
-        },       
-        {
-            "src": "/fonts/(.*)",
-            "dest": "/public/fonts/"
-        },
-        {
-            "src": "/images/(.*)",
-            "dest": "/public/images/"
-        },
-        {
-            "src": "/invitation/(.*)",
-            "dest": "/public/invitation/"
-        },
-        {
-            "src": "/logo/(.*)",
-            "dest": "/public/logo/"
-        },
-        {
-            "src": "/podcasts/(.*)",
-            "dest": "/public/podcasts/"
-        },
-        {
-            "src": "/storage/(.*)",
-            "dest": "/public/storage/"
-        },
-        {
-            "src": "/throwback/(.*)",
-            "dest": "/public/throwback/"
-        },
-        {
-            "src": "/videos/(.*)",
-            "dest": "/public/videos/"
-        },
-        {
             "src": "/(.*)",
             "dest": "/api/index.php"
         }
