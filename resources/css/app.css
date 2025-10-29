@@ -36,20 +36,6 @@ body {
     overflow: hidden;
 }
 
-.podcast-section::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url("/public/podcasts/podcast.jpg");
-    background-size: cover;
-    filter: blur(50px);
-    transform: scale(3);
-    height: 30%;
-}
-
 .podcast-cover {
   width: 100%;
   max-width: 200px;
@@ -57,7 +43,10 @@ body {
   position: relative;
 }
 
-.button-spotify {
+.btn-spotify {
+    color: #fff;
+    background-color: #1DB954;
+    border-color: #1DB954;
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
@@ -139,52 +128,11 @@ body {
     overflow: hidden;
   }
 
-.throwback-cover::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url("/public/episodes/borntodie.jpg");
-    background-size: cover;
-    filter: blur(80px);
-    transform: scale(3);
-    height: 50%;
-}
-
 .landing-cover {
     position: relative;
     overflow: hidden;
     z-index: 0;
   }
-
-.landing-cover::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url("https://slametandfatma.wedding/galeri/nikahfix.jpg");
-    background-size: cover;
-    background-position: center;
-    filter: blur(80px);
-    transform: scale(3);
-    z-index: -2;
-}
-
-.landing-cover::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(to bottom, transparent, #121212 60%, #121212 100%);
-  z-index: -1;
-}
-
 
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }

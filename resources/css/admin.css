@@ -1,0 +1,96 @@
+@import 'tailwindcss';
+@import './sb-admin-2.css';
+@import '@fortawesome/fontawesome-free/css/all.min.css';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+@font-face {
+  font-family: 'CircularSpotify';
+  src: url('/public/fonts/CircularSpotifyText-Book.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'CircularSpotify', var(--font-sans);
+  background-color: var(--spotify-black);
+  color: var(--spotify-white);
+}
+
+:root {
+  --spotify-green: #1DB954 ;
+  --spotify-black: #121212;
+  --spotify-gray-bold: #212121;
+  --spotify-gray-semibold: #535353;
+  --spotify-gray: #b3b3b3;
+  --spotify-white: #fff;
+}
+
+.navbar {
+  border-radius: 3rem;
+}
+
+.sidebar {
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+}
+
+footer.sticky-footer {
+    padding: 1rem 0;
+    flex-shrink: 0;
+}
+
+.sticky-footer {
+  border-radius: 3rem;
+}
+
+.topbar .dropdown .dropdown-menu
+{
+  background-color: var(--spotify-gray-bold);
+}
+
+.dropdown-item:hover, .dropdown-item:focus {
+  text-decoration: none;
+  background-color: var(--spotify-gray-semibold);
+}
+
+.topbar .dropdown .dropdown-menu {
+  border-color: var(--spotify-gray-bold);
+}
+
+.btn-spotify {
+    color: #fff;
+    background-color: #1DB954;
+    border-color: #1DB954;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.btn-spotify:hover {
+    background-color: rgb(70, 228, 70);
+    color: #fff;
+    text-decoration: none;
+}
+
+.card-body {
+  background-color: var(--spotify-gray-bold);
+}
+
+.card-header {
+  background-color: var(--spotify-gray-bold);
+}
+
+  progress {
+    width: 100%;
+    border-radius: 10px;
+    height: 5px;
+    overflow: hidden;
+    appearance: none;
+  }
