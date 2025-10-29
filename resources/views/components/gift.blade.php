@@ -9,7 +9,7 @@
         <img src="{{asset('bank/bca.jpg')}}" alt="BCA" class="w-1/8 object-contain mx-auto mr-3">
         <div class="flex-1">
             <input hidden class="text-sm font-medium" id="bca-account" value="123123">123123</p>
-            <p class="text-sm text-gray-400">a.n Yohan Putra Nugraha</p>
+            <p class="text-sm text-gray-400">a.n</p>
         </div>
         <button data-copy-to-clipboard-target="bca-account" class="absolute end-2.5 top-1/2 -translate-y-1/2 text-gray-900 dark:text-gray-400 hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-600 dark:hover:bg-gray-700 rounded-lg py-2 px-2.5 inline-flex items-center justify-center bg-white border-gray-200 border h-8">
             <span id="default-message-bca">
@@ -36,7 +36,7 @@
         <img src="{{asset('bank/mandiri.jpg')}}" alt="Mandiri" class="w-1/8 object-contain mx-auto mr-3">
         <div class="flex-1">
             <input hidden class="text-sm font-medium" id="mandiri-account" value="0261020240">0261020240</p>
-            <p class="text-sm text-gray-400">a.n Alya Fadilah M.R</p>
+            <p class="text-sm text-gray-400">a.n</p>
         </div>
   
         <button data-copy-to-clipboard-target="mandiri-account" class="absolute end-2.5 top-1/2 -translate-y-1/2 text-gray-900 dark:text-gray-400 hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-600 dark:hover:bg-gray-700 rounded-lg py-2 px-2.5 inline-flex items-center justify-center bg-white border-gray-200 border h-8">

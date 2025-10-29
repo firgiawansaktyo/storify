@@ -1,10 +1,21 @@
 import './bootstrap';
-import './copyclipboard';
-import './playcontrol';
-import './carousel-albums';
-import './carousel-throwback';
 import './invitation';
 import './landing';
+import './modal';
+import './copyclipboard';
+import './playcontrol';
+import './carousel-album';
+import './carousel-throwback';
+import './wish';
+
+
+
+
+
+
+
+
+
 
 
 

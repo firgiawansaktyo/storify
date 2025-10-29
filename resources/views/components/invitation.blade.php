@@ -3,21 +3,21 @@
         <div class="text-center">
             <x-logo/>
         </div>
-        <h1 class="font-bold text-2xl text-left">Picked For You</h1>
+        <h1 class="font-bold text-2xl text-left">Picked For {{ $wedding->name }}</h1>
         <div class="flex items-center justify-center">
             <div id="LandingBtn" class="group w-full grid grid-cols-2 md:grid-cols-2 rounded-lg p-0.5 hover:bg-[var(--spotify-gray-semibold)] cursor-pointer overflow-hidden hover:scale-105 transition">
                 <div>
-                    <img src="podcasts/podcast.jpg" alt="Podcast Cover" class="w-full h-auto object-cover rounded-l-lg"/>
+                    <img src="{{ asset('storage/' . $wedding->wedding_image) }}" alt="Wedding Cover" class="w-full h-auto object-cover rounded-l-lg"/>
                 </div>
                 <div class="relative group flex flex-col items-start md:items-start justify-center
                         space-y-2 bg-[var(--spotify-gray-bold)] px-6 py-4 rounded-r-lg">
-                    <h2 class="text-sm sm:text-md md:text-lg lg:text-xl xl:text-2xl font-bold text-start md:text-left">Wedding: The Prologue to Our Happily Ever After</h2>
+                    <h2 class="text-sm sm:text-md md:text-lg lg:text-xl xl:text-2xl font-bold text-start md:text-left">{{ $wedding->wedding_title }}</h2>
                     <p class="text-xs sm:text-sm md:text-md text-[var(--spotify-gray)]">
-                        Editor’s Pick
+                        {{ $wedding->wedding_sub_title }}
                     </p>
                     <div class="absolute inset-0 p-2 transition-colors duration-200 flex items-center justify-center rounded-l-lg">
                         <button class="button-spotify absolute bottom-4 right-4 bg-[var(--spotify-green)] p-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="white">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="black">
                             <path d="M8 5v14l11-7z"/>
                         </svg>
                         </button>
@@ -36,5 +36,5 @@
 </div>
 
 <div id="goToLanding" class="hidden opacity-0 -translate-y-8 transition-all duration-700">
-    <x-landing/>
+    <x-landing :wedding="$wedding" :albums="$albums" :throwbacks="$throwbacks" :wishes=$wishes/>
 </div>
