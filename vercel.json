@@ -7,6 +7,30 @@
     },
     "routes": [
         {
+            "src": "/bank/(.*)",
+            "dest": "/public/bank/"
+        },
+        {
+            "src": "/build/(.*)",
+            "dest": "/public/build/"
+        },
+        {
+            "src": "/fonts/(.*)",
+            "dest": "/public/fonts/"
+        },
+        {
+            "src": "/images/(.*)",
+            "dest": "/public/images/"
+        },
+        {
+            "src": "/logo/(.*)",
+            "dest": "/public/logo/"
+        },
+        {
+            "src": "/storage/(.*)",
+            "dest": "/public/storage/"
+        },
+        {
             "src": "/(.*)",
             "dest": "/api/index.php"
         }
