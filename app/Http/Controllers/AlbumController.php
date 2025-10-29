@@ -16,7 +16,7 @@ class AlbumController extends Controller
     {
         $loggedUser = Auth::id();
         $user = User::find($loggedUser);
-        if($user->username == 'adminstorify') {
+        if($user->username == 'adminsweetvows') {
             $albums = Album::orderBy('created_at', 'asc')->get();
         }
         else {

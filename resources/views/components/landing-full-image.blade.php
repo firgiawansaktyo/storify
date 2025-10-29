@@ -9,7 +9,7 @@
                         <div class="px-6 flex flew-row items-center py-1">
                             <img 
                                 src="{{ asset('logo/swan-rounded.png') }}" 
-                                alt="Storify Logo" 
+                                alt="Sweet Vows Logo" 
                                 class="w-6"/>
                             <span class="px-2 text-md text-[var(--spotify-gray)]">Made for <span class="font-bold text-[var(--spotify-white)]">You</span>
                             </span>                        
@@ -29,7 +29,7 @@
                     </div>
             </div>
             <div class="absolute top-2 left-2 right-2 flex items-center justify-between px-2">
-                <img src="{{ asset('logo/swan-pink.png') }}" alt="Storify Logo" class="w-8 sm:w-9 md:w-10 lg:w-11"/>
+                <img src="{{ asset('logo/swan-pink.png') }}" alt="Sweet Vows Logo" class="w-8 sm:w-9 md:w-10 lg:w-11"/>
                 <h2 class="font-extrabold text-center text-lg sm:text-xl md:text-2xl lg:text-3xl text-[#f4b9c9] drop-shadow-md">
                     Wedding Day
                 </h2>

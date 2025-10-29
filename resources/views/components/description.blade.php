@@ -1,4 +1,4 @@
-<div class="container-storify bg-[var(--spotify-gray-bold)]">
+<div class="container-sweetvows bg-[var(--spotify-gray-bold)]">
     <h2 class="text-xl font-bold">Episode Description</h2>
     <p class="text-[var(--spotify-gray)]">
         {{ $wedding->wedding_description }}
