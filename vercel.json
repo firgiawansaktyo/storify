@@ -6,32 +6,14 @@
         
     },
     "routes": [
-        {
-            "src": "/bank/(.*)",
-            "dest": "/public/bank/"
-        },
-        {
-            "src": "/fonts/(.*)",
-            "dest": "/public/fonts/"
-        },
-        {
-            "src": "/images/(.*)",
-            "dest": "/public/images/"
-        },
-        {
-            "src": "/logo/(.*)",
-            "dest": "/public/logo/"
-        },
-        {
-            "src": "/storage/(.*)",
-            "dest": "/public/storage/"
-        },
-        {   "src": "^/build/(.*)$", 
-            "dest": "/public/build/$1" 
-        },
-        {   "src": "^(?!/api).*", 
-            "dest": "/api/index.php" 
-        }
+        { "src": "^/bank/(.*)$",   "dest": "/public/bank/$1" },
+        { "src": "^/fonts/(.*)$",  "dest": "/public/fonts/$1" },
+        { "src": "^/images/(.*)$", "dest": "/public/images/$1" },
+        { "src": "^/logo/(.*)$",   "dest": "/public/logo/$1" },
+        { "src": "^/storage/(.*)$","dest": "/public/storage/$1" },
+        { "src": "^/build/(.*)$",  "dest": "/public/build/$1" },
+        { "src": "^/favicon.ico$", "dest": "/public/favicon.ico" },
+        { "src": "^(?!/api).*",    "dest": "/api/index.php" }
     ],
     "env": {
         "APP_ENV": "production",
