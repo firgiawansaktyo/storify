@@ -7,23 +7,23 @@
     },
     "routes": [
         {
-            "src": "/bank/(.*)",
+            "src": "^(?!/bank).*",
             "dest": "/public/bank/"
         },
         {
-            "src": "/fonts/(.*)",
+            "src": "^(?!/fonts).*",
             "dest": "/public/fonts/"
         },
         {
-            "src": "/images/(.*)",
+            "src": "^(?!/images).*",
             "dest": "/public/images/"
         },
         {
-            "src": "/logo/(.*)",
+            "src": "^(?!/logo).*",
             "dest": "/public/logo/"
         },
         {
-            "src": "/storage/(.*)",
+            "src": "^(?!/storage).*",
             "dest": "/public/storage/"
         },
         {   "src": "^/build/(.*)$", 
