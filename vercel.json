@@ -11,10 +11,6 @@
             "dest": "/public/bank/"
         },
         {
-            "src": "/build/(.*)",
-            "dest": "/public/build/"
-        },
-        {
             "src": "/fonts/(.*)",
             "dest": "/public/fonts/"
         },
@@ -30,9 +26,11 @@
             "src": "/storage/(.*)",
             "dest": "/public/storage/"
         },
-        {
-            "src": "/(.*)",
-            "dest": "/api/index.php"
+        {   "src": "^/build/(.*)$", 
+            "dest": "/public/build/$1" 
+        },
+        {   "src": "^(?!/api).*", 
+            "dest": "/api/index.php" 
         }
     ],
     "env": {
