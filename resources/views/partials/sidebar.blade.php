@@ -20,11 +20,14 @@
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></a>
 </li>
+@if(auth()->check() && auth()->user()->is_admin)
 <li class="nav-item {{ request()->is('users') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ route('users.index')}}">
+    <a class="nav-link" href="{{ route('users.index') }}">
         <i class="fas fa-user"></i>
-        <span>Users</span></a>
+        <span>Users</span>
+    </a>
 </li>
+@endif
 <li class="nav-item {{ request()->is('weddings') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('weddings.index')}}">
         <i class="fas fa-envelope"></i>

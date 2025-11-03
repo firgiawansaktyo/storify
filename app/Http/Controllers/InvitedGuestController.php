@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use App\Models\Invitation;
 use App\Models\MessageTemplate;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Models\User;
+use App\Models\Wedding;
 
 class InvitedGuestController extends Controller
 {
@@ -17,8 +19,33 @@ class InvitedGuestController extends Controller
      */
     public function index()
     {
-        $invitedGuests = InvitedGuest::all();
-        return view('admin.invited-guests.index', compact('invitedGuests'));
+        $userName = Auth::user()->username;
+        $loggedUser = Auth::id();
+        $user = User::find($loggedUser);
+        $checkWedding = Wedding::where('user_id', $loggedUser)->first();
+        if ($checkWedding) {
+            $messageTemplate = Wedding::where('user_id', $loggedUser)->first()->wedding_message_template;
+            if($user->isAdmin()) {
+                $invitedGuests = InvitedGuest::orderBy('created_at', 'asc')->get();
+                return view('admin.invited-guests.index', compact('userName', 'messageTemplate', 'invitedGuests'));
+            }
+            else {
+                $invitedGuests = InvitedGuest::where('user_id', $user->id)->orderBy('created_at', 'asc')->get();
+                return view('admin.invited-guests.index', compact('userName', 'messageTemplate', 'invitedGuests'));
+            }
+        }
+        else {
+            if($user->isAdmin()) {
+                $invitedGuests = InvitedGuest::orderBy('created_at', 'asc')->get();
+                return view('admin.invited-guests.index', compact('userName', 'invitedGuests'));
+            }
+            else {
+                $invitedGuests = InvitedGuest::where('user_id', $user->id)->orderBy('created_at', 'asc')->get();
+                return view('admin.invited-guests.index', compact('userName', 'invitedGuests'));
+            }
+
+        }
+
     }
 
     /**

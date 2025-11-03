@@ -71,4 +71,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(InvitedGuest::class);
     }
+
+    public function isAdmin() {
+        return $this->is_admin;
+    }
 }

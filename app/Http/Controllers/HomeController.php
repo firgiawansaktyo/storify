@@ -15,7 +15,7 @@ use function Laravel\Prompts\text;
 
 class HomeController extends Controller
 {
-    public function index($id)
+    public function index($username, $id)
     {
         if (!Str::isUuid($id)) {
             return view ('error.page', ['error' => 'Invalid invitation link.']);

@@ -15,7 +15,14 @@ class TimelineController extends Controller
      */
     public function index()
     {
-        $timelines = Timeline::all();
+        $loggedUser = Auth::id();
+        $user = User::find($loggedUser);
+        if($user->isAdmin()) {
+            $timelines = Timeline::orderBy('created_at', 'asc')->get();
+        }
+        else {
+            $timelines = Timeline::where('user_id', $user->id)->orderBy('created_at', 'asc')->get();
+        }
         return view('admin.timelines.index', compact('timelines'));
     }
 
