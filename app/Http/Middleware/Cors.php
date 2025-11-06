@@ -10,7 +10,6 @@ class Cors
     public function handle(Request $request, Closure $next) {
         $response = $next($request);
 
-        // Allow only your domain
         $response->headers->set('Access-Control-Allow-Origin', 'https://sweetvows.site');
         $response->headers->set('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
         $response->headers->set('Access-Control-Allow-Headers', 'Content-Type, X-Requested-With, Authorization');
