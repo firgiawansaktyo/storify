@@ -113,7 +113,9 @@ class CoupleController extends Controller
             return redirect()->back()->withErrors(['user_id' => 'User does not exist.']);
         } 
         else {
-            $user = User::find($validated['user_id']);         
+            $user = User::find($validated['user_id']);
+            $oldBrideImage = $couple->bride_image;
+            $oldGroomImage = $couple->groom_image;         
             $validated = $request->validate([
                 'bride_name' => 'required|string|max:255',
                 'father_bride_name' => 'required|string|max:255',
@@ -135,7 +137,19 @@ class CoupleController extends Controller
             $couple->bride_image = isset($validated['bride_image']) ? $validated['bride_image'] : $couple->bride_image;
             $couple->groom_image = isset($validated['groom_image']) ? $validated['groom_image'] : $couple->groom_image;
             $couple->save();
-        }  
+            if (
+                $oldBrideImage &&
+                $oldBrideImage !== $couple->bride_image &&
+                Storage::disk('public')->exists($oldBrideImage)) {
+                Storage::disk('public')->delete($oldBrideImage);
+            }
+            if (
+                $oldGroomImage &&
+                $oldGroomImage !== $couple->groom_image &&
+                Storage::disk('public')->exists($oldGroomImage)) {
+                Storage::disk('public')->delete($oldGroomImage);        
+            }  
+        }
 
     }
 
@@ -144,6 +158,12 @@ class CoupleController extends Controller
      */
     public function destroy(Couple $couple)
     {
+        if ($couple->bride_image && Storage::disk('public')->exists($couple->bride_image)) {
+            Storage::disk('public')->delete($couple->bride_image);
+        }
+        if ($couple->groom_image && Storage::disk('public')->exists($couple->groom_image)) {
+            Storage::disk('public')->delete($couple->groom_image);
+        }
         $couple->delete();
         return redirect()->route('couples.index')->with('success', 'Couple deleted successfully!');
     }

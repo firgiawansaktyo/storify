@@ -6,6 +6,7 @@ use App\Models\Timeline;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth as Auth;
+use Illuminate\Support\Facades\Storage as Storage;
 
 
 class TimelineController extends Controller
@@ -128,6 +129,8 @@ class TimelineController extends Controller
             return redirect()->back()->withErrors(['user_id' => 'User does not exist.']);
         } 
         else {
+            $oldVowImage = $timeline->wedding_vow_image;
+            $oldReceptionImage = $timeline->wedding_reception_image;
             $validated = $request->validate([
                 'wedding_vow_date' => 'required|date',
                 'wedding_vow_start_time' => 'required|date_format:H:i',
@@ -165,7 +168,19 @@ class TimelineController extends Controller
             $timeline->wedding_vow_location_link = $validated['wedding_vow_location_link'];
             $timeline->wedding_reception_location_link = $validated['wedding_reception_location_link'];
             $timeline->save();
-        }  
+            if (
+                $oldVowImage &&
+                $oldVowImage !== $timeline->wedding_vow_image &&
+                Storage::disk('public')->exists($oldVowImage)) {
+                Storage::disk('public')->delete($oldVowImage);
+            }
+            if (
+                $oldReceptionImage &&
+                $oldReceptionImage !== $timeline->wedding_reception_image &&
+                Storage::disk('public')->exists($oldReceptionImage)) {
+                Storage::disk('public')->delete($oldReceptionImage);
+            }   
+        }
     }
 
     /**
@@ -173,6 +188,12 @@ class TimelineController extends Controller
      */
     public function destroy(Timeline $timeline)
     {
+        if ($timeline->wedding_vow_image && Storage::disk('public')->exists($timeline->wedding_vow_image)) {
+            Storage::disk('public')->delete($timeline->wedding_vow_image);
+        }
+        if ($timeline->wedding_reception_image && Storage::disk('public')->exists($timeline->wedding_reception_image)) {
+            Storage::disk('public')->delete($timeline->wedding_reception_image);
+        }
         $timeline->delete();
         return redirect()->route('timelines.index')->with('success', 'Timeline deleted successfully!');
     }

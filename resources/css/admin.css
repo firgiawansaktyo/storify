@@ -94,3 +94,17 @@ footer.sticky-footer {
     overflow: hidden;
     appearance: none;
   }
+
+  .spotify-pagination .pagination .page-link {
+    background-color: transparent;
+    border: 1px solid #fff; /* Spotify green */
+    color: #fff;
+    transition: 0.2s;
+  }
+
+  .spotify-pagination .pagination .page-item.active .page-link,
+  .spotify-pagination .pagination .page-link:hover {
+      background-color: #1DB954;
+      color: #fff;
+      border-color: #fff;
+  }

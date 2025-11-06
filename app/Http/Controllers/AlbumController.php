@@ -6,6 +6,8 @@ use App\Models\Album;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth as Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 
 class AlbumController extends Controller
 {
@@ -93,7 +95,8 @@ class AlbumController extends Controller
             return redirect()->back()->withErrors(['user_id' => 'User does not exist.']);
         } 
         else {
-            $user = User::find($validated['user_id']);          
+            $user = User::find($validated['user_id']); 
+            $oldAlbumImage = $album->bank_image;         
             $validated = $request->validate([
                 'wedding_album_title' => 'required|string|max:255',
                 'wedding_album_description' => 'required|string',
@@ -105,6 +108,12 @@ class AlbumController extends Controller
             $album->wedding_album_description = $validated['wedding_album_description'];
             $album->wedding_album_image = isset($validated['wedding_album_image']) ? $validated['wedding_album_image'] : $album->wedding_album_image;
             $album->save();
+            if (
+                $oldAlbumImage &&
+                $oldAlbumImage !== $album->wedding_album_image &&
+                Storage::disk('public')->exists($oldAlbumImage)) {
+                Storage::disk('public')->delete($oldAlbumImage);
+            }
         }
     }
 
@@ -113,6 +122,9 @@ class AlbumController extends Controller
      */
     public function destroy(Album $album)
     {
+        if ($album->wedding_album_image && Storage::disk('public')->exists($album->wedding_album_image)) {
+            Storage::disk('public')->delete($album->wedding_album_image);
+        }
         $album->delete();
         return redirect()->route('albums.index')->with('success', 'Album image deleted successfully!');
     }

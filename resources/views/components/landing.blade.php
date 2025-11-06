@@ -79,7 +79,7 @@
         <x-throwback :throwbacks=$throwbacks/>
         <x-albums :albums=$albums/>
         <x-wishes :wishes=$wishes :wedding=$wedding/>
-        <x-gift :wedding=$wedding/>
+        <x-gift :wedding=$wedding :gifts=$gifts :banks=$banks/>
         <x-footer/>
     </div>
 </div>

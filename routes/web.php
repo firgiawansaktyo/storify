@@ -4,8 +4,10 @@ use App\Http\Controllers\AlbumController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BankController;
 use App\Http\Controllers\CoupleController;
 use App\Http\Controllers\FileUploadController;
+use App\Http\Controllers\GiftController;
 use App\Http\Controllers\InvitedGuestController;
 use App\Http\Controllers\ThrowbackController;
 use App\Http\Controllers\TimelineController;
@@ -39,6 +41,8 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
         ->where('path', '.*')
         ->name('upload.store');
     Route::resource('users', UserController::class);
+    Route::resource('banks', BankController::class);
+    Route::resource('gifts', GiftController::class);
     Route::resource('weddings', WeddingController::class);
     Route::resource('timelines', TimelineController::class);
     Route::resource('couples', CoupleController::class);

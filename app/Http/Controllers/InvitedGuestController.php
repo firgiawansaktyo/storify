@@ -17,34 +17,38 @@ class InvitedGuestController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $userName = Auth::user()->username;
-        $loggedUser = Auth::id();
-        $user = User::find($loggedUser);
-        $checkWedding = Wedding::where('user_id', $loggedUser)->first();
-        if ($checkWedding) {
-            $messageTemplate = Wedding::where('user_id', $loggedUser)->first()->wedding_message_template;
-            if($user->isAdmin()) {
-                $invitedGuests = InvitedGuest::orderBy('created_at', 'asc')->get();
-                return view('admin.invited-guests.index', compact('userName', 'messageTemplate', 'invitedGuests'));
-            }
-            else {
-                $invitedGuests = InvitedGuest::where('user_id', $user->id)->orderBy('created_at', 'asc')->get();
-                return view('admin.invited-guests.index', compact('userName', 'messageTemplate', 'invitedGuests'));
-            }
-        }
-        else {
-            if($user->isAdmin()) {
-                $invitedGuests = InvitedGuest::orderBy('created_at', 'asc')->get();
-                return view('admin.invited-guests.index', compact('userName', 'invitedGuests'));
-            }
-            else {
-                $invitedGuests = InvitedGuest::where('user_id', $user->id)->orderBy('created_at', 'asc')->get();
-                return view('admin.invited-guests.index', compact('userName', 'invitedGuests'));
-            }
+        $q = trim($request->query('q', ''));
 
+        $userName   = Auth::user()->username;
+        $loggedUser = Auth::id();
+        $user       = User::find($loggedUser);
+
+        $checkWedding    = Wedding::where('user_id', $loggedUser)->first();
+        $messageTemplate = $checkWedding ? $checkWedding->wedding_message_template : null;
+
+        $query = InvitedGuest::query();
+        if (! $user->isAdmin()) {
+            $query->where('user_id', $user->id);
         }
+
+        $invitedGuests = $query
+            ->when($q !== '', function ($qbuilder) use ($q) {
+                $qbuilder->where(function ($inner) use ($q) {
+                    $inner->where('name', 'ilike', "%{$q}%");
+                });
+            })
+            ->orderBy('name', 'asc')
+            ->paginate(10)  
+            ->withQueryString();    
+
+        return view('admin.invited-guests.index', [
+            'userName'        => $userName,
+            'messageTemplate' => $messageTemplate,
+            'invitedGuests'   => $invitedGuests,
+            'q'               => $q,
+        ]);
 
     }
 

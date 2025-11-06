@@ -158,3 +158,30 @@ body {
   transform: translateX(-50%);
   z-index: 10;
 }
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fadeUp {
+  animation: fadeUp 1s ease-out forwards;
+}
+
+.modal-qris {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    max-width: 100%;
+}
+
+.modal-qris img {
+    max-width: 90%;
+    height: auto;
+}

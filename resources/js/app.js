@@ -7,6 +7,8 @@ import './playcontrol';
 import './carousel-album';
 import './carousel-throwback';
 import './wish';
+import './qris';
+
 
 
 
