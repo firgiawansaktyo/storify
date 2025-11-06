@@ -36,5 +36,5 @@
 </div>
 
 <div id="goToLanding" class="hidden opacity-0 -translate-y-8 transition-all duration-700">
-    <x-landing :wedding="$wedding" :albums="$albums" :throwbacks="$throwbacks" :wishes=$wishes/>
+    <x-landing :wedding=$wedding :albums=$albums :throwbacks=$throwbacks :wishes=$wishes :gifts=$gifts :banks=$banks/>
 </div>

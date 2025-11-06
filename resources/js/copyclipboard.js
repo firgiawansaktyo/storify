@@ -1,49 +1,27 @@
-import 'flowbite';
+document.addEventListener('click', function(e) {
+    const btn = e.target.closest('[data-copy-to-clipboard-target]');
+    if (!btn) return;
 
-window.addEventListener('load', function () {
-    const clipboardBCA = FlowbiteInstances.getInstance('CopyClipboard', 'bca-account');
-    const $defaultMessageBCA = document.getElementById('default-message-bca');
-    const $successMessageBCA = document.getElementById('success-message-bca');
+    const inputId    = btn.getAttribute('data-copy-to-clipboard-target');
+    const defaultId  = btn.getAttribute('data-copy-default');
+    const successId  = btn.getAttribute('data-copy-success');
 
-    clipboardBCA.updateOnCopyCallback((clipboardBCA) => {
-        showSuccessBCA();
+    const inputEl = document.getElementById(inputId);
+    const defaultEl = document.getElementById(defaultId);
+    const successEl = document.getElementById(successId);
 
-        // reset to default state
-        setTimeout(() => {
-            resetToDefaultBCA();
-        }, 2000);
-    })
+    if (!inputEl) return;
 
-    const showSuccessBCA = () => {
-        $defaultMessageBCA.classList.add('hidden');
-        $successMessageBCA.classList.remove('hidden');
-    }
-
-    const resetToDefaultBCA = () => {
-        $defaultMessageBCA.classList.remove('hidden');
-        $successMessageBCA.classList.add('hidden');
-    }
-
-    const clipboardMandiri = FlowbiteInstances.getInstance('CopyClipboard', 'mandiri-account');
-    const $defaultMessageMandiri = document.getElementById('default-message-mandiri');
-    const $successMessageMandiri = document.getElementById('success-message-mandiri');
-
-    clipboardMandiri.updateOnCopyCallback((clipboardMandiri) => {
-        showSuccessMandiri();
-
-        // reset to default state
-        setTimeout(() => {
-            resetToDefaultMandiri();
-        }, 2000);
-    })
-
-    const showSuccessMandiri = () => {
-        $defaultMessageMandiri.classList.add('hidden');
-        $successMessageMandiri.classList.remove('hidden');
-    }
-
-    const resetToDefaultMandiri = () => {
-        $defaultMessageMandiri.classList.remove('hidden');
-        $successMessageMandiri.classList.add('hidden');
-    }
-})
+    // Copy logic
+    const val = inputEl.value || '';
+    navigator.clipboard.writeText(val).then(() => {
+        if (defaultEl && successEl) {
+            defaultEl.classList.add('hidden');
+            successEl.classList.remove('hidden');
+            setTimeout(() => {
+                successEl.classList.add('hidden');
+                defaultEl.classList.remove('hidden');
+            }, 1400);
+        }
+    });
+});

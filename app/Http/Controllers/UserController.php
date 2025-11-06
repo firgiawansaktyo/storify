@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth as Auth;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -15,11 +15,10 @@ class UserController extends Controller
     {
         $loggedUser = Auth::id();
         $user = User::find($loggedUser);
-        if($user->isAdmin()) {
+        if ($user->isAdmin()) {
             $users = User::orderBy('created_at', 'asc')->get();
             return view('admin.users.index', compact('users'));
-        }
-        else {
+        } else {
             return view('dashboard');
         }
     }
@@ -31,10 +30,9 @@ class UserController extends Controller
     {
         $loggedUser = Auth::id();
         $user = User::find($loggedUser);
-        if($user->isAdmin()) {
+        if ($user->isAdmin()) {
             return view('admin.users.create');
-        }
-        else {
+        } else {
             return view('dashboard');
         }
     }
@@ -46,7 +44,7 @@ class UserController extends Controller
     {
         $loggedUser = Auth::id();
         $user = User::find($loggedUser);
-        if($user->isAdmin()) {
+        if ($user->isAdmin()) {
             $validated = $request->validate([
                 'name' => 'required',
                 'username' => 'required',
@@ -62,8 +60,7 @@ class UserController extends Controller
             ]);
 
             return redirect()->route('users.index')->with('success', 'User created successfully!');
-        }
-        else {
+        } else {
             return view('dashboard');
         }
     }
@@ -73,7 +70,7 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-           
+        // You can implement this if needed.
     }
 
     /**
@@ -82,11 +79,10 @@ class UserController extends Controller
     public function edit(User $user)
     {
         $loggedUser = Auth::id();
-        $user = User::find($loggedUser);
-        if($user->isAdmin()) {
+        $userAuth = User::find($loggedUser);
+        if ($userAuth->isAdmin()) {
             return view('admin.users.edit', compact('user'));
-        }
-        else {
+        } else {
             return view('dashboard');
         }
     }
@@ -97,14 +93,14 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $loggedUser = Auth::id();
-        $user = User::find($loggedUser);
-        if($user->isAdmin()) {
+        $userAuth = User::find($loggedUser);
+        if ($userAuth->isAdmin()) {
             $validated = $request->validate([
                 'name' => 'required',
                 'username' => 'required',
-                'email' => 'required|email|unique:users,email,'.$user->id,
+                'email' => 'required|email|unique:users,email,' . $user->id,
                 'password' => 'nullable|min:6',
-                ]);
+            ]);
 
             $user->name = $validated['name'];
             $user->username = $validated['username'];
@@ -115,11 +111,9 @@ class UserController extends Controller
             $user->save();
 
             return redirect()->route('users.index')->with('success', 'User updated successfully!');
-        }
-        else {
+        } else {
             return view('dashboard');
         }
-        
     }
 
     /**
@@ -128,14 +122,19 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $loggedUser = Auth::id();
-        $user = User::find($loggedUser);
-        if($user->isAdmin()) {
-            $user->delete();
-            return redirect()->route('users.index')->with('success', 'User deleted successfully!');
-        }
-        else {
+        $userAuth = User::find($loggedUser);
+
+        // Ensure only an admin can delete other users
+        if ($userAuth->isAdmin()) {
+            // Check if the user trying to be deleted is not the logged-in user (if needed)
+            if ($user->id !== $loggedUser) {
+                $user->delete();
+                return redirect()->route('users.index')->with('success', 'User deleted successfully!');
+            } else {
+                return redirect()->route('users.index')->with('error', 'You cannot delete your own account.');
+            }
+        } else {
             return view('dashboard');
         }
-
     }
 }

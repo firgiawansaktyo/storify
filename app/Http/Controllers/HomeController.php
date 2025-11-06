@@ -8,6 +8,8 @@ use App\Models\InvitedGuest;
 use App\Models\Throwback;
 use App\Models\User;
 use App\Models\Wish;
+use App\Models\Bank;
+use App\Models\Gift;
 use Illuminate\Support\Str;
 
 
@@ -43,7 +45,12 @@ class HomeController extends Controller
             $albums = Album::where('user_id', $invitedGuest->user_id)->orderBy('created_at', 'asc')->get();
             $throwbacks = Throwback::where('user_id', $invitedGuest->user_id)->orderBy('created_at', 'asc')->get();
             $wishes = Wish::where('user_id', $invitedGuest->user_id)->orderBy('created_at', 'asc')->get();
-            return view('home', compact('wedding', 'albums', 'throwbacks', 'wishes'));
+            $gifts  = Gift::with('bank')
+            ->where('user_id', $invitedGuest->user_id)
+            ->orderBy('created_at', 'asc')
+            ->get();
+            $banks = Bank::whereIn('id', $gifts->pluck('bank_id')->filter()->unique())->get();
+            return view('home', compact('wedding', 'albums', 'throwbacks', 'wishes', 'banks', 'gifts'));
         }
     }
 

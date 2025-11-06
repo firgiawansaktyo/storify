@@ -123,6 +123,11 @@ class WeddingController extends Controller
         } 
         else {
             $user = User::find($validated['user_id']);
+            $oldWeddingImage = $wedding->wedding_image;
+            $oldWeddingVideo = $wedding->wedding_video;
+            $oldWeddingAudio = $wedding->wedding_audio;
+            $oldLandingImage = $wedding->wedding_landing_image;
+            $oldHotnewsImage = $wedding->wedding_hotnews_image;
             $validated = $request->validate([
                 'wedding_image' => 'nullable|string|max:255',
                 'wedding_title' => 'required|string|max:255',
@@ -153,6 +158,36 @@ class WeddingController extends Controller
             $wedding->wedding_hotnews_image = isset($validated['wedding_hotnews_image']) ? $validated['wedding_hotnews_image'] : $wedding->wedding_hotnews_image;
             $wedding->wedding_hotnews_description = $validated['wedding_hotnews_description'];
             $wedding->save();
+            if (
+                $oldWeddingImage &&
+                $oldWeddingImage !== $wedding->wedding_image &&
+                Storage::disk('public')->exists($oldWeddingImage)) {
+                Storage::disk('public')->delete($oldWeddingImage);
+            }
+            if (
+                $oldWeddingVideo &&
+                $oldWeddingVideo !== $wedding->wedding_video &&
+                Storage::disk('public')->exists($oldWeddingVideo)) {
+                Storage::disk('public')->delete($oldWeddingVideo);
+            }
+            if (
+                $oldWeddingAudio &&
+                $oldWeddingAudio !== $wedding->wedding_audio &&
+                Storage::disk('public')->exists($oldWeddingAudio)) {
+                Storage::disk('public')->delete($oldWeddingAudio);
+            }
+            if (
+                $oldLandingImage &&
+                $oldLandingImage !== $wedding->wedding_landing_image &&
+                Storage::disk('public')->exists($oldLandingImage)) {
+                Storage::disk('public')->delete($oldLandingImage);
+            }
+            if (
+                $oldHotnewsImage &&
+                $oldHotnewsImage !== $wedding->wedding_hotnews_image &&
+                Storage::disk('public')->exists($oldHotnewsImage)) {
+                Storage::disk('public')->delete($oldHotnewsImage);
+            }
         }
     }
 
@@ -162,6 +197,21 @@ class WeddingController extends Controller
     public function destroy(Wedding $wedding)
     {
         // Delete the wedding invitation
+        if ($wedding->wedding_image && Storage::disk('public')->exists($wedding->wedding_image)) {
+            Storage::disk('public')->delete($wedding->wedding_image);
+        }
+        if ($wedding->wedding_video && Storage::disk('public')->exists($wedding->wedding_video)) {
+            Storage::disk('public')->delete($wedding->wedding_video);
+        }
+        if ($wedding->wedding_audio && Storage::disk('public')->exists($wedding->wedding_audio)) {
+            Storage::disk('public')->delete($wedding->wedding_audio);
+        }
+        if ($wedding->wedding_landing_image && Storage::disk('public')->exists($wedding->wedding_landing_image)) {
+            Storage::disk('public')->delete($wedding->wedding_landing_image);
+        }
+        if ($wedding->wedding_hotnews_image && Storage::disk('public')->exists($wedding->wedding_hotnews_image)) {
+            Storage::disk('public')->delete($wedding->wedding_hotnews_image);
+        }
         $wedding->delete();
         return redirect()->route('weddings.index')->with('success', 'Wedding deleted successfully!');
     }

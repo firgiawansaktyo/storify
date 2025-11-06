@@ -20,14 +20,6 @@
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></a>
 </li>
-@if(auth()->check() && auth()->user()->is_admin)
-<li class="nav-item {{ request()->is('users') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ route('users.index') }}">
-        <i class="fas fa-user"></i>
-        <span>Users</span>
-    </a>
-</li>
-@endif
 <li class="nav-item {{ request()->is('weddings') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('weddings.index')}}">
         <i class="fas fa-envelope"></i>
@@ -58,6 +50,26 @@
         <i class="fas fa-users"></i>
         <span>Invited Guests</span></a>
 </li>
+<li class="nav-item {{ request()->is('gifts') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('gifts.index') }}">
+        <i class="fas fa-gift"></i>
+        <span>Gifts</span>
+    </a>
+</li>
+@if(auth()->check() && auth()->user()->is_admin)
+</li>
+<li class="nav-item {{ request()->is('banks') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('banks.index') }}">
+        <i class="fa-solid fa-building-columns"></i>
+        <span>Banks</span>
+    </a>
+</li>
+<li class="nav-item {{ request()->is('users') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('users.index') }}">
+        <i class="fas fa-user"></i>
+        <span>Users</span>
+    </a>
+@endif
 
 
 

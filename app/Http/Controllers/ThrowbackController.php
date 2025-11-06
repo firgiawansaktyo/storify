@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Throwback;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth as Auth;
-
+use Illuminate\Support\Facades\Storage as Storage;
 use Illuminate\Http\Request;
 
 class ThrowbackController extends Controller
@@ -94,7 +94,8 @@ class ThrowbackController extends Controller
             return redirect()->back()->withErrors(['user_id' => 'User does not exist.']);
         } 
         else {
-            $user = User::find($validated['user_id']);          
+            $user = User::find($validated['user_id']);
+            $oldThrowbackImage = $throwback->wedding_throwback_image;          
             $validated = $request->validate([
                 'wedding_throwback_title' => 'required|string|max:255',
                 'wedding_throwback_description' => 'required|string',
@@ -106,6 +107,12 @@ class ThrowbackController extends Controller
             $throwback->wedding_throwback_description = $validated['wedding_throwback_description'];
             $throwback->wedding_throwback_image = isset($validated['wedding_throwback_image']) ? $validated['wedding_throwback_image'] : $throwback->wedding_throwback_image;
             $throwback->save();
+            if (
+                $oldThrowbackImage &&
+                $oldThrowbackImage !== $throwback->wedding_throwback_image &&
+                Storage::disk('public')->exists($oldThrowbackImage)) {
+                Storage::disk('public')->delete($oldThrowbackImage);
+            }
         }
     }
 
@@ -114,6 +121,9 @@ class ThrowbackController extends Controller
      */
     public function destroy(Throwback $throwback)
     {
+        if ($throwback->wedding_throwback_image && Storage::disk('public')->exists($throwback->wedding_throwback_image)) {
+            Storage::disk('public')->delete($throwback->wedding_throwback_image);
+        };
         $throwback->delete();
         return redirect()->route('throwbacks.index')->with('success', 'Throwback image deleted successfully!');
     }
