@@ -1,16 +1,22 @@
 <?php
-require __DIR__ . '/../public/index.php';
-require __DIR__.'/../vendor/autoload.php';
 
-// Set up the Laravel application
-$app = require_once __DIR__.'/../bootstrap/app.php';
+// This is the Laravel entry point for Vercel
 
-// Run the Laravel application
+require __DIR__ . '/../vendor/autoload.php'; // Autoload the dependencies
+
+$app = require_once __DIR__.'/../bootstrap/app.php'; // Initialize the Laravel app
+
+// Create the HTTP kernel to handle the request
 $kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
-$response = $kernel->handle(
-    $request = Illuminate\Http\Request::capture()
-);
 
-// Send the response to Vercel
+// Capture the incoming request
+$request = Illuminate\Http\Request::capture();
+
+// Handle the request
+$response = $kernel->handle($request);
+
+// Send the response back to the client
 $response->send();
+
+// Terminate the kernel (clean up, close sessions, etc.)
 $kernel->terminate($request, $response);
