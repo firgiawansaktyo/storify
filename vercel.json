@@ -16,9 +16,7 @@
     { "source": "/storage/(.*)", "destination": "/public/storage/$1" },
     { "source": "/build/(.*)", "destination": "/public/build/$1" },
     { "source": "/favicon.ico", "destination": "/public/favicon.ico" },
-    // Rewrite for API requests, ensuring it's handled by the api/index.php file
     { "source": "/api/(.*)", "destination": "/api/index.php" },
-    // Default catch-all for other requests
     { "source": "/(.*)", "destination": "/api/index.php" }
   ],
   "headers": [
