@@ -5,6 +5,7 @@
     "api/index.php": { "runtime": "vercel-php@0.7.4" }
   },
   "rewrites": [
+    { "source": "^/api/(.*)$", "destination": "/api/index.php" },
     { "source": "^/bank/(.*)$",   "destination": "/public/bank/$1" },
     { "source": "^/fonts/(.*)$",  "destination": "/public/fonts/$1" },
     { "source": "^/images/(.*)$", "destination": "/public/images/$1" },
@@ -12,8 +13,7 @@
     { "source": "^/storage/(.*)$","destination": "/public/storage/$1" },
     { "source": "^/build/(.*)$",  "destination": "/public/build/$1" },
     { "source": "^/favicon.ico$", "destination": "/public/favicon.ico" },
-    { "source": "^/api/(.*)$", "destination": "/api/index.php" },
-    { "source": "/(.*)", "destination": "/api/index.php" }
+    { "source": "/(.*)", "destination": "/api/index.php" } 
   ],
   "headers": [
     {
