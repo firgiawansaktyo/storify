@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth as Auth;
 
 class UserController extends Controller
 {
@@ -12,8 +13,15 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return view('admin.users.index', compact('users'));
+        $loggedUser = Auth::id();
+        $user = User::find($loggedUser);
+        if($user->isAdmin()) {
+            $users = User::orderBy('created_at', 'asc')->get();
+            return view('admin.users.index', compact('users'));
+        }
+        else {
+            return view('dashboard');
+        }
     }
 
     /**
@@ -21,7 +29,14 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.users.create');
+        $loggedUser = Auth::id();
+        $user = User::find($loggedUser);
+        if($user->isAdmin()) {
+            return view('admin.users.create');
+        }
+        else {
+            return view('dashboard');
+        }
     }
 
     /**
@@ -29,21 +44,28 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-        'name' => 'required',
-        'username' => 'required',
-        'email' => 'required|email|unique:users',
-        'password' => 'required|min:6',
-        ]);
+        $loggedUser = Auth::id();
+        $user = User::find($loggedUser);
+        if($user->isAdmin()) {
+            $validated = $request->validate([
+                'name' => 'required',
+                'username' => 'required',
+                'email' => 'required|email|unique:users',
+                'password' => 'required|min:6',
+            ]);
 
-        User::create([
-            'name' => $validated['name'],
-            'username' => $validated['username'],
-            'email' => $validated['email'],
-            'password' => bcrypt($validated['password']),
-        ]);
+            User::create([
+                'name' => $validated['name'],
+                'username' => $validated['username'],
+                'email' => $validated['email'],
+                'password' => bcrypt($validated['password']),
+            ]);
 
-        return redirect()->route('users.index')->with('success', 'User created successfully!');
+            return redirect()->route('users.index')->with('success', 'User created successfully!');
+        }
+        else {
+            return view('dashboard');
+        }
     }
 
     /**
@@ -51,7 +73,7 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        
+           
     }
 
     /**
@@ -59,7 +81,14 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('admin.users.edit', compact('user'));
+        $loggedUser = Auth::id();
+        $user = User::find($loggedUser);
+        if($user->isAdmin()) {
+            return view('admin.users.edit', compact('user'));
+        }
+        else {
+            return view('dashboard');
+        }
     }
 
     /**
@@ -67,22 +96,30 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $validated = $request->validate([
-        'name' => 'required',
-        'username' => 'required',
-        'email' => 'required|email|unique:users,email,'.$user->id,
-        'password' => 'nullable|min:6',
-        ]);
+        $loggedUser = Auth::id();
+        $user = User::find($loggedUser);
+        if($user->isAdmin()) {
+            $validated = $request->validate([
+                'name' => 'required',
+                'username' => 'required',
+                'email' => 'required|email|unique:users,email,'.$user->id,
+                'password' => 'nullable|min:6',
+                ]);
 
-        $user->name = $validated['name'];
-        $user->username = $validated['username'];
-        $user->email = $validated['email'];
-        if (!empty($validated['password'])) {
-            $user->password = bcrypt($validated['password']);
+            $user->name = $validated['name'];
+            $user->username = $validated['username'];
+            $user->email = $validated['email'];
+            if (!empty($validated['password'])) {
+                $user->password = bcrypt($validated['password']);
+            }
+            $user->save();
+
+            return redirect()->route('users.index')->with('success', 'User updated successfully!');
         }
-        $user->save();
-
-        return redirect()->route('users.index')->with('success', 'User updated successfully!');
+        else {
+            return view('dashboard');
+        }
+        
     }
 
     /**
@@ -90,7 +127,15 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        $user->delete();
-        return redirect()->route('users.index')->with('success', 'User deleted successfully!');
+        $loggedUser = Auth::id();
+        $user = User::find($loggedUser);
+        if($user->isAdmin()) {
+            $user->delete();
+            return redirect()->route('users.index')->with('success', 'User deleted successfully!');
+        }
+        else {
+            return view('dashboard');
+        }
+
     }
 }

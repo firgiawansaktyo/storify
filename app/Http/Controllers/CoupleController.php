@@ -17,7 +17,14 @@ class CoupleController extends Controller
      */
     public function index()
     {
-        $couples = Couple::all();
+        $loggedUser = Auth::id();
+        $user = User::find($loggedUser);
+        if($user->isAdmin()) {
+            $couples = Couple::orderBy('created_at', 'asc')->get();
+        }
+        else {
+            $couples = Couple::where('user_id', $user->id)->orderBy('created_at', 'asc')->get();
+        }
         return view('admin.couples.index', compact('couples'));
     }
 

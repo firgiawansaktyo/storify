@@ -48,7 +48,7 @@
                                 <i class="fas fa-trash"></i>
                             </button>
                             <div class="social-share-buttons">
-                                <a href="https://api.whatsapp.com/send?text={{ rawurlencode(''. "\n\n" . url('/invite/'. $invitedGuest->id)) }}" 
+                                <a href="https://api.whatsapp.com/send?text={{ rawurlencode($messageTemplate . "\n\n" . url($userName . '/invite/'. $invitedGuest->id)) }}" 
                                 target="_blank" 
                                 class="btn btn-sm btn-success">
                                     <i class="fab fa-whatsapp"></i>

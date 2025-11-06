@@ -15,7 +15,14 @@ class WeddingController extends Controller
      */
     public function index()
     {
-        $weddings = Wedding::all();
+        $loggedUser = Auth::id();
+        $user = User::find($loggedUser);
+        if($user->isAdmin()) {
+            $weddings = Wedding::orderBy('created_at', 'asc')->get();
+        }
+        else {
+            $weddings = Wedding::where('user_id', $user->id)->orderBy('created_at', 'asc')->get();
+        }
         return view('admin.weddings.index', compact('weddings'));
     }
 

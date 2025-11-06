@@ -13,7 +13,16 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\WeddingController;
 use App\Http\Controllers\WishController;
 
-Route::get('invite/{id}', [HomeController::class, 'index'])->name('home');
+Route::get('/', function () {
+    return view('welcome');
+})->name('welcome');
+
+Route::get('/{username}/invite/{id}', [HomeController::class, 'index'])
+    ->where([
+        'username' => '[A-Za-z0-9_]+',
+        'inviteCode' => '[A-Za-z0-9\-]+',
+    ])
+    ->name('home');
 
 Route::post('wishes/{user_id}', [WishController::class, 'store'])
     ->name('wishes.store');

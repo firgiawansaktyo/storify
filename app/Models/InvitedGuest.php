@@ -32,6 +32,10 @@ class InvitedGuest extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function messageTemplate() {
+        return $this->hasOne(Wedding::class, 'invited_guest_id', 'id');
+    }
     
 
 }
