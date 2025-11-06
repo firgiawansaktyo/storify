@@ -17,8 +17,8 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware
-        ->append(SecurityHeaders::class)
-        ->append(Cors::class)
+        // ->append(SecurityHeaders::class)
+        // ->append(Cors::class)
         ->alias([
             'apikey' => RequireApiKey::class,
         ]);
