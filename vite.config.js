@@ -11,7 +11,7 @@ export default defineConfig(({ command, mode }) => {
       host: 'localhost',
       port: 5173,
       cors: {
-        origin: isDevelopment ? 'http://localhost:8000' : 'https://sweetvows.site', // Restrict to your site
+        origin: isDevelopment ? 'http://localhost:8000' : 'https://sweetvows.site',
       },
       headers: {
         'X-Content-Type-Options': 'nosniff',
