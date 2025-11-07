@@ -1,71 +1,63 @@
 {
-    "version": 2,
-    "framework": null,
-    "functions": {
-        "api/index.php": { "runtime": "vercel-php@0.7.4" }
-        
-    },
-      "rewrites": [
+  "version": 2,
+  "functions": {
+    "api/index.php": {
+      "runtime": "vercel-php@0.7.4"
+    }
+  },
+  "rewrites": [
+    { "source": "^/bank/(.*)$", "destination": "/public/bank/$1" },
+    { "source": "^/fonts/(.*)$", "destination": "/public/fonts/$1" },
+    { "source": "^/images/(.*)$", "destination": "/public/images/$1" },
+    { "source": "^/logo/(.*)$", "destination": "/public/logo/$1" },
+    { "source": "^/storage/(.*)$", "destination": "/public/storage/$1" },
+    { "source": "^/build/(.*)$", "destination": "/public/build/$1" },
+    { "source": "^/favicon.ico$", "destination": "/public/favicon.ico" },
+    { "source": "^(?!/api).*", "destination": "/api/index.php" }
+  ],
+  "headers": [
     {
-      "source": "/old-url",
-      "destination": "/new-url"
-    }
-    ],
-    "headers": [
+      "source": "/(.*)",
+      "headers": [
         {
-            "source": "/(.*)",
-            "headers": [
-                {
-                "key": "Content-Security-Policy",
-                "value": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';"
-                },
-                {
-                "key": "X-Frame-Options",
-                "value": "DENY"
-                },
-                {
-                "key": "Strict-Transport-Security",
-                "value": "max-age=31536000; includeSubDomains"
-                },
-                {
-                "key": "X-Content-Type-Options",
-                "value": "nosniff"
-                },
-                {
-                "key": "X-XSS-Protection",
-                "value": "1; mode=block"
-                },
-                {
-                "key": "Access-Control-Allow-Origin",
-                "value": "https://sweetvows.site"
-                }
-            ]
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=31536000; includeSubDomains"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "https://sweetvows.site"
         }
-    ],
-    "routes": [
-        { "src": "^/bank/(.*)$",   "dest": "/public/bank/$1" },
-        { "src": "^/fonts/(.*)$",  "dest": "/public/fonts/$1" },
-        { "src": "^/images/(.*)$", "dest": "/public/images/$1" },
-        { "src": "^/logo/(.*)$",   "dest": "/public/logo/$1" },
-        { "src": "^/storage/(.*)$","dest": "/public/storage/$1" },
-        { "src": "^/build/(.*)$",  "dest": "/public/build/$1" },
-        { "src": "^/favicon.ico$", "dest": "/public/favicon.ico" },
-        { "src": "^(?!/api).*",    "dest": "/api/index.php" }
-    ],
-    "env": {
-        "APP_ENV": "production",
-        "APP_DEBUG": "true",
-        "APP_URL": "",
- 
-        "APP_CONFIG_CACHE": "/tmp/config.php",
-        "APP_EVENTS_CACHE": "/tmp/events.php",
-        "APP_PACKAGES_CACHE": "/tmp/packages.php",
-        "APP_ROUTES_CACHE": "/tmp/routes.php",
-        "APP_SERVICES_CACHE": "/tmp/services.php",
-        "VIEW_COMPILED_PATH": "/tmp",
- 
-        "CACHE_DRIVER": "array",
-        "LOG_CHANNEL": "stderr",
-        "SESSION_DRIVER": "cookie"
+      ]
     }
+  ],
+  "env": {
+    "APP_ENV": "production",
+    "APP_DEBUG": "true",
+    "APP_URL": "",
+    "APP_CONFIG_CACHE": "/tmp/config.php",
+    "APP_EVENTS_CACHE": "/tmp/events.php",
+    "APP_PACKAGES_CACHE": "/tmp/packages.php",
+    "APP_ROUTES_CACHE": "/tmp/routes.php",
+    "APP_SERVICES_CACHE": "/tmp/services.php",
+    "VIEW_COMPILED_PATH": "/tmp",
+    "CACHE_DRIVER": "array",
+    "LOG_CHANNEL": "stderr",
+    "SESSION_DRIVER": "cookie"
+  }
 }
