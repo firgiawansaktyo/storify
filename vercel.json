@@ -14,7 +14,7 @@
     { "source": "^/build/(.*)$", "destination": "/public/build/$1" },
     { "source": "^/favicon.ico$", "destination": "/public/favicon.ico" },
     { "source": "^/api/(.*)$", "destination": "/api/index.php" },
-    { "source": "^/(.*)$", "destination": "/api/index.php" } 
+    { "source": "^/(?!api)(.*)$", "destination": "/api/index.php" }
   ],
   "headers": [
     {
