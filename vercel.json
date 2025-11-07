@@ -5,9 +5,15 @@
         "api/index.php": { "runtime": "vercel-php@0.7.4" }
         
     },
+      "rewrites": [
+    {
+      "source": "/old-url",
+      "destination": "/new-url"
+    }
+    ],
     "headers": [
         {
-            "source": "/(.*)", 
+            "source": "/(.*)",
             "headers": [
                 {
                 "key": "Content-Security-Policy",
