@@ -1,58 +1,51 @@
 {
-    "version": 2,
-    "framework": null,
-    "functions": {
-        "api/index.php": { "runtime": "vercel-php@0.7.4" }
-        
-    },
-    "headers": [
+  "version": 2,
+  "framework": null,
+  "functions": {
+    "api/index.php": { "runtime": "vercel-php@0.7.4" }
+  },
+  "routes": [
+    {
+      "src": "/(.*)",
+      "headers": [
         {
-            "source": "/api/(.*)",
-            "headers": [
-                {
-                "key": "Access-Control-Allow-Origin",
-                "value": "https://sweetvows.site"
-                },
-                {
-                "key": "Vary",
-                "value": "Origin"
-                }
-            ]
+          "key": "Access-Control-Allow-Origin",
+          "value": "https://sweetvows.site"
         },
         {
-            "source": "/(.*)",
-            "headers": [
-                {
-                "key": "X-Content-Type-Options",
-                "value": "nosniff"
-                }
-            ]
+          "key": "Vary",
+          "value": "Origin"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
         }
-    ],
-    "routes": [
-        { "src": "^/bank/(.*)$",   "dest": "/public/bank/$1" },
-        { "src": "^/fonts/(.*)$",  "dest": "/public/fonts/$1" },
-        { "src": "^/images/(.*)$", "dest": "/public/images/$1" },
-        { "src": "^/logo/(.*)$",   "dest": "/public/logo/$1" },
-        { "src": "^/storage/(.*)$","dest": "/public/storage/$1" },
-        { "src": "^/build/(.*)$",  "dest": "/public/build/$1" },
-        { "src": "^/favicon.ico$", "dest": "/public/favicon.ico" },
-        { "src": "^(?!/api).*",    "dest": "/api/index.php" }
-    ],
-    "env": {
-        "APP_ENV": "production",
-        "APP_DEBUG": "true",
-        "APP_URL": "https://sweetvows.site/",
- 
-        "APP_CONFIG_CACHE": "/tmp/config.php",
-        "APP_EVENTS_CACHE": "/tmp/events.php",
-        "APP_PACKAGES_CACHE": "/tmp/packages.php",
-        "APP_ROUTES_CACHE": "/tmp/routes.php",
-        "APP_SERVICES_CACHE": "/tmp/services.php",
-        "VIEW_COMPILED_PATH": "/tmp",
- 
-        "CACHE_DRIVER": "array",
-        "LOG_CHANNEL": "stderr",
-        "SESSION_DRIVER": "cookie"
-    }
+      ],
+      "continue": true
+    },
+
+    { "src": "^/bank/(.*)$",    "dest": "/public/bank/$1" },
+    { "src": "^/fonts/(.*)$",   "dest": "/public/fonts/$1" },
+    { "src": "^/images/(.*)$",  "dest": "/public/images/$1" },
+    { "src": "^/logo/(.*)$",    "dest": "/public/logo/$1" },
+    { "src": "^/storage/(.*)$", "dest": "/public/storage/$1" },
+    { "src": "^/build/(.*)$",   "dest": "/public/build/$1" },
+    { "src": "^/favicon.ico$",  "dest": "/public/favicon.ico" },
+
+    { "src": "^(?!/api).*",     "dest": "/api/index.php" }
+  ],
+  "env": {
+    "APP_ENV": "production",
+    "APP_DEBUG": "true",
+    "APP_URL": "",
+    "APP_CONFIG_CACHE": "/tmp/config.php",
+    "APP_EVENTS_CACHE": "/tmp/events.php",
+    "APP_PACKAGES_CACHE": "/tmp/packages.php",
+    "APP_ROUTES_CACHE": "/tmp/routes.php",
+    "APP_SERVICES_CACHE": "/tmp/services.php",
+    "VIEW_COMPILED_PATH": "/tmp",
+    "CACHE_DRIVER": "array",
+    "LOG_CHANNEL": "stderr",
+    "SESSION_DRIVER": "cookie"
+  }
 }
