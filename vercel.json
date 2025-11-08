@@ -4,9 +4,9 @@
   "functions": {
     "api/index.php": { "runtime": "vercel-php@0.7.4" }
   },
-  "headers": [
+  "routes": [
     {
-      "source": "/api/(.*)",
+      "src": "/(.*)",
       "headers": [
         {
           "key": "Access-Control-Allow-Origin",
@@ -15,32 +15,28 @@
         {
           "key": "Vary",
           "value": "Origin"
-        }
-      ]
-    },
-    {
-      "source": "/(.*)",
-      "headers": [
+        },
         {
           "key": "X-Content-Type-Options",
           "value": "nosniff"
         }
-      ]
-    }
-  ],
-  "routes": [
-    { "src": "^/bank/(.*)$",   "dest": "/public/bank/$1" },
-    { "src": "^/fonts/(.*)$",  "dest": "/public/fonts/$1" },
-    { "src": "^/images/(.*)$", "dest": "/public/images/$1" },
-    { "src": "^/logo/(.*)$",   "dest": "/public/logo/$1" },
-    { "src": "^/storage/(.*)$","dest": "/public/storage/$1" },
-    { "src": "^/build/(.*)$",  "dest": "/public/build/$1" },
-    { "src": "^/favicon.ico$", "dest": "/public/favicon.ico" },
-    { "src": "^(?!/api).*",    "dest": "/api/index.php" }
+      ],
+      "continue": true
+    },
+
+    { "src": "^/bank/(.*)$",    "dest": "/public/bank/$1" },
+    { "src": "^/fonts/(.*)$",   "dest": "/public/fonts/$1" },
+    { "src": "^/images/(.*)$",  "dest": "/public/images/$1" },
+    { "src": "^/logo/(.*)$",    "dest": "/public/logo/$1" },
+    { "src": "^/storage/(.*)$", "dest": "/public/storage/$1" },
+    { "src": "^/build/(.*)$",   "dest": "/public/build/$1" },
+    { "src": "^/favicon.ico$",  "dest": "/public/favicon.ico" },
+
+    { "src": "^(?!/api).*",     "dest": "/api/index.php" }
   ],
   "env": {
     "APP_ENV": "production",
-    "APP_DEBUG": "false",
+    "APP_DEBUG": "true",
     "APP_URL": "",
     "APP_CONFIG_CACHE": "/tmp/config.php",
     "APP_EVENTS_CACHE": "/tmp/events.php",
