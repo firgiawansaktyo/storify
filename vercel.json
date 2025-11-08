@@ -7,20 +7,11 @@
   "routes": [
     {
       "src": "/(.*)",
-      "headers": [
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "https://sweetvows.site"
-        },
-        {
-          "key": "Vary",
-          "value": "Origin"
-        },
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        }
-      ],
+      "headers": {
+        "Access-Control-Allow-Origin": "https://sweetvows.site",
+        "Vary": "Origin",
+        "X-Content-Type-Options": "nosniff"
+      },
       "continue": true
     },
 
