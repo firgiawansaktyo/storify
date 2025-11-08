@@ -7,45 +7,31 @@ use Illuminate\Http\Request;
 
 class SecurityHeaders
 {
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @return mixed
+     */
     public function handle(Request $request, Closure $next)
     {
         $response = $next($request);
 
-        $site = 'https://sweetvows.site';
+        // Default CSP for production (allow resources from sweetvows.site)
+        $csp = "default-src 'self'; script-src 'self' https://sweetvows.site; style-src 'self' https://sweetvows.site; img-src 'self' https://sweetvows.site; font-src 'self' https://sweetvows.site; form-action 'self'; frame-ancestors 'none'; connect-src 'self' https://sweetvows.site; child-src 'none'; object-src 'none'; base-uri 'self'; manifest-src 'self'; worker-src 'self';";
 
-        if (!app()->environment('production')) {
-            // ===== LOCAL DEV WITH VITE (OK TO BE LOOSE) =====
-            $csp = implode(' ', [
-                "default-src 'self';",
-                "script-src 'self' 'unsafe-eval' 'unsafe-inline' http://localhost:5173 http://localhost:8000 $site;",
-                "style-src 'self' 'unsafe-inline' http://localhost:5173 http://localhost:8000 $site https://fonts.bunny.net;",
-                "img-src 'self' data: blob: http://localhost:5173 http://localhost:8000 $site;",
-                "font-src 'self' data: http://localhost:5173 https://fonts.bunny.net;",
-                "connect-src 'self' http://localhost:5173 ws://localhost:5173 http://localhost:8000 $site;",
-                "frame-src 'none'; frame-ancestors 'none'; form-action 'self';",
-                "object-src 'none'; base-uri 'self'; manifest-src 'self'; worker-src 'self' blob:;",
-            ]);
-        } else {
-            // ===== PRODUCTION (NO unsafe-*) =====
-            $csp = implode(' ', [
-                "default-src 'self';",
-                "script-src 'self' $site;",
-                "style-src 'self' $site https://fonts.bunny.net;",
-                "img-src 'self' data: blob: $site;",
-                "font-src 'self' data: https://fonts.bunny.net;",
-                "connect-src 'self' $site;",
-                "frame-src 'none'; frame-ancestors 'none'; form-action 'self';",
-                "object-src 'none'; base-uri 'self'; manifest-src 'self'; worker-src 'self';",
-            ]);
+        // In development, allow Vite resources from localhost:5173
+        if (env('APP_ENV') === 'local') {
+            $csp = "default-src 'self'; script-src 'self' 'unsafe-eval' http://localhost:5173 http://localhost:8000; style-src 'self' http://localhost:5173 http://localhost:8000; img-src 'self'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; connect-src 'self' http://localhost:5173 http://localhost:8000; child-src 'none'; object-src 'none'; base-uri 'self'; manifest-src 'self'; worker-src 'self';";
         }
 
+        // Set the CSP header
         $response->headers->set('Content-Security-Policy', $csp);
-        $response->headers->set('X-Frame-Options', 'DENY');
-        $response->headers->set('X-Content-Type-Options', 'nosniff');
 
-        if (config('app.env') === 'production') {
-            $response->headers->set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
-        }
+        // Set other security headers
+        $response->headers->set('X-Frame-Options', 'DENY');  // Prevent clickjacking
+        $response->headers->set('X-Content-Type-Options', 'nosniff');  // Prevent MIME sniffing
 
         return $response;
     }
