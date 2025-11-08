@@ -5,6 +5,25 @@
         "api/index.php": { "runtime": "vercel-php@0.7.4" }
         
     },
+    "headers": [
+        {
+            "source": "/(.*)",
+            "headers": [
+                {
+                "key": "Access-Control-Allow-Origin",
+                "value": "https://sweetvows.site"
+                },
+                {
+                "key": "Vary",
+                "value": "Origin"
+                },
+                {
+                "key": "X-Content-Type-Options",
+                "value": "nosniff"
+                }
+            ]
+        }
+    ],
     "routes": [
         { "src": "^/bank/(.*)$",   "dest": "/public/bank/$1" },
         { "src": "^/fonts/(.*)$",  "dest": "/public/fonts/$1" },
