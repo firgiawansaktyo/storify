@@ -5,6 +5,30 @@
         "api/index.php": { "runtime": "vercel-php@0.7.4" }
         
     },
+    "headers": [
+        {
+            "source": "/api/(.*)",
+            "headers": [
+                {
+                "key": "Access-Control-Allow-Origin",
+                "value": "https://sweetvows.site"
+                },
+                {
+                "key": "Vary",
+                "value": "Origin"
+                }
+            ]
+        },
+        {
+            "source": "/(.*)",
+            "headers": [
+                {
+                "key": "X-Content-Type-Options",
+                "value": "nosniff"
+                }
+            ]
+        }
+    ],
     "routes": [
         { "src": "^/bank/(.*)$",   "dest": "/public/bank/$1" },
         { "src": "^/fonts/(.*)$",  "dest": "/public/fonts/$1" },
@@ -18,7 +42,7 @@
     "env": {
         "APP_ENV": "production",
         "APP_DEBUG": "true",
-        "APP_URL": "",
+        "APP_URL": "https://sweetvows.site/",
  
         "APP_CONFIG_CACHE": "/tmp/config.php",
         "APP_EVENTS_CACHE": "/tmp/events.php",
