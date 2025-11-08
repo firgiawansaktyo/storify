@@ -7,7 +7,7 @@
     },
     "headers": [
         {
-            "source": "/(.*)",
+            "source": "/api/(.*)",
             "headers": [
                 {
                 "key": "Access-Control-Allow-Origin",
@@ -16,7 +16,12 @@
                 {
                 "key": "Vary",
                 "value": "Origin"
-                },
+                }
+            ]
+        },
+        {
+            "source": "/(.*)",
+            "headers": [
                 {
                 "key": "X-Content-Type-Options",
                 "value": "nosniff"
@@ -37,7 +42,7 @@
     "env": {
         "APP_ENV": "production",
         "APP_DEBUG": "true",
-        "APP_URL": "",
+        "APP_URL": "https://sweetvows.site/",
  
         "APP_CONFIG_CACHE": "/tmp/config.php",
         "APP_EVENTS_CACHE": "/tmp/events.php",
