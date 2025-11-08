@@ -5,8 +5,6 @@ use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 use App\Http\Middleware\RequireApiKey;
 use App\Http\Middleware\SecurityHeaders;
-use App\Http\Middleware\Cors;
-use Vinkla\Hashids\Facades\Hashids;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -17,8 +15,7 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware
-        // ->append(SecurityHeaders::class)
-        // ->append(Cors::class)
+        ->append(SecurityHeaders::class)
         ->alias([
             'apikey' => RequireApiKey::class,
         ]);
