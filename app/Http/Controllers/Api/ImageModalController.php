@@ -8,7 +8,6 @@ use App\Models\Album;
 use App\Models\InvitedGuest;
 use App\Models\Throwback;
 use App\Models\User;
-use Hashids\Hashids;
 use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\Response;
 

@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Sweet Vows</title>
         @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
-            @vite(['resources/css/app.css', 'resources/js/app.js'])
+            @vite(['resources/css/app.css'])
         @else
             <style>
                 /*! tailwindcss v4.0.7 | MIT License | https://tailwindcss.com */
