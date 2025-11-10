@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+
 @section('content')
 <div class="mb-2 mt-2 p-2">
   <!-- Page Heading -->
@@ -14,66 +15,173 @@
       <div id="successBox" class="alert alert-success d-none"></div>
       <div id="errorBox" class="alert alert-danger d-none"></div>
 
-
       <div class="form-group">
         <label class="text-white">Wedding Title</label>
-        <input type="text" id="wedding_title" name="wedding_title" class="form-control" required/>
+        <input
+          type="text"
+          id="wedding_title"
+          name="wedding_title"
+          class="form-control"
+          required
+        />
       </div>
+
       <div class="form-group">
         <label class="text-white">Wedding Sub Title</label>
-        <input type="text" id="wedding_sub_title" name="wedding_sub_title" class="form-control" required/>
+        <input
+          type="text"
+          id="wedding_sub_title"
+          name="wedding_sub_title"
+          class="form-control"
+          required
+        />
       </div>
+
       <div class="form-group">
-        <label class="text-white  ">Wedding Description</label>
-        <textarea style="height: 100px;" type="text" id="wedding_description" name="wedding_description" class="form-control" required></textarea>
+        <label class="text-white">Wedding Description</label>
+        <textarea
+          style="height: 100px;"
+          id="wedding_description"
+          name="wedding_description"
+          class="form-control"
+          required
+        ></textarea>
       </div>
+
       <div class="form-group">
         <label class="text-white">Wedding Prayer Verse</label>
-        <textarea style="height: 100px;" type="text" id="wedding_prayer_verse" name="wedding_prayer_verse" class="form-control"></textarea>
+        <textarea
+          style="height: 100px;"
+          id="wedding_prayer_verse"
+          name="wedding_prayer_verse"
+          class="form-control"
+          required
+        ></textarea>
       </div>
+
       <div class="form-group">
-        <label class="text-white  ">Wedding Message Template</label>
-        <textarea style="height: 100px;" type="text" id="wedding_message_template" name="wedding_message_template" class="form-control" required></textarea>
+        <label class="text-white">Wedding Message Template</label>
+        <textarea
+          style="height: 100px;"
+          id="wedding_message_template"
+          name="wedding_message_template"
+          class="form-control"
+          required
+        ></textarea>
       </div>
+
       <div class="form-group">
         <label class="text-white">Wedding Landing Title</label>
-        <input type="text" id="wedding_landing_title" name="wedding_landing_title" class="form-control" required>
+        <input
+          type="text"
+          id="wedding_landing_title"
+          name="wedding_landing_title"
+          class="form-control"
+          required
+        >
       </div>
+
       <div class="form-group">
         <label class="text-white">Wedding Hot News Description</label>
-        <textarea style="height: 100px;" type="text" id="wedding_hotnews_description" name="wedding_hotnews_description" class="form-control" required></textarea>
+        <textarea
+          style="height: 100px;"
+          id="wedding_hotnews_description"
+          name="wedding_hotnews_description"
+          class="form-control"
+          required
+        ></textarea>
       </div>
 
       <hr class="bg-white">
 
       <div class="form-group">
         <label class="text-white">Wedding Image</label>
-        <input type="file" accept="image/*" id="wedding_image" name="wedding_image" class="form-control" required>
-        <progress id="progressBarWeddingImage" value="0" max="100" class="mt-2 w-100 d-none"></progress>
+        <input
+          type="file"
+          accept="image/*"
+          id="wedding_image"
+          name="wedding_image"
+          class="form-control"
+          required
+        >
+        <progress
+          id="progressBarWeddingImage"
+          value="0"
+          max="100"
+          class="mt-2 w-100 d-none"
+        ></progress>
         <p id="statusWeddingImage"></p>
       </div>
+
       <div class="form-group">
         <label class="text-white">Wedding Video</label>
-        <input type="file" accept="video/*" id="wedding_video" name="wedding_video" accept="video/*" class="form-control">
-        <progress id="progressBarWeddingVideo" value="0" max="100" class="mt-2 w-100 d-none"></progress>
+        <input
+          type="file"
+          accept="video/*"
+          id="wedding_video"
+          name="wedding_video"
+          class="form-control"
+        >
+        <progress
+          id="progressBarWeddingVideo"
+          value="0"
+          max="100"
+          class="mt-2 w-100 d-none"
+        ></progress>
         <p id="statusWeddingVideo"></p>
       </div>
+
       <div class="form-group">
         <label class="text-white">Wedding Audio</label>
-        <input type="file" accept="audio/*" id="wedding_audio" name="wedding_audio" accept="audio/*" class="form-control">
-        <progress id="progressBarWeddingAudio" value="0" max="100" class="mt-2 w-100 d-none"></progress>
+        <input
+          type="file"
+          accept="audio/*"
+          id="wedding_audio"
+          name="wedding_audio"
+          class="form-control"
+        >
+        <progress
+          id="progressBarWeddingAudio"
+          value="0"
+          max="100"
+          class="mt-2 w-100 d-none"
+        ></progress>
         <p id="statusWeddingAudio"></p>
       </div>
+
       <div class="form-group">
         <label class="text-white">Wedding Landing Image</label>
-        <input type="file" accept="image/*" id="wedding_landing_image" name="wedding_landing_image" class="form-control">
-        <progress id="progressBarLandingImage" value="0" max="100" class="mt-2 w-100 d-none"></progress>
+        <input
+          type="file"
+          accept="image/*"
+          id="wedding_landing_image"
+          name="wedding_landing_image"
+          class="form-control"
+        >
+        <progress
+          id="progressBarLandingImage"
+          value="0"
+          max="100"
+          class="mt-2 w-100 d-none"
+        ></progress>
         <p id="statusLandingImage"></p>
       </div>
+
       <div class="form-group">
         <label class="text-white">Wedding Hot News Image</label>
-        <input type="file" accept="image/*" id="wedding_hotnews_image" name="wedding_hotnews_image" class="form-control">
-        <progress id="progressBarHotNewsImage" value="0" max="100" class="mt-2 w-100 d-none"></progress>
+        <input
+          type="file"
+          accept="image/*"
+          id="wedding_hotnews_image"
+          name="wedding_hotnews_image"
+          class="form-control"
+        >
+        <progress
+          id="progressBarHotNewsImage"
+          value="0"
+          max="100"
+          class="mt-2 w-100 d-none"
+        ></progress>
         <p id="statusHotNewsImage"></p>
       </div>
 
@@ -85,12 +193,14 @@
     </div>
   </div>
 </div>
-<script>
-    window.path = @json($path);
-</script>
+
+<span
+  id="wedding-create-data"
+  data-path="{{ $path }}"
+  data-store-route="{{ route('weddings.store') }}"
+  data-index-route="{{ route('weddings.index') }}"
+  style="display:none;"
+></span>
+
+@vite('resources/js/weddingCreate.js')
 @endsection
-
-
-
-
-

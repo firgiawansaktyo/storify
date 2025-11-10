@@ -1,7 +1,7 @@
 @extends('layouts.admin')
+
 @section('content')
 <div class="mb-2 mt-2 p-2">
-  <!-- Page Heading -->
   <h1 class="h3 text-white">Create Bank Image</h1>
 
   <div class="card shadow mb-4">
@@ -10,11 +10,9 @@
     </div>
     <div class="card-body">
 
-      <!-- Success and Error Alerts -->
       <div id="successBox" class="alert alert-success d-none"></div>
       <div id="errorBox" class="alert alert-danger d-none"></div>
 
-      <!-- Form Fields -->
       <div class="form-group">
         <label class="text-white">Bank Name</label>
         <input type="text" id="name" class="form-control" required>
@@ -22,7 +20,6 @@
 
       <hr class="bg-white">
 
-      <!-- Bank Image Upload -->
       <div class="form-group">
         <label class="text-white">Bank Image</label>
         <input id="bank_image" type="file" accept="image/*" class="form-control">
@@ -37,12 +34,14 @@
     </div>
   </div>
 </div>
-<script>
-    window.path = @json($path);
-</script>
+
+<span
+  id="bank-create-data"
+  data-path="{{ $path }}"
+  data-store-route="{{ route('banks.store') }}"
+  data-index-route="{{ route('banks.index') }}"
+  style="display:none;"
+></span>
+
+@vite('resources/js/bankCreate.js')
 @endsection
-
-
-
-
-

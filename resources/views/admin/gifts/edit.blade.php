@@ -18,7 +18,10 @@
         <select id="bank_id" class="form-control" required>
           <option value="">-- Select Bank --</option>
           @foreach($banks as $bank)
-            <option value="{{ $bank->id }}" {{ (string)old('bank_id', $gift->bank_id) === (string)$bank->id ? 'selected' : '' }}>
+            <option
+              value="{{ $bank->id }}"
+              {{ (string)old('bank_id', $gift->bank_id) === (string)$bank->id ? 'selected' : '' }}
+            >
               {{ $bank->name }}
             </option>
           @endforeach
@@ -27,32 +30,52 @@
 
       <div class="form-group">
         <label class="text-white">Account Number</label>
-        <input type="text" id="account_number" class="form-control" value="{{ old('account_number', $gift->account_number) }}" required>
+        <input
+          type="text"
+          id="account_number"
+          class="form-control"
+          value="{{ old('account_number', $gift->account_number) }}"
+          required
+        >
       </div>
 
       <div class="form-group">
         <label class="text-white">Account Holder</label>
-        <input type="text" id="account_holder" class="form-control" value="{{ old('account_holder', $gift->account_holder) }}" required>
+        <input
+          type="text"
+          id="account_holder"
+          class="form-control"
+          value="{{ old('account_holder', $gift->account_holder) }}"
+          required
+        >
       </div>
 
       <hr class="bg-white">
 
       <div class="form-group">
         <label class="text-white">QRIS Image</label>
-        <input id="qris_image" type="file" accept="image/*" class="form-control" value="{{ old('qris_image', $gift->qris_image) }}">
-        <progress id="progressBarQrisImage" value="0" max="100" class="mt-2 w-100 d-none"></progress>
+        <input id="qris_image" type="file" accept="image/*" class="form-control">
+        <progress
+          id="progressBarQrisImage"
+          value="0"
+          max="100"
+          class="mt-2 w-100 d-none">
+        </progress>
         <p id="statusQrisImage"></p>
 
-        <p class="text-center justify-center justify-self-center pt-2">Current Image</p>
+        <p class="text-center pt-2">Current Image</p>
+
         @if($gift->qris_image)
           <img
-            id="imagePreview"
-            class="text-center justify-center justify-self-center"
+            id="qrisImagePreview"
+            class="mx-auto d-block"
             style="max-width: 300px; cursor: pointer;"
             data-toggle="modal"
             data-target="#imageModalQrisImage"
             src="{{ old('qris_image') ? asset('storage/' . old('qris_image')) : asset('storage/' . $gift->qris_image) }}"
-            alt="QRIS Image">
+            alt="QRIS Image"
+          >
+
           <div class="modal fade" id="imageModalQrisImage" tabindex="-1" aria-labelledby="imageModalLabelQrisImage" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-lg">
               <div class="modal-content">
@@ -72,7 +95,15 @@
     </div>
   </div>
 </div>
-<script>
-    window.path = @json($path);
-</script>
+
+<span
+  id="gift-update-data"
+  data-path="{{ $path }}"
+  data-update-route="{{ route('gifts.update', $gift->id) }}"
+  data-index-route="{{ route('gifts.index') }}"
+  data-qris-image="{{ $gift->qris_image }}"
+  style="display:none;"
+></span>
+
+@vite('resources/js/giftUpdate.js')
 @endsection
