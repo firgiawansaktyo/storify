@@ -16,16 +16,14 @@
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in bg-dark border-0"
                     aria-labelledby="userDropdown">
-                    
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
 
-                    <a class="dropdown-item text-white bg-dark hover:bg-secondary" href="#"
-                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-white"></i>
-                        Logout
-                    </a>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="dropdown-item text-white bg-dark w-100 text-left">
+                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-white"></i>
+                            Logout
+                        </button>
+                    </form>
                 </div>
             </li>
 
