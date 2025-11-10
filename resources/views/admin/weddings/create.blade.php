@@ -85,6 +85,9 @@
     </div>
   </div>
 </div>
+<script>
+    window.path = @json($path);
+</script>
 @endsection
 
 

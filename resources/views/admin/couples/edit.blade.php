@@ -10,11 +10,9 @@
     </div>
     <div class="card-body">
 
-      <!-- Success and Error Alerts -->
       <div id="successBox" class="alert alert-success d-none"></div>
       <div id="errorBox" class="alert alert-danger d-none"></div>
 
-      <!-- Form Fields -->
       <div class="form-group">
         <label class="text-white">Bride Name</label>
         <input type="text" id="bride_name" class="form-control" value="{{ old('bride_name', $couple->bride_name) }}" required>
@@ -42,7 +40,6 @@
 
       <hr class="bg-white">
 
-      <!-- Bride Image Upload -->
       <div class="form-group">
         <label class="text-white">Bride Image</label>
         <input id="bride_image" type="file" accept="image/*" class="form-control" value="{{ old('bride_image', $couple->bride_image) }}">
@@ -65,7 +62,6 @@
         </div>
       </div>
 
-      <!-- Groom Image Upload -->
       <div class="form-group">
         <label class="text-white">Groom Image</label>
         <input id="groom_image" type="file" accept="image/*" class="form-control" value="{{ old('groom_image', $couple->groom_image) }}">
@@ -95,4 +91,7 @@
     </div>
   </div>
 </div>
+<script>
+    window.path = @json($path);
+</script>
 @endsection
