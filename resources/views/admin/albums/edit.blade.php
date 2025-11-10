@@ -51,7 +51,8 @@
   data-path="{{ $path }}"
   data-update-route="{{ route('albums.update', ['album' => $album->id]) }}"
   data-index-route="{{ route('albums.index') }}"
-  style="display:none;">
+  class="d-none"
+>
 </span>
 
 @vite('resources/js/albumUpdate.js')

@@ -48,7 +48,7 @@
   data-path="{{ $path }}"
   data-store-route="{{ route('throwbacks.store') }}"
   data-index-route="{{ route('throwbacks.index') }}"
-  style="display:none;"
+  class="d-none"
 ></span>
 
 @vite('resources/js/throwbackCreate.js')

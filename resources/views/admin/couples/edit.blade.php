@@ -169,7 +169,7 @@
   data-index-route="{{ route('couples.index') }}"
   data-bride-image="{{ $couple->bride_image }}"
   data-groom-image="{{ $couple->groom_image }}"
-  style="display:none;"
+  class="d-none"
 ></span>
 
 @vite('resources/js/coupleUpdate.js')

@@ -236,7 +236,7 @@
   data-index-route="{{ route('timelines.index') }}"
   data-vow-image="{{ $timeline->wedding_vow_image }}"
   data-reception-image="{{ $timeline->wedding_reception_image }}"
-  style="display:none;"
+  class="d-none"
 ></span>
 
 @vite('resources/js/timelineUpdate.js')

@@ -102,7 +102,7 @@
   data-update-route="{{ route('gifts.update', $gift->id) }}"
   data-index-route="{{ route('gifts.index') }}"
   data-qris-image="{{ $gift->qris_image }}"
-  style="display:none;"
+  class="d-none"
 ></span>
 
 @vite('resources/js/giftUpdate.js')

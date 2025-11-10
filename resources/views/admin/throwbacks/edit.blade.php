@@ -90,7 +90,7 @@
   data-update-route="{{ route('throwbacks.update', $throwback->id) }}"
   data-index-route="{{ route('throwbacks.index') }}"
   data-throwback-image="{{ $throwback->wedding_throwback_image }}"
-  style="display:none;"
+  class="d-none"
 ></span>
 
 @vite('resources/js/throwbackUpdate.js')
