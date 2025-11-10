@@ -56,7 +56,6 @@
     </div>
   </div>
 </div>
-<script>
-    window.path = @json($path);
-</script>
+<span id="path-data" style="display:none;">@json($path)</span>
+<script src="{{ asset('js/albumUpdate.js') }}"></script>
 @endsection
