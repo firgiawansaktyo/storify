@@ -20,6 +20,9 @@
           @include('partials.footer')
       </div>
   </div>
+<script>
+  window.path = @json($path);
+</script>
 @include('partials.user-info')
 @stack('scripts')
 </body>
