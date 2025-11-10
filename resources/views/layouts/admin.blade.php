@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="64x64">
   <title>Sweet Vows</title>
-  @vite(['resources/css/admin.css', 'resources/js/admin.js'])
+  @vite(['resources/css/admin.css', 'resources/js/admin.js', 'resources/js/bankCreate.js'])
 </head>
 <body class="page-top">
   <div id="wrapper">
