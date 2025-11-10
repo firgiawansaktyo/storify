@@ -50,36 +50,32 @@
       <div class="form-group">
         <label class="text-white">Wedding Vow Location</label>
         <textarea
-          style="height: 100px;"
           id="wedding_vow_location"
-          class="form-control"
+          class="form-control h-24"
           required
         >{{ old('wedding_vow_location', $timeline->wedding_vow_location) }}</textarea>
       </div>
       <div class="form-group">
         <label class="text-white">Wedding Vow Address</label>
         <textarea
-          style="height: 100px;"
           id="wedding_vow_address"
-          class="form-control"
+          class="form-control h-24"
           required
         >{{ old('wedding_vow_address', $timeline->wedding_vow_address) }}</textarea>
       </div>
       <div class="form-group">
         <label class="text-white">Wedding Vow Location Link</label>
         <textarea
-          style="height: 100px;"
           id="wedding_vow_location_link"
-          class="form-control"
+          class="form-control h-24"
           required
         >{{ old('wedding_vow_location_link', $timeline->wedding_vow_location_link) }}</textarea>
       </div>
       <div class="form-group">
         <label class="text-white">Wedding Vow Iframe</label>
         <textarea
-          style="height: 100px;"
           id="wedding_vow_iframe"
-          class="form-control"
+          class="form-control h-24"
           required
         >{{ old('wedding_vow_iframe', $timeline->wedding_vow_iframe) }}</textarea>
       </div>
@@ -118,36 +114,32 @@
       <div class="form-group">
         <label class="text-white">Wedding Reception Location</label>
         <textarea
-          style="height: 100px;"
           id="wedding_reception_location"
-          class="form-control"
+          class="form-control h-24"
           required
         >{{ old('wedding_reception_location', $timeline->wedding_reception_location) }}</textarea>
       </div>
       <div class="form-group">
         <label class="text-white">Wedding Reception Address</label>
         <textarea
-          style="height: 100px;"
           id="wedding_reception_address"
-          class="form-control"
+          class="form-control h-24"
           required
         >{{ old('wedding_reception_address', $timeline->wedding_reception_address) }}</textarea>
       </div>
       <div class="form-group">
         <label class="text-white">Wedding Reception Location Link</label>
         <textarea
-          style="height: 100px;"
           id="wedding_reception_location_link"
-          class="form-control"
+          class="form-control h-24"
           required
         >{{ old('wedding_reception_location_link', $timeline->wedding_reception_location_link) }}</textarea>
       </div>
       <div class="form-group">
         <label class="text-white">Wedding Reception Iframe</label>
         <textarea
-          style="height: 100px;"
           id="wedding_reception_iframe"
-          class="form-control"
+          class="form-control h-24"
           required
         >{{ old('wedding_reception_iframe', $timeline->wedding_reception_iframe) }}</textarea>
       </div>
@@ -169,8 +161,7 @@
         <p class="text-center pt-2">Current Image</p>
         <img
           id="vowImagePreview"
-          class="mx-auto d-block"
-          style="max-width: 300px; cursor: pointer;"
+          class="mx-auto d-block max-w-sm cursor-pointer"
           data-toggle="modal"
           data-target="#imageModalVowImage"
           src="{{ old('wedding_vow_image') ? asset('storage/' . old('wedding_vow_image')) : ($timeline->wedding_vow_image ? asset('storage/' . $timeline->wedding_vow_image) : '') }}"
@@ -202,8 +193,7 @@
         <p class="text-center pt-2">Current Image</p>
         <img
           id="receptionImagePreview"
-          class="mx-auto d-block"
-          style="max-width: 300px; cursor: pointer;"
+          class="mx-auto d-block max-w-sm cursor-pointer"
           data-toggle="modal"
           data-target="#imageModalReceptionImage"
           src="{{ old('wedding_reception_image') ? asset('storage/' . old('wedding_reception_image')) : ($timeline->wedding_reception_image ? asset('storage/' . $timeline->wedding_reception_image) : '') }}"

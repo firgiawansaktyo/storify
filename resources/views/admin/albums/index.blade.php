@@ -37,8 +37,7 @@
                         <td>
                             <img    
                             id="imagePreview"
-                            class="text-center justify-center justify-self-center"
-                            style="max-width: 300px; cursor: pointer;" 
+                            class="text-center justify-center justify-self-center max-w-sm cursor-pointer"
                             data-toggle="modal" 
                             data-target="#imageModalAlbumImage-{{ $album->id }}"
                             src="{{ old('wedding_album_image') ? asset('storage/' . old('wedding_album_image')) : (isset($album) && $album->wedding_album_image ? asset('storage/' . $album->wedding_album_image) : '') }}">

@@ -5,7 +5,7 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-2 mt-2 p-2">
         <p class="mb-0 text-white">Guests</p>
 
-        <div class="d-flex align-items-center" style="gap:.5rem;">
+        <div class="d-flex align-items-center gap-1">
             <a href="{{ route('invited-guests.create') }}" class="btn btn-primary">
                 <i class="fas fa-plus"></i> Create
             </a>
@@ -62,7 +62,7 @@
                             <!-- Correct number across pages -->
                             <td class="text-white">{{ $invitedGuests->firstItem() + $loop->index }}</td>
                             <td class="text-white">{{ $invitedGuest->name }}</td>
-                            <td class="text-white d-flex justify-content-center align-items-center" style="gap:.4rem;">
+                            <td class="text-white d-flex justify-content-center align-items-center gap-2">
                                 <a href="{{ route('invited-guests.edit', $invitedGuest->id) }}" class="btn btn-sm btn-warning">
                                     <i class="fas fa-edit"></i>
                                 </a>

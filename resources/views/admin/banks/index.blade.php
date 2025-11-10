@@ -33,8 +33,7 @@
                         <td>
                             <img    
                             id="imagePreview"
-                            class="text-center justify-center justify-self-center"
-                            style="max-width: 300px; cursor: pointer;" 
+                            class="text-center justify-center justify-self-center max-w-sm cursor-pointer"
                             data-toggle="modal" 
                             data-target="#imageModalBankImage-{{ $bank->id }}"
                             src="{{ old('bank_image') ? asset('storage/' . old('bank_image')) : (isset($bank) && $bank->bank_image ? asset('storage/' . $bank->bank_image) : '') }}">

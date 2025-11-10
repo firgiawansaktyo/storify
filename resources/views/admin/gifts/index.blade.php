@@ -40,8 +40,7 @@
                                     @if($gift->qris_image)
                                         <img
                                             id="imagePreview"
-                                            class="text-center justify-center justify-self-center"
-                                            style="max-width: 200px; cursor: pointer;"
+                                            class="text-center justify-center justify-self-center max-w-sm cursor-pointer"
                                             data-toggle="modal"
                                             data-target="#imageModalQrisImage-{{ $gift->id }}"
                                             src="{{ asset('storage/' . $gift->qris_image) }}"

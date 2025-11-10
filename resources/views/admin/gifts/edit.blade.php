@@ -68,8 +68,7 @@
         @if($gift->qris_image)
           <img
             id="qrisImagePreview"
-            class="mx-auto d-block"
-            style="max-width: 300px; cursor: pointer;"
+            class="mx-auto d-block max-w-sm cursor-pointer"
             data-toggle="modal"
             data-target="#imageModalQrisImage"
             src="{{ old('qris_image') ? asset('storage/' . old('qris_image')) : asset('storage/' . $gift->qris_image) }}"

@@ -40,10 +40,9 @@
       <div class="form-group">
         <label class="text-white">Wedding Description</label>
         <textarea
-          style="height: 100px;"
           id="wedding_description"
           name="wedding_description"
-          class="form-control"
+          class="form-control h-24"
           required
         ></textarea>
       </div>
@@ -51,10 +50,9 @@
       <div class="form-group">
         <label class="text-white">Wedding Prayer Verse</label>
         <textarea
-          style="height: 100px;"
           id="wedding_prayer_verse"
           name="wedding_prayer_verse"
-          class="form-control"
+          class="form-control h-24"
           required
         ></textarea>
       </div>
@@ -62,10 +60,9 @@
       <div class="form-group">
         <label class="text-white">Wedding Message Template</label>
         <textarea
-          style="height: 100px;"
           id="wedding_message_template"
           name="wedding_message_template"
-          class="form-control"
+          class="form-control h-24"
           required
         ></textarea>
       </div>
@@ -84,10 +81,9 @@
       <div class="form-group">
         <label class="text-white">Wedding Hot News Description</label>
         <textarea
-          style="height: 100px;"
           id="wedding_hotnews_description"
           name="wedding_hotnews_description"
-          class="form-control"
+          class="form-control h-24"
           required
         ></textarea>
       </div>

@@ -49,8 +49,7 @@
         <p class="text-center justify-center justify-self-center pt-2">Bride Image</p>
         <img    
             id="imagePreview"
-            class="text-center justify-center justify-self-center"
-            style="max-width: 300px; cursor: pointer;" 
+            class="text-center justify-center justify-self-center max-w-sm cursor-pointer"
             data-toggle="modal" 
             data-target="#imageModalBrideImage"
             src="{{ old('bride_image') ? asset('storage/' . old('bride_image')) : (isset($couple) && $couple->bride_image ? asset('storage/' . $couple->bride_image) : '') }}">
@@ -66,8 +65,7 @@
         <p class="text-center justify-center justify-self-center pt-2">Groom Image</p>
         <img    
             id="imagePreview"
-            class="text-center justify-center justify-self-center"
-            style="max-width: 300px; cursor: pointer;" 
+            class="text-center justify-center justify-self-center max-w-sm cursor-pointer"
             data-toggle="modal" 
             data-target="#imageModalGroomImage"
             src="{{ old('groom_image') ? asset('storage/' . old('groom_image')) : (isset($couple) && $couple->groom_image ? asset('storage/' . $couple->groom_image) : '') }}">
