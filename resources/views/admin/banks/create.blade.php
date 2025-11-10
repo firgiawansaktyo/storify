@@ -43,5 +43,4 @@
   style="display:none;"
 ></span>
 
-@vite('resources/js/bankCreate.js')
 @endsection
