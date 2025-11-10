@@ -199,7 +199,7 @@
   data-path="{{ $path }}"
   data-store-route="{{ route('weddings.store') }}"
   data-index-route="{{ route('weddings.index') }}"
-  style="display:none;"
+  class="d-none"
 ></span>
 
 @vite('resources/js/weddingCreate.js')

@@ -194,7 +194,7 @@
   data-path="{{ $path }}"
   data-store-route="{{ route('timelines.store') }}"
   data-index-route="{{ route('timelines.index') }}"
-  style="display:none;"
+  class="d-none"
 ></span>
 
 @vite('resources/js/timelineCreate.js')

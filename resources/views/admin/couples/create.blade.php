@@ -72,7 +72,7 @@
   data-path="{{ $path }}"
   data-store-route="{{ route('couples.store') }}"
   data-index-route="{{ route('couples.index') }}"
-  style="display:none;"
+  class="d-none"
 ></span>
 
 @vite('resources/js/coupleCreate.js')

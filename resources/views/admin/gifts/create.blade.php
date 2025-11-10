@@ -59,7 +59,7 @@
   data-path="{{ $path }}"
   data-store-route="{{ route('gifts.store') }}"
   data-index-route="{{ route('gifts.index') }}"
-  style="display:none;"
+  class="d-none"
 ></span>
 
 @vite('resources/js/giftCreate.js')

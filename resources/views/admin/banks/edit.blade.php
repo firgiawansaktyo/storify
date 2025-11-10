@@ -86,7 +86,7 @@
   data-update-route="{{ route('banks.update', $bank->id) }}"
   data-index-route="{{ route('banks.index') }}"
   data-bank-image="{{ $bank->bank_image }}"
-  style="display:none;"
+  class="d-none"
 ></span>
 
 @vite('resources/js/bankUpdate.js')

@@ -287,7 +287,7 @@
   data-wedding-audio="{{ $wedding->wedding_audio }}"
   data-wedding-landing-image="{{ $wedding->wedding_landing_image }}"
   data-wedding-hotnews-image="{{ $wedding->wedding_hotnews_image }}"
-  style="display:none;"
+  class="d-none"
 ></span>
 
 @vite('resources/js/weddingUpdate.js')
