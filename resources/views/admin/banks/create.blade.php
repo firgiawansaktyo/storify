@@ -39,7 +39,9 @@
   id="bank-create-data"
   data-path="{{ $path }}"
   data-store-route="{{ route('banks.store') }}"
-  data-index-route="{{ route('banks.index') }}">
+  data-index-route="{{ route('banks.index') }}"
+  class="d-none"
+>
 </span>
 
 @vite('resources/js/bankCreate.js')
