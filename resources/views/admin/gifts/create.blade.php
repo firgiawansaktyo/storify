@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+
 @section('content')
 <div class="mb-2 mt-2 p-2">
   <!-- Page Heading -->
@@ -52,7 +53,14 @@
     </div>
   </div>
 </div>
-<script>
-    window.path = @json($path);
-</script>
+
+<span
+  id="gift-create-data"
+  data-path="{{ $path }}"
+  data-store-route="{{ route('gifts.store') }}"
+  data-index-route="{{ route('gifts.index') }}"
+  style="display:none;"
+></span>
+
+@vite('resources/js/giftCreate.js')
 @endsection

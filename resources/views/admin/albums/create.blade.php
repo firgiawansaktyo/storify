@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+
 @section('content')
 <div class="mb-2 mt-2 p-2">
   <!-- Page Heading -->
@@ -21,7 +22,7 @@
       </div>
       <div class="form-group">
         <label class="text-white">Album Image Description</label>
-        <textarea type="text" id="wedding_album_description" class="form-control" required></textarea>
+        <textarea id="wedding_album_description" class="form-control" required></textarea>
       </div>
 
       <hr class="bg-white">
@@ -41,12 +42,14 @@
     </div>
   </div>
 </div>
-<script>
-    window.path = @json($path);
-</script>
+
+<span
+  id="album-create-data"
+  data-path="{{ $path }}"
+  data-store-route="{{ route('albums.store') }}"
+  data-index-route="{{ route('albums.index') }}"
+  style="display:none;"
+></span>
+
+@vite('resources/js/albumCreate.js')
 @endsection
-
-
-
-
-

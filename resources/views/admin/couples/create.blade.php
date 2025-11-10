@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+
 @section('content')
 <div class="mb-2 mt-2 p-2">
   <!-- Page Heading -->
@@ -65,12 +66,14 @@
     </div>
   </div>
 </div>
-<script>
-    window.path = @json($path);
-</script>
+
+<span
+  id="couple-create-data"
+  data-path="{{ $path }}"
+  data-store-route="{{ route('couples.store') }}"
+  data-index-route="{{ route('couples.index') }}"
+  style="display:none;"
+></span>
+
+@vite('resources/js/coupleCreate.js')
 @endsection
-
-
-
-
-

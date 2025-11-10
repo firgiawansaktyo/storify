@@ -10,43 +10,32 @@
     </div>
     <div class="card-body">
 
-      <!-- Success and Error Alerts -->
       <div id="successBox" class="alert alert-success d-none"></div>
       <div id="errorBox" class="alert alert-danger d-none"></div>
 
-      <!-- Form Fields -->
       <div class="form-group">
         <label class="text-white">Album Image Title</label>
-        <input type="text" id="wedding_album_title" class="form-control" value="{{ old('wedding_album_title', $album->wedding_album_title) }}" required>
+        <input type="text" id="wedding_album_title" class="form-control"
+          value="{{ old('wedding_album_title', $album->wedding_album_title) }}" required>
       </div>
+
       <div class="form-group">
         <label class="text-white">Album Image Description</label>
-        <textarea type="text" id="wedding_album_description" class="form-control" value="{{ old('wedding_album_description', $album->wedding_album_description) }}" required>{{ old('wedding_album_description', $album->wedding_album_description) }}</textarea>
+        <textarea id="wedding_album_description" class="form-control" required>{{ old('wedding_album_description', $album->wedding_album_description) }}</textarea>
       </div>
 
       <hr class="bg-white">
 
-      <!-- Album Image Upload -->
       <div class="form-group">
         <label class="text-white">Album Image</label>
-        <input id="wedding_album_image" type="file" accept="image/*" class="form-control" value="{{ old('wedding_album_image', $album->wedding_album_image) }}">
+        <input id="wedding_album_image" type="file" accept="image/*" class="form-control">
         <progress id="progressBarAlbumImage" value="0" max="100" class="mt-2 w-100 d-none"></progress>
         <p id="statusAlbumImage"></p>
-        <p class="text-center justify-center justify-self-center pt-2">Current Image</p>
-        <img    
-          id="imagePreview"
-          class="text-center justify-center justify-self-center"
-          style="max-width: 300px; cursor: pointer;" 
-          data-toggle="modal" 
-          data-target="#imageModalAlbumImage"
-          src="{{ old('wedding_album_image') ? asset('storage/' . old('wedding_album_image')) : (isset($album) && $album->wedding_album_image ? asset('storage/' . $album->wedding_album_image) : '') }}">
-        <div class="modal fade" id="imageModalAlbumImage" tabindex="-1" aria-labelledby="imageModalLabelAlbumImage" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered modal-lg">
-              <div class="modal-content">
-                  <img src="{{ asset('storage/' . $album->wedding_album_image) }}" alt="Full Image">
-              </div>
-          </div>
-        </div>
+
+        <p class="text-center pt-2">Current Image</p>
+        <img id="imagePreview" class="mx-auto d-block" style="max-width:300px;cursor:pointer;"
+          data-toggle="modal" data-target="#imageModalAlbumImage"
+          src="{{ $album->wedding_album_image ? asset('storage/' . $album->wedding_album_image) : '' }}">
       </div>
 
       <a href="{{ route('albums.index') }}" class="btn btn-secondary">Cancel</a>
@@ -56,7 +45,14 @@
     </div>
   </div>
 </div>
-<script>
-    window.path = @json($path);
-</script>
+
+<span
+  id="album-update-data"
+  data-path="{{ $path }}"
+  data-update-route="{{ route('albums.update', ['album' => $album->id]) }}"
+  data-index-route="{{ route('albums.index') }}"
+  style="display:none;">
+</span>
+
+@vite('resources/js/albumUpdate.js')
 @endsection
