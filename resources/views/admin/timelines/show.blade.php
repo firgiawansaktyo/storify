@@ -29,15 +29,15 @@
       </div>
       <div class="form-group">
         <label class="text-white">Wedding Vow Location</label>
-        <textarea style="height: 100px;" type="text" id="wedding_vow_location" class="form-control" value="{{ old('wedding_vow_location', $timeline->wedding_vow_location) }}" disabled>{{ old('wedding_vow_location', $timeline->wedding_vow_location) }}</textarea>
+        <textarea type="text" id="wedding_vow_location" class="form-control h-96" value="{{ old('wedding_vow_location', $timeline->wedding_vow_location) }}" disabled>{{ old('wedding_vow_location', $timeline->wedding_vow_location) }}</textarea>
       </div>
       <div class="form-group">
         <label class="text-white">Wedding Vow Address</label>
-        <textarea style="height: 100px;" type="text" id="wedding_vow_address" class="form-control" value="{{ old('wedding_vow_address', $timeline->wedding_vow_address) }}" disabled>{{ old('wedding_vow_address', $timeline->wedding_vow_address) }}</textarea>
+        <textarea type="text" id="wedding_vow_address" class="form-control h-96" value="{{ old('wedding_vow_address', $timeline->wedding_vow_address) }}" disabled>{{ old('wedding_vow_address', $timeline->wedding_vow_address) }}</textarea>
       </div>
       <div class="form-group">
         <label class="text-white">Wedding Vow Iframe</label>
-        <textarea style="height: 100px;" type="text" id="wedding_vow_iframe" class="form-control" value="{{ old('wedding_vow_iframe', $timeline->wedding_vow_iframe) }}" disabled>{{ old('wedding_vow_iframe', $timeline->wedding_vow_iframe) }}</textarea>
+        <textarea type="text" id="wedding_vow_iframe" class="form-control h-96" value="{{ old('wedding_vow_iframe', $timeline->wedding_vow_iframe) }}" disabled>{{ old('wedding_vow_iframe', $timeline->wedding_vow_iframe) }}</textarea>
       </div>
       <div class="form-group">
         <label class="text-white">Wedding Reception Date</label>
@@ -53,15 +53,15 @@
       </div>
       <div class="form-group">
         <label class="text-white">Wedding Reception Location</label>
-        <textarea style="height: 100px;" type="text" id="wedding_reception_location" class="form-control" value="{{ old('wedding_reception_location', $timeline->wedding_reception_location) }}" disabled>{{ old('wedding_reception_location', $timeline->wedding_reception_location) }}</textarea>
+        <textarea type="text" id="wedding_reception_location" class="form-control h-96" value="{{ old('wedding_reception_location', $timeline->wedding_reception_location) }}" disabled>{{ old('wedding_reception_location', $timeline->wedding_reception_location) }}</textarea>
       </div>
       <div class="form-group">
         <label class="text-white">Wedding Reception Address</label>
-        <textarea style="height: 100px;" type="text" id="wedding_reception_address" class="form-control" value="{{ old('wedding_reception_address', $timeline->wedding_reception_address) }}" disabled>{{ old('wedding_reception_address', $timeline->wedding_reception_address) }}</textarea>
+        <textarea type="text" id="wedding_reception_address" class="form-control h-96" value="{{ old('wedding_reception_address', $timeline->wedding_reception_address) }}" disabled>{{ old('wedding_reception_address', $timeline->wedding_reception_address) }}</textarea>
       </div>
       <div class="form-group">
         <label class="text-white">Wedding Reception Iframe</label>
-        <textarea style="height: 100px;" type="text" id="wedding_reception_iframe" class="form-control" value="{{ old('wedding_reception_iframe', $timeline->wedding_reception_iframe) }}" disabled>{{ old('wedding_reception_iframe', $timeline->wedding_reception_iframe) }}</textarea>
+        <textarea type="text" id="wedding_reception_iframe" class="form-control h-96" value="{{ old('wedding_reception_iframe', $timeline->wedding_reception_iframe) }}" disabled>{{ old('wedding_reception_iframe', $timeline->wedding_reception_iframe) }}</textarea>
       </div>
 
       <hr class="bg-white">
@@ -74,8 +74,7 @@
         <p class="text-center justify-center justify-self-center pt-2">Current Image</p>
         <img    
           id="imagePreview"
-          class="text-center justify-center justify-self-center"
-          style="max-width: 300px; cursor: pointer;" 
+          class="text-center justify-center justify-self-center max-w-sm cursor-pointer"
           data-toggle="modal" 
           data-target="#imageModalVowImage"
           src="{{ old('wedding_vow_image') ? asset('storage/' . old('wedding_vow_image')) : (isset($timeline) && $timeline->wedding_vow_image ? asset('storage/' . $timeline->wedding_vow_image) : '') }}">
@@ -96,8 +95,7 @@
         <p class="text-center justify-center justify-self-center pt-2">Current Image</p>
         <img    
           id="imagePreview"
-          class="text-center justify-center justify-self-center"
-          style="max-width: 300px; cursor: pointer;" 
+          class="text-center justify-center justify-self-center max-w-sm cursor-pointer"
           data-toggle="modal" 
           data-target="#imageModalReceptionImage"
           src="{{ old('wedding_reception_image') ? asset('storage/' . old('wedding_reception_image')) : (isset($timeline) && $timeline->wedding_reception_image ? asset('storage/' . $timeline->wedding_reception_image) : '') }}">

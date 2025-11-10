@@ -37,8 +37,7 @@
                         <td>
                             <img    
                             id="imagePreview"
-                            class="text-center justify-center justify-self-center"
-                            style="max-width: 300px; cursor: pointer;" 
+                            class="text-center justify-center justify-self-center max-w-sm cursor-pointer"
                             data-toggle="modal" 
                             data-target="#imageModalThrowbackImage-{{ $throwback->id }}"
                             src="{{ old('wedding_throwback_image') ? asset('storage/' . old('wedding_throwback_image')) : (isset($throwback) && $throwback->wedding_throwback_image ? asset('storage/' . $throwback->wedding_throwback_image) : '') }}">

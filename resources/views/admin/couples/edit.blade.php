@@ -96,8 +96,7 @@
         <p class="text-center pt-2">Current Image</p>
         <img
           id="brideImagePreview"
-          class="mx-auto d-block"
-          style="max-width: 300px; cursor: pointer;"
+          class="mx-auto d-block max-w-sm cursor-pointer"
           data-toggle="modal"
           data-target="#imageModalBrideImage"
           src="{{ old('bride_image') ? asset('storage/' . old('bride_image')) : ($couple->bride_image ? asset('storage/' . $couple->bride_image) : '') }}"
@@ -135,8 +134,7 @@
         <p class="text-center pt-2">Current Image</p>
         <img
           id="groomImagePreview"
-          class="mx-auto d-block"
-          style="max-width: 300px; cursor: pointer;"
+          class="mx-auto d-block max-w-sm cursor-pointer"
           data-toggle="modal"
           data-target="#imageModalGroomImage"
           src="{{ old('groom_image') ? asset('storage/' . old('groom_image')) : ($couple->groom_image ? asset('storage/' . $couple->groom_image) : '') }}"

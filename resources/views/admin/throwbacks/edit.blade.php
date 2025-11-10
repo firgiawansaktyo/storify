@@ -57,8 +57,7 @@
         <p class="text-center pt-2">Current Image</p>
         <img
           id="throwbackImagePreview"
-          class="mx-auto d-block"
-          style="max-width: 300px; cursor: pointer;"
+          class="mx-auto d-block max-w-sm cursor-pointer"
           data-toggle="modal"
           data-target="#imageModalThrowbackImage"
           src="{{ old('wedding_throwback_image') ? asset('storage/' . old('wedding_throwback_image')) : ($throwback->wedding_throwback_image ? asset('storage/' . $throwback->wedding_throwback_image) : '') }}"

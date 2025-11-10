@@ -33,7 +33,7 @@
         <p id="statusAlbumImage"></p>
 
         <p class="text-center pt-2">Current Image</p>
-        <img id="imagePreview" class="mx-auto d-block" style="max-width:300px;cursor:pointer;"
+        <img id="imagePreview" class="mx-auto d-block max-w-sm cursor-pointer"
           data-toggle="modal" data-target="#imageModalAlbumImage"
           src="{{ $album->wedding_album_image ? asset('storage/' . $album->wedding_album_image) : '' }}">
       </div>

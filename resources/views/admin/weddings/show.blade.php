@@ -25,15 +25,15 @@
       </div>
       <div class="form-group">
         <label class="text-white  ">Wedding Description</label>
-        <textarea style="height: 100px;" type="text" id="wedding_description" name="wedding_description" class="form-control" value="{{ old('wedding_description', $wedding->wedding_description) }}" disabled>{{ old('wedding_description', $wedding->wedding_description) }}</textarea>
+        <textarea type="text" id="wedding_description" name="wedding_description" class="form-control h-96" value="{{ old('wedding_description', $wedding->wedding_description) }}" disabled>{{ old('wedding_description', $wedding->wedding_description) }}</textarea>
       </div>
       <div class="form-group">
         <label class="text-white">Wedding Prayer Verse</label>
-        <textarea style="height: 100px;" type="text" id="wedding_prayer_verse" name="wedding_prayer_verse" class="form-control" value="{{ old('wedding_prayer_verse', $wedding->wedding_prayer_verse) }}" disabled>{{ old('wedding_prayer_verse', $wedding->wedding_prayer_verse) }}</textarea>
+        <textarea type="text" id="wedding_prayer_verse" name="wedding_prayer_verse" class="form-control h-96" value="{{ old('wedding_prayer_verse', $wedding->wedding_prayer_verse) }}" disabled>{{ old('wedding_prayer_verse', $wedding->wedding_prayer_verse) }}</textarea>
       </div>
       <div class="form-group">
         <label class="text-white  ">Wedding Message Template</label>
-        <textarea style="height: 100px;" type="text" id="wedding_message_template" name="wedding_message_template" class="form-control" value="{{ old('wedding_message_template', $wedding->wedding_message_template) }}" disabled>{{ old('wedding_message_template', $wedding->wedding_message_template) }}</textarea>
+        <textarea type="text" id="wedding_message_template" name="wedding_message_template" class="form-control h-96" value="{{ old('wedding_message_template', $wedding->wedding_message_template) }}" disabled>{{ old('wedding_message_template', $wedding->wedding_message_template) }}</textarea>
       </div>
       <div class="form-group">
         <label class="text-white">Wedding Landing Title</label>
@@ -41,7 +41,7 @@
       </div>
       <div class="form-group">
         <label class="text-white">Wedding Hot News Description</label>
-        <textarea style="height: 100px;" type="text" id="wedding_hotnews_description" name="wedding_hotnews_description" class="form-control" value="{{ old('wedding_hotnews_description', $wedding->wedding_hotnews_description) }}" disabled>{{ old('wedding_hotnews_description', $wedding->wedding_hotnews_description) }}</textarea>
+        <textarea type="text" id="wedding_hotnews_description" name="wedding_hotnews_description" class="form-control h-96" value="{{ old('wedding_hotnews_description', $wedding->wedding_hotnews_description) }}" disabled>{{ old('wedding_hotnews_description', $wedding->wedding_hotnews_description) }}</textarea>
       </div>
 
       <hr class="bg-white">
@@ -53,8 +53,7 @@
                 <p class="text-center justify-center justify-self-center pt-2">Current Image</p>
         <img    
           id="imagePreview"
-          class="text-center justify-center justify-self-center"
-          style="max-width: 300px; cursor: pointer;" 
+          class="text-center justify-center justify-self-center max-w-sm cursor-pointer"
           data-toggle="modal" 
           data-target="#imageModalWeddingImage"
           src="{{ old('wedding_image') ? asset('storage/' . old('wedding_image')) : (isset($wedding) && $wedding->wedding_image ? asset('storage/' . $wedding->wedding_image) : '') }}">
@@ -73,8 +72,7 @@
         <p class="text-center justify-center justify-self-center pt-2">Current Video</p>
         <video    
           id="videoPreview"
-          class="text-center justify-center justify-self-center"
-          style="max-width: 300px; cursor: pointer;" 
+          class="text-center justify-center justify-self-center max-w-sm cursor-pointer"
           controls
           src="{{ old('wedding_video') ? asset('storage/' . old('wedding_video')) : (isset($wedding) && $wedding->wedding_video ? asset('storage/' . $wedding->wedding_video) : '') }}">
       </div>
@@ -85,8 +83,7 @@
         <p class="text-center justify-center justify-self-center pt-2">Current Audio</p>
         <audio    
           id="imagePreview"
-          class="text-center justify-center justify-self-center"
-          style="max-width: 300px; cursor: pointer;" 
+          class="text-center justify-center justify-self-center max-w-sm cursor-pointer"
           controls
           src="{{ old('wedding_audio') ? asset('storage/' . old('wedding_audio')) : (isset($wedding) && $wedding->wedding_audio ? asset('storage/' . $wedding->wedding_audio) : '') }}">
       </div>
@@ -97,8 +94,7 @@
         <p class="text-center justify-center justify-self-center pt-2">Current Image</p>
         <img    
           id="imagePreview"
-          class="text-center justify-center justify-self-center"
-          style="max-width: 300px; cursor: pointer;" 
+          class="text-center justify-center justify-self-center max-w-sm cursor-pointer"
           data-toggle="modal" 
           data-target="#imageModalWeddingLandingImage"
           src="{{ old('wedding_landing_image') ? asset('storage/' . old('wedding_landing_image')) : (isset($wedding) && $wedding->wedding_landing_image ? asset('storage/' . $wedding->wedding_landing_image) : '') }}">
@@ -117,8 +113,7 @@
         <p class="text-center justify-center justify-self-center pt-2">Current Image</p>
         <img    
           id="imagePreview"
-          class="text-center justify-center justify-self-center"
-          style="max-width: 300px; cursor: pointer;" 
+          class="text-center justify-center justify-self-center max-w-sm cursor-pointer"
           data-toggle="modal" 
           data-target="#imageModalWeddingHotNewsImage"
           src="{{ old('wedding_hotnews_image') ? asset('storage/' . old('wedding_hotnews_image')) : (isset($wedding) && $wedding->wedding_hotnews_image ? asset('storage/' . $wedding->wedding_hotnews_image) : '') }}">
