@@ -42,10 +42,9 @@
       <div class="form-group">
         <label class="text-white">Wedding Description</label>
         <textarea
-          style="height: 100px;"
           id="wedding_description"
           name="wedding_description"
-          class="form-control"
+          class="form-control h-24"
           required
         >{{ old('wedding_description', $wedding->wedding_description) }}</textarea>
       </div>
@@ -53,20 +52,18 @@
       <div class="form-group">
         <label class="text-white">Wedding Prayer Verse</label>
         <textarea
-          style="height: 100px;"
           id="wedding_prayer_verse"
           name="wedding_prayer_verse"
-          class="form-control"
+          class="form-control h-24"
         >{{ old('wedding_prayer_verse', $wedding->wedding_prayer_verse) }}</textarea>
       </div>
 
       <div class="form-group">
         <label class="text-white">Wedding Message Template</label>
         <textarea
-          style="height: 100px;"
           id="wedding_message_template"
           name="wedding_message_template"
-          class="form-control"
+          class="form-control h-24"
           required
         >{{ old('wedding_message_template', $wedding->wedding_message_template) }}</textarea>
       </div>
@@ -86,10 +83,9 @@
       <div class="form-group">
         <label class="text-white">Wedding Hot News Description</label>
         <textarea
-          style="height: 100px;"
           id="wedding_hotnews_description"
           name="wedding_hotnews_description"
-          class="form-control"
+          class="form-control h-24"
           required
         >{{ old('wedding_hotnews_description', $wedding->wedding_hotnews_description) }}</textarea>
       </div>
@@ -117,8 +113,7 @@
         <p class="text-center pt-2">Current Image</p>
         <img
           id="weddingImagePreview"
-          class="mx-auto d-block"
-          style="max-width: 300px; cursor: pointer;"
+          class="mx-auto d-block max-w-sm cursor-pointer"
           data-toggle="modal"
           data-target="#imageModalWeddingImage"
           src="{{ old('wedding_image') ? asset('storage/' . old('wedding_image')) : ($wedding->wedding_image ? asset('storage/' . $wedding->wedding_image) : '') }}"
@@ -156,8 +151,7 @@
         <p class="text-center pt-2">Current Video</p>
         <video
           id="weddingVideoPreview"
-          class="mx-auto d-block"
-          style="max-width: 300px;"
+          class="mx-auto max-w-sm d-block"
           controls
           src="{{ old('wedding_video') ? asset('storage/' . old('wedding_video')) : ($wedding->wedding_video ? asset('storage/' . $wedding->wedding_video) : '') }}"
         ></video>
@@ -211,8 +205,7 @@
         <p class="text-center pt-2">Current Landing Image</p>
         <img
           id="weddingLandingPreview"
-          class="mx-auto d-block"
-          style="max-width: 300px; cursor: pointer;"
+          class="mx-auto d-block max-w-sm cursor-pointer"
           data-toggle="modal"
           data-target="#imageModalWeddingLandingImage"
           src="{{ old('wedding_landing_image') ? asset('storage/' . old('wedding_landing_image')) : ($wedding->wedding_landing_image ? asset('storage/' . $wedding->wedding_landing_image) : '') }}"
@@ -250,8 +243,7 @@
         <p class="text-center pt-2">Current Hot News Image</p>
         <img
           id="weddingHotNewsPreview"
-          class="mx-auto d-block"
-          style="max-width: 300px; cursor: pointer;"
+          class="mx-auto d-block max-w-sm cursor-pointer"
           data-toggle="modal"
           data-target="#imageModalWeddingHotNewsImage"
           src="{{ old('wedding_hotnews_image') ? asset('storage/' . old('wedding_hotnews_image')) : ($wedding->wedding_hotnews_image ? asset('storage/' . $wedding->wedding_hotnews_image) : '') }}"

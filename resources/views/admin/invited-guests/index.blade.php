@@ -62,7 +62,7 @@
                             <!-- Correct number across pages -->
                             <td class="text-white">{{ $invitedGuests->firstItem() + $loop->index }}</td>
                             <td class="text-white">{{ $invitedGuest->name }}</td>
-                            <td class="text-white d-flex justify-content-center align-items-center" style="gap:.4rem;">
+                            <td class="text-white d-flex justify-content-center align-items-center gap-2">
                                 <a href="{{ route('invited-guests.edit', $invitedGuest->id) }}" class="btn btn-sm btn-warning">
                                     <i class="fas fa-edit"></i>
                                 </a>
