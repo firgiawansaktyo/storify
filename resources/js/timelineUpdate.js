@@ -1,4 +1,4 @@
-let path = @json($path);
+let path = window.path;
 let vowPath = '';
 let receptionPath = '';
 
@@ -91,7 +91,7 @@ document.getElementById('saveButton').addEventListener('click', function() {
         return;
     }
 
-    axios.put('{{ route('timelines.update', $timeline->id) }}', timelineData)
+    axios.put(timelineUpdateRoute, timelineData)
         .then(function(response) {
             document.getElementById('successBox').classList.remove('d-none');
             document.getElementById('successBox').textContent = 'Timeline created successfully!';

@@ -1,4 +1,4 @@
-let path = @json($path);
+let path = window.path;
 let brideImagePath = '';
 let groomImagePath = '';
 
@@ -75,7 +75,7 @@ document.getElementById('saveButton').addEventListener('click', function() {
         return;
     }
 
-    axios.post('{{ route('couples.store') }}', coupleData)
+    axios.post(coupleStoreRoute, coupleData)
         .then(function(response) {
             document.getElementById('successBox').classList.remove('d-none');
             document.getElementById('successBox').textContent = 'Couple created successfully!';

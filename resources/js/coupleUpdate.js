@@ -1,4 +1,4 @@
-let path = @json($path);
+let path = window.path;
 let brideImagePath = '';
 let groomImagePath = '';
 
@@ -73,7 +73,7 @@ document.getElementById('saveButton').addEventListener('click', function() {
         return;
     }
 
-    axios.put('{{ route('couples.update', $couple->id) }}', coupleData)
+    axios.put(coupleUpdateRoute, coupleData)
         .then(function(response) {
             document.getElementById('successBox').classList.remove('d-none');
             document.getElementById('successBox').textContent = 'Couple updated successfully!';

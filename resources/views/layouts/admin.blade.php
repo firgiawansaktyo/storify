@@ -24,7 +24,18 @@
   window.path = @json($path);
   window.albumStoreRoute = "{{ route('albums.store') }}";
   window.albumUpdateRoute = "{{ route('albums.update', ['album' => '__ALBUM_ID__']) }}";
-
+  window.bankStoreRoute = "{{ route('banks.store') }}";
+  window.bankUpdateRoute = "{{ route('banks.update', ['bank' => '__BANK_ID__']) }}";
+  window.coupleStoreRoute = "{{ route('couples.store') }}";
+  window.coupleUpdateRoute = "{{ route('couples.update', ['couple' => '__COUPLE_ID__']) }}";
+  window.giftStoreRoute = "{{ route('gifts.store') }}";
+  window.giftUpdateRoute = "{{ route('gifts.update', ['gift' => '__GIFT_ID__']) }}";
+  window.throwbackStoreRoute = "{{ route('throwbacks.store') }}";
+  window.throwbackUpdateRoute = "{{ route('throwbacks.update', ['throwback' => '__THROWBACK_ID__']) }}";
+  window.timelineStoreRoute = "{{ route('timelines.store') }}";
+  window.timelineUpdateRoute = "{{ route('timelines.update', ['timeline' => '__TIMELINE_ID__']) }}";
+  window.weddingStoreRoute = "{{ route('weddings.store') }}";
+  window.weddingUpdateRoute = "{{ route('weddings.update', ['wedding' => '__WEDDING_ID__']) }}";
 </script>
 @include('partials.user-info')
 @stack('scripts')

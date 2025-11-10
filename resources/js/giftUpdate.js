@@ -1,4 +1,4 @@
-let path = @json($path);
+let path = window.path;
 let qrisImagePath = '';
 
 function setupFileUpload(inputId, progressId, statusId, fieldName, storeCallback) {
@@ -60,7 +60,7 @@ document.getElementById('saveButton').addEventListener('click', function() {
         return;
     }
 
-    axios.put('{{ route('gifts.update', $gift->id) }}', payload)
+    axios.put(giftUpdateRoute, payload)
         .then(function(response) {
             document.getElementById('successBox').classList.remove('d-none');
             document.getElementById('successBox').textContent = 'Gift updated successfully!';

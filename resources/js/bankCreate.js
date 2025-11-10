@@ -1,4 +1,4 @@
-let path = @json($path);
+let path = window.path;
 let bankImagePath = '';
 
 function setupFileUpload(inputId, progressId, statusId, fieldName, storeCallback) {
@@ -60,7 +60,7 @@ document.getElementById('saveButton').addEventListener('click', function() {
         return;
     }
 
-    axios.post('{{ route('banks.store') }}', bankData)
+    axios.post(window.bankStoreRoute, bankData)
         .then(function(response) {
             document.getElementById('successBox').classList.remove('d-none');
             document.getElementById('successBox').textContent = 'Bank created successfully!';

@@ -1,4 +1,4 @@
-let path = @json($path);
+let path = window.path;
 let vowPath = '';
 let receptionPath = '';
 
@@ -71,7 +71,6 @@ document.getElementById('saveButton').addEventListener('click', function() {
         wedding_reception_image: receptionPath || null
     };
 
-    // Check required fields
     if (!timelineData.wedding_vow_date ||
         !timelineData.wedding_vow_start_time ||
         !timelineData.wedding_vow_end_time ||
@@ -92,7 +91,7 @@ document.getElementById('saveButton').addEventListener('click', function() {
         return;
     }
 
-    axios.post('{{ route('timelines.store') }}', timelineData)
+    axios.post(timelineStoreRoute, timelineData)
         .then(function(response) {
             document.getElementById('successBox').classList.remove('d-none');
             document.getElementById('successBox').textContent = 'Timeline created successfully!';

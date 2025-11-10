@@ -1,4 +1,4 @@
-let path = @json($path);
+let path = window.path;
 let throwbackImagePath = '';
 
 function setupFileUpload(inputId, progressId, statusId, fieldName, storeCallback) {
@@ -61,7 +61,7 @@ document.getElementById('saveButton').addEventListener('click', function() {
         return;
     }
 
-    axios.put('{{ route('throwbacks.update', $throwback->id) }}', throwbackData)
+    axios.put(throwbackUpdateRoute, throwbackData)
         .then(function(response) {
             document.getElementById('successBox').classList.remove('d-none');
             document.getElementById('successBox').textContent = 'Throwback Image updated successfully!';

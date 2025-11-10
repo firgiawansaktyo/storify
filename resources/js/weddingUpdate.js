@@ -1,4 +1,4 @@
-let path = @json($path);
+let path = window.path;
 let weddingImagePath = '';
 let weddingVideoPath = '';
 let weddingAudioPath = '';
@@ -94,7 +94,7 @@ document.getElementById('saveButton').addEventListener('click', function() {
           return;
         }
 
-    axios.put('{{ route('weddings.update', $wedding->id) }}', weddingData)
+    axios.put(weddingUpdateRoute, weddingData)
         .then(function(response) {
             document.getElementById('successBox').classList.remove('d-none');
             document.getElementById('successBox').textContent = 'Wedding Invitation updated successfully!';
