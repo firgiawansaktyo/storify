@@ -5,7 +5,7 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-2 mt-2 p-2">
         <h3 class="mb-0 text-white">Banks</h3>
             <a href="{{ route('banks.create') }}" class="btn btn-primary">
-                <i class="fas fa-plus"></i> Create Bank Image 
+                <i class="fas fa-plus"></i> Create Bank 
             </a>
     </div>
 
