@@ -1,4 +1,4 @@
-let path = @json($path);
+let path = window.path;
 let albumImagePath = '';
 
 function setupFileUpload(inputId, progressId, statusId, fieldName, storeCallback) {
@@ -62,7 +62,7 @@ document.getElementById('saveButton').addEventListener('click', function() {
         return;
     }
 
-    axios.post('{{ route('albums.store') }}', albumData)
+    axios.post(window.albumStoreRoute, albumData)
         .then(function(response) {
             document.getElementById('successBox').classList.remove('d-none');
             document.getElementById('successBox').textContent = 'Album Image created successfully!';

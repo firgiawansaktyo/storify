@@ -22,6 +22,9 @@
   </div>
 <script>
   window.path = @json($path);
+  window.albumStoreRoute = "{{ route('albums.store') }}";
+  window.albumUpdateRoute = "{{ route('albums.update', ['album' => '__ALBUM_ID__']) }}";
+
 </script>
 @include('partials.user-info')
 @stack('scripts')
