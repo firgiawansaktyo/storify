@@ -140,14 +140,14 @@ class CoupleController extends Controller
             if (
                 $oldBrideImage &&
                 $oldBrideImage !== $couple->bride_image &&
-                Storage::disk('public')->exists($oldBrideImage)) {
-                Storage::disk('public')->delete($oldBrideImage);
+                Storage::disk(env('FILESYSTEM_DISK'))->exists($oldBrideImage)) {
+                Storage::disk(env('FILESYSTEM_DISK'))->delete($oldBrideImage);
             }
             if (
                 $oldGroomImage &&
                 $oldGroomImage !== $couple->groom_image &&
-                Storage::disk('public')->exists($oldGroomImage)) {
-                Storage::disk('public')->delete($oldGroomImage);        
+                Storage::disk(env('FILESYSTEM_DISK'))->exists($oldGroomImage)) {
+                Storage::disk(env('FILESYSTEM_DISK'))->delete($oldGroomImage);        
             }  
         }
 
@@ -158,11 +158,11 @@ class CoupleController extends Controller
      */
     public function destroy(Couple $couple)
     {
-        if ($couple->bride_image && Storage::disk('public')->exists($couple->bride_image)) {
-            Storage::disk('public')->delete($couple->bride_image);
+        if ($couple->bride_image && Storage::disk(env('FILESYSTEM_DISK'))->exists($couple->bride_image)) {
+            Storage::disk(env('FILESYSTEM_DISK'))->delete($couple->bride_image);
         }
-        if ($couple->groom_image && Storage::disk('public')->exists($couple->groom_image)) {
-            Storage::disk('public')->delete($couple->groom_image);
+        if ($couple->groom_image && Storage::disk(env('FILESYSTEM_DISK'))->exists($couple->groom_image)) {
+            Storage::disk(env('FILESYSTEM_DISK'))->delete($couple->groom_image);
         }
         $couple->delete();
         return redirect()->route('couples.index')->with('success', 'Couple deleted successfully!');

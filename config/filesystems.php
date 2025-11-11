@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('FILESYSTEM_DISK', 'local'),
+    'default' => env('FILESYSTEM_DISK'),
 
     /*
     |--------------------------------------------------------------------------
@@ -58,6 +58,21 @@ return [
             'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
             'throw' => false,
             'report' => false,
+        ],
+        'b2' => [
+            'driver' => 's3',
+            'key'    => env('B2_KEY_ID'),
+            'secret' => env('B2_APP_KEY'),
+            'region' => env('B2_REGION'),
+            'bucket' => env('B2_BUCKET_NAME'),
+            'endpoint' => env('B2_ENDPOINT'),
+            'visibility' => 'public',
+            'throw' => true,
+            'checksum' => false,
+            'http' => [
+                'verify' => false,
+            ],
+            'path_style' => true, 
         ],
 
     ],

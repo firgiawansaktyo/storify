@@ -60,7 +60,7 @@
           class="mx-auto d-block max-w-sm cursor-pointer"
           data-toggle="modal"
           data-target="#imageModalThrowbackImage"
-          src="{{ old('wedding_throwback_image') ? asset('storage/' . old('wedding_throwback_image')) : ($throwback->wedding_throwback_image ? asset('storage/' . $throwback->wedding_throwback_image) : '') }}"
+          src="{{ old('wedding_throwback_image') ? Storage::disk(env('FILESYSTEM_DISK'))->url(old('wedding_throwback_image')) : ($throwback->wedding_throwback_image ? Storage::disk(env('FILESYSTEM_DISK'))->url($throwback->wedding_throwback_image) : '') }}"
           alt="Throwback Image"
         >
 
@@ -68,7 +68,7 @@
           <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
               @if($throwback->wedding_throwback_image)
-                <img src="{{ asset('storage/' . $throwback->wedding_throwback_image) }}" alt="Full Image">
+                <img src="{{ Storage::disk(env('FILESYSTEM_DISK'))->url($throwback->wedding_throwback_image) }}" alt="Full Image">
               @endif
             </div>
           </div>

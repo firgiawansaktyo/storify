@@ -3,7 +3,7 @@
         content: '';
         position: absolute;
         top: 0; left: 0; right: 0; bottom: 0;
-        background: url('{{ asset('storage/' . $wedding->wedding_landing_image) }}');
+        background: url('{{ Storage::disk(env('FILESYSTEM_DISK'))->url($wedding->wedding_landing_image) }}');
         background-size: cover;
         background-position: center;
         filter: blur(50px);
@@ -22,7 +22,7 @@
     <div style="position: relative; z-index: 2;">
             <div class="min-h-screen max-w-xl mx-auto justify-items-center" style="position: relative; z-index: 2;">
                 <div class="relative px-4 pt-4">
-                    <img src="{{ asset('storage/' . $wedding->wedding_landing_image) }}" alt="Landing Image" class="w-80 h-auto mx-auto object-cover"/>
+                    <img src="{{ Storage::disk(env('FILESYSTEM_DISK'))->url($wedding->wedding_landing_image) }}" alt="Landing Image" class="w-80 h-auto mx-auto object-cover"/>
                     <div class="absolute top-6 left-6 right-6 flex items-center justify-between">
                         <img src="{{ asset('logo/swan-pink.png') }}" alt="Sweet Vows Logo" class="w-8 sm:w-9 md:w-10 lg:w-11" />
                         <h2 class="font-extrabold text-lg sm:text-xl md:text-2xl lg:text-3xl text-[#f4b9c9] drop-shadow-md text-right">
@@ -83,4 +83,3 @@
         <x-footer/>
     </div>
 </div>
-

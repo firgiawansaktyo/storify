@@ -32,17 +32,18 @@
                         <td class="text-white">{{ $bank->name }}</td>
                         <td>
                             <img    
-                            id="imagePreview"
-                            class="text-center justify-center justify-self-center max-w-sm cursor-pointer"
-                            data-toggle="modal" 
-                            data-target="#imageModalBankImage-{{ $bank->id }}"
-                            src="{{ old('bank_image') ? asset('storage/' . old('bank_image')) : (isset($bank) && $bank->bank_image ? asset('storage/' . $bank->bank_image) : '') }}">
+                                id="imagePreview"
+                                class="text-center justify-center justify-self-center max-w-sm cursor-pointer"
+                                data-toggle="modal" 
+                                data-target="#imageModalBankImage-{{ $bank->id }}"
+                                src="{{ old('bank_image') ? Storage::disk(env('FILESYSTEM_DISK'))->url(old('bank_image')) : (isset($bank) && $bank->bank_image ? Storage::disk(env('FILESYSTEM_DISK'))->url($bank->bank_image) : '') }}">
+
                             <div class="modal fade" id="imageModalBankImage-{{ $bank->id }}" tabindex="-1" aria-labelledby="imageModalLabelBankImage-{{ $bank->id }}" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered modal-lg">
-                                <div class="modal-content">
-                                    <img src="{{ asset('storage/' . $bank->bank_image) }}" alt="Full Image">
+                                <div class="modal-dialog modal-dialog-centered modal-lg">
+                                    <div class="modal-content">
+                                        <img src="{{ Storage::disk(env('FILESYSTEM_DISK'))->url($bank->bank_image) }}" alt="Full Image">
+                                    </div>
                                 </div>
-                            </div>
                             </div>
                         </td>
 

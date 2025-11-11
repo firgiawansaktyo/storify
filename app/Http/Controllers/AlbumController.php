@@ -111,8 +111,8 @@ class AlbumController extends Controller
             if (
                 $oldAlbumImage &&
                 $oldAlbumImage !== $album->wedding_album_image &&
-                Storage::disk('public')->exists($oldAlbumImage)) {
-                Storage::disk('public')->delete($oldAlbumImage);
+                Storage::disk(env('FILESYSTEM_DISK'))->exists($oldAlbumImage)) {
+                Storage::disk(env('FILESYSTEM_DISK'))->delete($oldAlbumImage);
             }
         }
     }
@@ -122,8 +122,8 @@ class AlbumController extends Controller
      */
     public function destroy(Album $album)
     {
-        if ($album->wedding_album_image && Storage::disk('public')->exists($album->wedding_album_image)) {
-            Storage::disk('public')->delete($album->wedding_album_image);
+        if ($album->wedding_album_image && Storage::disk(env('FILESYSTEM_DISK'))->exists($album->wedding_album_image)) {
+            Storage::disk(env('FILESYSTEM_DISK'))->delete($album->wedding_album_image);
         }
         $album->delete();
         return redirect()->route('albums.index')->with('success', 'Album image deleted successfully!');

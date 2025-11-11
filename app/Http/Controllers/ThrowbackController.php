@@ -110,8 +110,8 @@ class ThrowbackController extends Controller
             if (
                 $oldThrowbackImage &&
                 $oldThrowbackImage !== $throwback->wedding_throwback_image &&
-                Storage::disk('public')->exists($oldThrowbackImage)) {
-                Storage::disk('public')->delete($oldThrowbackImage);
+                Storage::disk(env('FILESYSTEM_DISK'))->exists($oldThrowbackImage)) {
+                Storage::disk(env('FILESYSTEM_DISK'))->delete($oldThrowbackImage);
             }
         }
     }
@@ -121,8 +121,8 @@ class ThrowbackController extends Controller
      */
     public function destroy(Throwback $throwback)
     {
-        if ($throwback->wedding_throwback_image && Storage::disk('public')->exists($throwback->wedding_throwback_image)) {
-            Storage::disk('public')->delete($throwback->wedding_throwback_image);
+        if ($throwback->wedding_throwback_image && Storage::disk(env('FILESYSTEM_DISK'))->exists($throwback->wedding_throwback_image)) {
+            Storage::disk(env('FILESYSTEM_DISK'))->delete($throwback->wedding_throwback_image);
         };
         $throwback->delete();
         return redirect()->route('throwbacks.index')->with('success', 'Throwback image deleted successfully!');

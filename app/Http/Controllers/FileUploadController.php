@@ -13,7 +13,6 @@ class FileUploadController extends Controller
     {   
         if(Auth::user()){
             $validated = [];
-
             foreach ([
                 'bride_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:204800',
                 'groom_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:204800',
@@ -52,8 +51,9 @@ class FileUploadController extends Controller
                     };
 
                     $finalPath = $path . '/' . $folder;
-                    Storage::disk('public')->makeDirectory($finalPath);
-                    $validated[$field] = $request->file($field)->store($finalPath, 'public');
+                    $disk = env('FILESYSTEM_DISK', 'local');
+                    Storage::disk($disk)->makeDirectory($finalPath);
+                    $validated[$field] = $request->file($field)->store($finalPath, $disk);
                 }
             }
 
@@ -69,6 +69,5 @@ class FileUploadController extends Controller
                 'message' => 'Unauthorized.',
             ], 401);
         }
-    }
-        
+    }   
 }

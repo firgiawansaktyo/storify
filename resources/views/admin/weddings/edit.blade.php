@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="mb-2 mt-2 p-2">
+
   <!-- Page Heading -->
   <h1 class="h3 text-white">Edit Wedding Invitation</h1>
 
@@ -116,14 +117,14 @@
           class="mx-auto d-block max-w-sm cursor-pointer"
           data-toggle="modal"
           data-target="#imageModalWeddingImage"
-          src="{{ old('wedding_image') ? asset('storage/' . old('wedding_image')) : ($wedding->wedding_image ? asset('storage/' . $wedding->wedding_image) : '') }}"
+          src="{{ old('wedding_image') ? Storage::disk(env('FILESYSTEM_DISK'))->url(old('wedding_image')) : ($wedding->wedding_image ? Storage::disk(env('FILESYSTEM_DISK'))->url($wedding->wedding_image) : '') }}"
           alt="Wedding Image"
         >
         <div class="modal fade" id="imageModalWeddingImage" tabindex="-1" aria-labelledby="imageModalLabelWeddingImage" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
               @if($wedding->wedding_image)
-                <img src="{{ asset('storage/' . $wedding->wedding_image) }}" alt="Full Wedding Image">
+                <img src="{{ Storage::disk(env('FILESYSTEM_DISK'))->url($wedding->wedding_image) }}" alt="Full Wedding Image">
               @endif
             </div>
           </div>
@@ -153,7 +154,7 @@
           id="weddingVideoPreview"
           class="mx-auto max-w-sm d-block"
           controls
-          src="{{ old('wedding_video') ? asset('storage/' . old('wedding_video')) : ($wedding->wedding_video ? asset('storage/' . $wedding->wedding_video) : '') }}"
+          src="{{ old('wedding_video') ? Storage::disk(env('FILESYSTEM_DISK'))->url(old('wedding_video')) : ($wedding->wedding_video ? Storage::disk(env('FILESYSTEM_DISK'))->url($wedding->wedding_video) : '') }}"
         ></video>
       </div>
 
@@ -180,7 +181,7 @@
           id="weddingAudioPreview"
           class="mx-auto d-block"
           controls
-          src="{{ old('wedding_audio') ? asset('storage/' . old('wedding_audio')) : ($wedding->wedding_audio ? asset('storage/' . $wedding->wedding_audio) : '') }}"
+          src="{{ old('wedding_audio') ? Storage::disk(env('FILESYSTEM_DISK'))->url(old('wedding_audio')) : ($wedding->wedding_audio ? Storage::disk(env('FILESYSTEM_DISK'))->url($wedding->wedding_audio) : '') }}"
         ></audio>
       </div>
 
@@ -208,14 +209,14 @@
           class="mx-auto d-block max-w-sm cursor-pointer"
           data-toggle="modal"
           data-target="#imageModalWeddingLandingImage"
-          src="{{ old('wedding_landing_image') ? asset('storage/' . old('wedding_landing_image')) : ($wedding->wedding_landing_image ? asset('storage/' . $wedding->wedding_landing_image) : '') }}"
+          src="{{ old('wedding_landing_image') ? Storage::disk(env('FILESYSTEM_DISK'))->url(old('wedding_landing_image')) : ($wedding->wedding_landing_image ? Storage::disk(env('FILESYSTEM_DISK'))->url($wedding->wedding_landing_image) : '') }}"
           alt="Wedding Landing Image"
         >
         <div class="modal fade" id="imageModalWeddingLandingImage" tabindex="-1" aria-labelledby="imageModalLabelWeddingLandingImage" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
               @if($wedding->wedding_landing_image)
-                <img src="{{ asset('storage/' . $wedding->wedding_landing_image) }}" alt="Full Landing Image">
+                <img src="{{ Storage::disk(env('FILESYSTEM_DISK'))->url($wedding->wedding_landing_image) }}" alt="Full Landing Image">
               @endif
             </div>
           </div>
@@ -246,14 +247,14 @@
           class="mx-auto d-block max-w-sm cursor-pointer"
           data-toggle="modal"
           data-target="#imageModalWeddingHotNewsImage"
-          src="{{ old('wedding_hotnews_image') ? asset('storage/' . old('wedding_hotnews_image')) : ($wedding->wedding_hotnews_image ? asset('storage/' . $wedding->wedding_hotnews_image) : '') }}"
+          src="{{ old('wedding_hotnews_image') ? Storage::disk(env('FILESYSTEM_DISK'))->url(old('wedding_hotnews_image')) : ($wedding->wedding_hotnews_image ? Storage::disk(env('FILESYSTEM_DISK'))->url($wedding->wedding_hotnews_image) : '') }}"
           alt="Wedding Hot News Image"
         >
         <div class="modal fade" id="imageModalWeddingHotNewsImage" tabindex="-1" aria-labelledby="imageModalLabelWeddingHotNewsImage" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
               @if($wedding->wedding_hotnews_image)
-                <img src="{{ asset('storage/' . $wedding->wedding_hotnews_image) }}" alt="Full Hot News Image">
+                <img src="{{ Storage::disk(env('FILESYSTEM_DISK'))->url($wedding->wedding_hotnews_image) }}" alt="Full Hot News Image">
               @endif
             </div>
           </div>
