@@ -314,6 +314,7 @@ return [
     ],
 
     'temporary_files' => [
+        'disk' => env('FILESYSTEM_DISK'),
 
         /*
         |--------------------------------------------------------------------------
@@ -327,7 +328,7 @@ return [
         |
         */
         // 'local_path'          => storage_path('framework/cache/laravel-excel'),
-        'local_path' => sys_get_temp_dir()
+        'local_path' => sys_get_temp_dir(),
         /*
         |--------------------------------------------------------------------------
         | Local Temporary Path Permissions

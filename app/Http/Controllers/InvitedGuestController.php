@@ -11,8 +11,6 @@ use App\Models\MessageTemplate;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\User;
 use App\Models\Wedding;
-use Illuminate\Support\Facades\Storage as Storage;
-
 
 class InvitedGuestController extends Controller
 {
@@ -129,17 +127,7 @@ class InvitedGuestController extends Controller
             'file' => 'required|file|mimes:xlsx,xls,csv|max:10240',
         ]);
 
-        $path = $request->file('file')->store('temp/imports', env('FILESYSTEM_DRIVER'));
-        try {
-
-        Excel::import(new InvitedGuestsImport, $path, 'b2');
-        Storage::disk(env('FILESYSTEM_DRIVER'))->delete($path);
-
-    } catch (\Exception $e) {
-        
-        Storage::disk(env('FILESYSTEM_DRIVER'))->delete($path);
-    }
-        // Excel::import(new InvitedGuestsImport, $request->file('file'));
+        Excel::import(new InvitedGuestsImport, $request->file('file'));
 
         return redirect()->route('invited-guests.index')->with('success', 'Import Invited Guest complete!');
     }
