@@ -3,7 +3,7 @@
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: url('{{ asset('storage/' . $wedding->wedding_image) }}');
+    background: url('{{ Storage::disk(env('FILESYSTEM_DISK'))->url($wedding->wedding_image) }}');
     background-size: cover;
     filter: blur(60px);
     transform: scale(3);
@@ -16,7 +16,7 @@
         <div class="podcast-content flex flex-row align-center p-6 items-center justify-center gap-6">
           <img
             class="podcast-cover rounded-lg"
-            src="{{ asset('storage/' . $wedding->wedding_image) }}"
+            src="{{ Storage::disk(env('FILESYSTEM_DISK'))->url($wedding->wedding_image) }}"
             alt="Episode Cover Art"
           />
           <div class="podcast-text flex-1 gap-6">

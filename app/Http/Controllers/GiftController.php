@@ -108,17 +108,17 @@ class GiftController extends Controller
             if (
                 $oldQrisImage &&
                 $oldQrisImage !== $gift->qris_image &&
-                Storage::disk('public')->exists($oldQrisImage)
+                Storage::disk(env('FILESYSTEM_DISK'))->exists($oldQrisImage)
             ) {
-                Storage::disk('public')->delete($oldQrisImage);
+                Storage::disk(env('FILESYSTEM_DISK'))->delete($oldQrisImage);
             }
         }
     }
 
     public function destroy(Gift $gift)
     {
-        if ($gift->qris_image && Storage::disk('public')->exists($gift->qris_image)) {
-            Storage::disk('public')->delete($gift->qris_image);
+        if ($gift->qris_image && Storage::disk(env('FILESYSTEM_DISK'))->exists($gift->qris_image)) {
+            Storage::disk(env('FILESYSTEM_DISK'))->delete($gift->qris_image);
         }
 
         $gift->delete();

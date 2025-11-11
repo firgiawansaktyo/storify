@@ -171,14 +171,14 @@ class TimelineController extends Controller
             if (
                 $oldVowImage &&
                 $oldVowImage !== $timeline->wedding_vow_image &&
-                Storage::disk('public')->exists($oldVowImage)) {
-                Storage::disk('public')->delete($oldVowImage);
+                Storage::disk(env('FILESYSTEM_DISK'))->exists($oldVowImage)) {
+                Storage::disk(env('FILESYSTEM_DISK'))->delete($oldVowImage);
             }
             if (
                 $oldReceptionImage &&
                 $oldReceptionImage !== $timeline->wedding_reception_image &&
-                Storage::disk('public')->exists($oldReceptionImage)) {
-                Storage::disk('public')->delete($oldReceptionImage);
+                Storage::disk(env('FILESYSTEM_DISK'))->exists($oldReceptionImage)) {
+                Storage::disk(env('FILESYSTEM_DISK'))->delete($oldReceptionImage);
             }   
         }
     }
@@ -188,11 +188,11 @@ class TimelineController extends Controller
      */
     public function destroy(Timeline $timeline)
     {
-        if ($timeline->wedding_vow_image && Storage::disk('public')->exists($timeline->wedding_vow_image)) {
-            Storage::disk('public')->delete($timeline->wedding_vow_image);
+        if ($timeline->wedding_vow_image && Storage::disk(env('FILESYSTEM_DISK'))->exists($timeline->wedding_vow_image)) {
+            Storage::disk(env('FILESYSTEM_DISK'))->delete($timeline->wedding_vow_image);
         }
-        if ($timeline->wedding_reception_image && Storage::disk('public')->exists($timeline->wedding_reception_image)) {
-            Storage::disk('public')->delete($timeline->wedding_reception_image);
+        if ($timeline->wedding_reception_image && Storage::disk(env('FILESYSTEM_DISK'))->exists($timeline->wedding_reception_image)) {
+            Storage::disk(env('FILESYSTEM_DISK'))->delete($timeline->wedding_reception_image);
         }
         $timeline->delete();
         return redirect()->route('timelines.index')->with('success', 'Timeline deleted successfully!');

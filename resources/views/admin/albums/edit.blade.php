@@ -34,8 +34,8 @@
 
         <p class="text-center pt-2">Current Image</p>
         <img id="imagePreview" class="mx-auto d-block max-w-sm cursor-pointer"
-          data-toggle="modal" data-target="#imageModalAlbumImage"
-          src="{{ $album->wedding_album_image ? asset('storage/' . $album->wedding_album_image) : '' }}">
+            data-toggle="modal" data-target="#imageModalAlbumImage"
+            src="{{ $album->wedding_album_image ? Storage::disk(env('FILESYSTEM_DISK'))->url($album->wedding_album_image) : '' }}">
       </div>
 
       <a href="{{ route('albums.index') }}" class="btn btn-secondary">Cancel</a>

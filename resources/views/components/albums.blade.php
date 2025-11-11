@@ -33,7 +33,7 @@
                 <div class="p-1 rounded-lg cursor-pointer hover:bg-[var(--spotify-gray-semibold)] hover:scale-105 transition flex flex-col">
                     <div class="aspect-square overflow-hidden w-full rounded-lg">
                         <img
-                        src="{{ asset('storage/' . $album->wedding_album_image) }}"
+                        src="{{ Storage::disk(env('FILESYSTEM_DISK'))->url($album->wedding_album_image) }}"
                         alt="image-{{ $album->wedding_album_title }}"
                         class="rounded-lg w-full h-full object-cover"
                         />

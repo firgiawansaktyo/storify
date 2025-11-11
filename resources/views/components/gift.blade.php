@@ -15,7 +15,7 @@
        <div class="flex items-center rounded-lg p-3 relative">
             {{-- Bank Logo --}}
             <img
-                src="{{ $gift->bank && $gift->bank->bank_image ? asset('storage/' . $gift->bank->bank_image) : asset('bank/default.jpg') }}"
+                src="{{ $gift->bank && $gift->bank->bank_image ? Storage::disk(env('FILESYSTEM_DISK'))->url($gift->bank->bank_image) : asset('bank/default.jpg') }}"
                 alt="{{ $gift->bank->name ?? 'Bank' }}"
                 class="w-12 h-12 object-contain mr-3 rounded bg-white"
             >
@@ -80,7 +80,7 @@
             <div class="modal fade" id="{{ $modalId }}" tabindex="-1" aria-labelledby="{{ $modalId }}Label" aria-hidden="true" style="display: none;">
                 <div class="modal-dialog modal-dialog-centered modal-sm">
                     <div class="modal-qris bg-transparent">
-                        <img src="{{ asset('storage/' . $gift->qris_image) }}" alt="QRIS {{ $gift->bank->name ?? '' }}" class="rounded-lg shadow-lg">
+                        <img src="{{ Storage::disk(env('FILESYSTEM_DISK'))->url($gift->qris_image) }}" alt="QRIS {{ $gift->bank->name ?? '' }}" class="rounded-lg shadow-lg">
                     </div>
                 </div>
             </div>
@@ -91,4 +91,3 @@
         </div>
     @endforelse
 </div>
-

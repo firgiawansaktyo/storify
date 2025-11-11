@@ -7,7 +7,7 @@
         <div class="flex items-center justify-center">
             <div id="LandingBtn" class="group w-full grid grid-cols-2 md:grid-cols-2 rounded-lg p-0.5 hover:bg-[var(--spotify-gray-semibold)] cursor-pointer overflow-hidden hover:scale-105 transition">
                 <div>
-                    <img src="{{ asset('storage/' . $wedding->wedding_image) }}" alt="Wedding Cover" class="w-full h-auto object-cover rounded-l-lg"/>
+                    <img src="{{ Storage::disk(env('FILESYSTEM_DISK'))->url($wedding->wedding_image) }}" alt="Wedding Cover" class="w-full h-auto object-cover rounded-l-lg"/>
                 </div>
                 <div class="relative group flex flex-col items-start md:items-start justify-center
                         space-y-2 bg-[var(--spotify-gray-bold)] px-6 py-4 rounded-r-lg">

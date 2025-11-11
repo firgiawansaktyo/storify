@@ -110,8 +110,8 @@ class BankController extends Controller
             if (
                 $oldBankImage &&
                 $oldBankImage !== $bank->bank_image &&
-                Storage::disk('public')->exists($oldBankImage)) {
-                Storage::disk('public')->delete($oldBankImage);
+                Storage::disk(env('FILESYSTEM_DISK'))->exists($oldBankImage)) {
+                Storage::disk(env('FILESYSTEM_DISK'))->delete($oldBankImage);
             }
         }
         else {
@@ -125,8 +125,8 @@ class BankController extends Controller
         $loggedUser = Auth::id();
         $user = User::find($loggedUser);
         if($user->isAdmin()) {
-            if ($bank->bank_image && Storage::disk('public')->exists($bank->bank_image)) {
-                Storage::disk('public')->delete($bank->bank_image);
+            if ($bank->bank_image && Storage::disk(env('FILESYSTEM_DISK'))->exists($bank->bank_image)) {
+                Storage::disk(env('FILESYSTEM_DISK'))->delete($bank->bank_image);
             }
             $bank->delete();
             return redirect()->route('banks.index')->with('success', 'Bank deleted successfully!');

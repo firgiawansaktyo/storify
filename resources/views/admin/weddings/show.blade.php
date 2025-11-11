@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+
 @section('content')
 <div class="mb-2 mt-2 p-2">
   <!-- Page Heading -->
@@ -13,7 +14,6 @@
       <!-- Success and Error Alerts -->
       <div id="successBox" class="alert alert-success d-none"></div>
       <div id="errorBox" class="alert alert-danger d-none"></div>
-
 
       <div class="form-group">
         <label class="text-white">Wedding Title</label>
@@ -50,21 +50,22 @@
         <label class="text-white">Wedding Image</label>
         <progress id="progressBarWeddingImage" value="0" max="100" class="mt-2 w-100 d-none"></progress>
         <p id="statusWeddingImage"></p>
-                <p class="text-center justify-center justify-self-center pt-2">Current Image</p>
+        <p class="text-center justify-center justify-self-center pt-2">Current Image</p>
         <img    
           id="imagePreview"
           class="text-center justify-center justify-self-center max-w-sm cursor-pointer"
           data-toggle="modal" 
           data-target="#imageModalWeddingImage"
-          src="{{ old('wedding_image') ? asset('storage/' . old('wedding_image')) : (isset($wedding) && $wedding->wedding_image ? asset('storage/' . $wedding->wedding_image) : '') }}">
-            <div class="modal fade" id="imageModalWeddingImage" tabindex="-1" aria-labelledby="imageModalLabelWeddingImage" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered modal-lg">
-                  <div class="modal-content">
-                      <img src="{{ asset('storage/' . $wedding->wedding_image) }}" alt="Full Image">
-                  </div>
+          src="{{ old('wedding_image') ? Storage::disk(env('FILESYSTEM_DISK'))->url(old('wedding_image')) : (isset($wedding) && $wedding->wedding_image ? Storage::disk(env('FILESYSTEM_DISK'))->url($wedding->wedding_image) : '') }}">
+        <div class="modal fade" id="imageModalWeddingImage" tabindex="-1" aria-labelledby="imageModalLabelWeddingImage" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-lg">
+              <div class="modal-content">
+                  <img src="{{ Storage::disk(env('FILESYSTEM_DISK'))->url($wedding->wedding_image) }}" alt="Full Image">
               </div>
-            </div>
+          </div>
+        </div>
       </div>
+
       <div class="form-group">
         <label class="text-white">Wedding Video</label>
         <progress id="progressBarWeddingVideo" value="0" max="100" class="mt-2 w-100 d-none"></progress>
@@ -74,8 +75,9 @@
           id="videoPreview"
           class="text-center justify-center justify-self-center max-w-sm cursor-pointer"
           controls
-          src="{{ old('wedding_video') ? asset('storage/' . old('wedding_video')) : (isset($wedding) && $wedding->wedding_video ? asset('storage/' . $wedding->wedding_video) : '') }}">
+          src="{{ old('wedding_video') ? Storage::disk(env('FILESYSTEM_DISK'))->url(old('wedding_video')) : (isset($wedding) && $wedding->wedding_video ? Storage::disk(env('FILESYSTEM_DISK'))->url($wedding->wedding_video) : '') }}">
       </div>
+
       <div class="form-group">
         <label class="text-white">Wedding Audio</label>
         <progress id="progressBarWeddingAudio" value="0" max="100" class="mt-2 w-100 d-none"></progress>
@@ -85,45 +87,47 @@
           id="imagePreview"
           class="text-center justify-center justify-self-center max-w-sm cursor-pointer"
           controls
-          src="{{ old('wedding_audio') ? asset('storage/' . old('wedding_audio')) : (isset($wedding) && $wedding->wedding_audio ? asset('storage/' . $wedding->wedding_audio) : '') }}">
+          src="{{ old('wedding_audio') ? Storage::disk(env('FILESYSTEM_DISK'))->url(old('wedding_audio')) : (isset($wedding) && $wedding->wedding_audio ? Storage::disk(env('FILESYSTEM_DISK'))->url($wedding->wedding_audio) : '') }}">
       </div>
+
       <div class="form-group">
         <label class="text-white">Wedding Landing Image</label>
         <progress id="progressBarLandingImage" value="0" max="100" class="mt-2 w-100 d-none"></progress>
         <p id="statusLandingImage"></p>
-        <p class="text-center justify-center justify-self-center pt-2">Current Image</p>
+        <p class="text-center justify-center justify-self-center pt-2">Current Landing Image</p>
         <img    
           id="imagePreview"
           class="text-center justify-center justify-self-center max-w-sm cursor-pointer"
           data-toggle="modal" 
           data-target="#imageModalWeddingLandingImage"
-          src="{{ old('wedding_landing_image') ? asset('storage/' . old('wedding_landing_image')) : (isset($wedding) && $wedding->wedding_landing_image ? asset('storage/' . $wedding->wedding_landing_image) : '') }}">
-            <div class="modal fade" id="imageModalWeddingLandingImage" tabindex="-1" aria-labelledby="imageModalLabelWeddingLandingImage" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered modal-lg">
-                  <div class="modal-content">
-                      <img src="{{ asset('storage/' . $wedding->wedding_landing_image) }}" alt="Full Image">
-                  </div>
+          src="{{ old('wedding_landing_image') ? Storage::disk(env('FILESYSTEM_DISK'))->url(old('wedding_landing_image')) : (isset($wedding) && $wedding->wedding_landing_image ? Storage::disk(env('FILESYSTEM_DISK'))->url($wedding->wedding_landing_image) : '') }}">
+        <div class="modal fade" id="imageModalWeddingLandingImage" tabindex="-1" aria-labelledby="imageModalLabelWeddingLandingImage" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-lg">
+              <div class="modal-content">
+                  <img src="{{ Storage::disk(env('FILESYSTEM_DISK'))->url($wedding->wedding_landing_image) }}" alt="Full Image">
               </div>
-            </div>
+          </div>
+        </div>
       </div>
+
       <div class="form-group">
         <label class="text-white">Wedding Hot News Image</label>
         <progress id="progressBarHotNewsImage" value="0" max="100" class="mt-2 w-100 d-none"></progress>
         <p id="statusHotNewsImage"></p>
-        <p class="text-center justify-center justify-self-center pt-2">Current Image</p>
+        <p class="text-center justify-center justify-self-center pt-2">Current Hot News Image</p>
         <img    
           id="imagePreview"
           class="text-center justify-center justify-self-center max-w-sm cursor-pointer"
           data-toggle="modal" 
           data-target="#imageModalWeddingHotNewsImage"
-          src="{{ old('wedding_hotnews_image') ? asset('storage/' . old('wedding_hotnews_image')) : (isset($wedding) && $wedding->wedding_hotnews_image ? asset('storage/' . $wedding->wedding_hotnews_image) : '') }}">
-            <div class="modal fade" id="imageModalWeddingHotNewsImage" tabindex="-1" aria-labelledby="imageModalLabelWeddingHotNewsImage" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered modal-lg">
-                  <div class="modal-content">
-                      <img src="{{ asset('storage/' . $wedding->wedding_hotnews_image) }}" alt="Full Image">
-                  </div>
+          src="{{ old('wedding_hotnews_image') ? Storage::disk(env('FILESYSTEM_DISK'))->url(old('wedding_hotnews_image')) : (isset($wedding) && $wedding->wedding_hotnews_image ? Storage::disk(env('FILESYSTEM_DISK'))->url($wedding->wedding_hotnews_image) : '') }}">
+        <div class="modal fade" id="imageModalWeddingHotNewsImage" tabindex="-1" aria-labelledby="imageModalLabelWeddingHotNewsImage" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-lg">
+              <div class="modal-content">
+                  <img src="{{ Storage::disk(env('FILESYSTEM_DISK'))->url($wedding->wedding_hotnews_image) }}" alt="Full Image">
               </div>
-            </div>
+          </div>
+        </div>
       </div>
 
       <a href="{{ route('weddings.index') }}" class="btn btn-secondary">Back</a>
@@ -133,14 +137,3 @@
 </div>
 
 @endsection
-
-
-
-
-
-
-
-
-
-
-

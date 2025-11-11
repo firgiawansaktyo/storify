@@ -50,26 +50,25 @@
         <p class="text-center pt-2">
           Current Image
         </p>
-
         <img    
-          id="imagePreview"
-          class="mx-auto d-block max-w-sm cursor-pointer"
-          data-toggle="modal" 
-          data-target="#imageModalBankImage"
-          src="{{ $bank->bank_image ? asset('storage/' . $bank->bank_image) : '' }}"
-          alt="Current Bank Image"
+            id="imagePreview"
+            class="mx-auto d-block max-w-sm cursor-pointer"
+            data-toggle="modal" 
+            data-target="#imageModalBankImage"
+            src="{{ $bank->bank_image ? Storage::disk(env('FILESYSTEM_DISK'))->url($bank->bank_image) : '' }}"
+            alt="Current Bank Image"
         >
 
         <div class="modal fade" id="imageModalBankImage" tabindex="-1" aria-labelledby="imageModalLabelBankImage" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
-              @if($bank->bank_image)
-                <img src="{{ asset('storage/' . $bank->bank_image) }}" alt="Full Bank Image">
-              @endif
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    @if($bank->bank_image)
+                        <img src="{{ Storage::disk(env('FILESYSTEM_DISK'))->url($bank->bank_image) }}" alt="Full Bank Image">
+                    @endif
+                </div>
             </div>
-          </div>
         </div>
-      </div>
+
 
       <a href="{{ route('banks.index') }}" class="btn btn-secondary">Cancel</a>
       <button type="button" id="saveButton" class="btn btn-spotify">

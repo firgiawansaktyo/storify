@@ -161,32 +161,32 @@ class WeddingController extends Controller
             if (
                 $oldWeddingImage &&
                 $oldWeddingImage !== $wedding->wedding_image &&
-                Storage::disk('public')->exists($oldWeddingImage)) {
-                Storage::disk('public')->delete($oldWeddingImage);
+                Storage::disk(env('FILESYSTEM_DISK'))->exists($oldWeddingImage)) {
+                Storage::disk(env('FILESYSTEM_DISK'))->delete($oldWeddingImage);
             }
             if (
                 $oldWeddingVideo &&
                 $oldWeddingVideo !== $wedding->wedding_video &&
-                Storage::disk('public')->exists($oldWeddingVideo)) {
-                Storage::disk('public')->delete($oldWeddingVideo);
+                Storage::disk(env('FILESYSTEM_DISK'))->exists($oldWeddingVideo)) {
+                Storage::disk(env('FILESYSTEM_DISK'))->delete($oldWeddingVideo);
             }
             if (
                 $oldWeddingAudio &&
                 $oldWeddingAudio !== $wedding->wedding_audio &&
-                Storage::disk('public')->exists($oldWeddingAudio)) {
-                Storage::disk('public')->delete($oldWeddingAudio);
+                Storage::disk(env('FILESYSTEM_DISK'))->exists($oldWeddingAudio)) {
+                Storage::disk(env('FILESYSTEM_DISK'))->delete($oldWeddingAudio);
             }
             if (
                 $oldLandingImage &&
                 $oldLandingImage !== $wedding->wedding_landing_image &&
-                Storage::disk('public')->exists($oldLandingImage)) {
-                Storage::disk('public')->delete($oldLandingImage);
+                Storage::disk(env('FILESYSTEM_DISK'))->exists($oldLandingImage)) {
+                Storage::disk(env('FILESYSTEM_DISK'))->delete($oldLandingImage);
             }
             if (
                 $oldHotnewsImage &&
                 $oldHotnewsImage !== $wedding->wedding_hotnews_image &&
-                Storage::disk('public')->exists($oldHotnewsImage)) {
-                Storage::disk('public')->delete($oldHotnewsImage);
+                Storage::disk(env('FILESYSTEM_DISK'))->exists($oldHotnewsImage)) {
+                Storage::disk(env('FILESYSTEM_DISK'))->delete($oldHotnewsImage);
             }
         }
     }
@@ -197,20 +197,20 @@ class WeddingController extends Controller
     public function destroy(Wedding $wedding)
     {
         // Delete the wedding invitation
-        if ($wedding->wedding_image && Storage::disk('public')->exists($wedding->wedding_image)) {
-            Storage::disk('public')->delete($wedding->wedding_image);
+        if ($wedding->wedding_image && Storage::disk(env('FILESYSTEM_DISK'))->exists($wedding->wedding_image)) {
+            Storage::disk(env('FILESYSTEM_DISK'))->delete($wedding->wedding_image);
         }
-        if ($wedding->wedding_video && Storage::disk('public')->exists($wedding->wedding_video)) {
-            Storage::disk('public')->delete($wedding->wedding_video);
+        if ($wedding->wedding_video && Storage::disk(env('FILESYSTEM_DISK'))->exists($wedding->wedding_video)) {
+            Storage::disk(env('FILESYSTEM_DISK'))->delete($wedding->wedding_video);
         }
-        if ($wedding->wedding_audio && Storage::disk('public')->exists($wedding->wedding_audio)) {
-            Storage::disk('public')->delete($wedding->wedding_audio);
+        if ($wedding->wedding_audio && Storage::disk(env('FILESYSTEM_DISK'))->exists($wedding->wedding_audio)) {
+            Storage::disk(env('FILESYSTEM_DISK'))->delete($wedding->wedding_audio);
         }
-        if ($wedding->wedding_landing_image && Storage::disk('public')->exists($wedding->wedding_landing_image)) {
-            Storage::disk('public')->delete($wedding->wedding_landing_image);
+        if ($wedding->wedding_landing_image && Storage::disk(env('FILESYSTEM_DISK'))->exists($wedding->wedding_landing_image)) {
+            Storage::disk(env('FILESYSTEM_DISK'))->delete($wedding->wedding_landing_image);
         }
-        if ($wedding->wedding_hotnews_image && Storage::disk('public')->exists($wedding->wedding_hotnews_image)) {
-            Storage::disk('public')->delete($wedding->wedding_hotnews_image);
+        if ($wedding->wedding_hotnews_image && Storage::disk(env('FILESYSTEM_DISK'))->exists($wedding->wedding_hotnews_image)) {
+            Storage::disk(env('FILESYSTEM_DISK'))->delete($wedding->wedding_hotnews_image);
         }
         $wedding->delete();
         return redirect()->route('weddings.index')->with('success', 'Wedding deleted successfully!');

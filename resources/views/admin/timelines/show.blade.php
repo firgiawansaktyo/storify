@@ -77,11 +77,13 @@
           class="text-center justify-center justify-self-center max-w-sm cursor-pointer"
           data-toggle="modal" 
           data-target="#imageModalVowImage"
-          src="{{ old('wedding_vow_image') ? asset('storage/' . old('wedding_vow_image')) : (isset($timeline) && $timeline->wedding_vow_image ? asset('storage/' . $timeline->wedding_vow_image) : '') }}">
+          src="{{ old('wedding_vow_image') ? Storage::disk(env('FILESYSTEM_DISK'))->url(old('wedding_vow_image')) : (isset($timeline) && $timeline->wedding_vow_image ? Storage::disk(env('FILESYSTEM_DISK'))->url($timeline->wedding_vow_image) : '') }}">
         <div class="modal fade" id="imageModalVowImage" tabindex="-1" aria-labelledby="imageModalLabelVowImage" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered modal-lg">
               <div class="modal-content">
-                  <img src="{{ asset('storage/' . $timeline->wedding_vow_image) }}" alt="Full Image">
+                  @if($timeline->wedding_vow_image)
+                    <img src="{{ Storage::disk(env('FILESYSTEM_DISK'))->url($timeline->wedding_vow_image) }}" alt="Full Image">
+                  @endif
               </div>
           </div>
         </div>
@@ -98,11 +100,13 @@
           class="text-center justify-center justify-self-center max-w-sm cursor-pointer"
           data-toggle="modal" 
           data-target="#imageModalReceptionImage"
-          src="{{ old('wedding_reception_image') ? asset('storage/' . old('wedding_reception_image')) : (isset($timeline) && $timeline->wedding_reception_image ? asset('storage/' . $timeline->wedding_reception_image) : '') }}">
+          src="{{ old('wedding_reception_image') ? Storage::disk(env('FILESYSTEM_DISK'))->url(old('wedding_reception_image')) : (isset($timeline) && $timeline->wedding_reception_image ? Storage::disk(env('FILESYSTEM_DISK'))->url($timeline->wedding_reception_image) : '') }}">
         <div class="modal fade" id="imageModalReceptionImage" tabindex="-1" aria-labelledby="imageModalLabelReceptionImage" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered modal-lg">
               <div class="modal-content">
-                  <img src="{{ asset('storage/' . $timeline->wedding_reception_image) }}" alt="Full Image">
+                  @if($timeline->wedding_reception_image)
+                    <img src="{{ Storage::disk(env('FILESYSTEM_DISK'))->url($timeline->wedding_reception_image) }}" alt="Full Image">
+                  @endif
               </div>
           </div>
         </div>
@@ -114,8 +118,3 @@
   </div>
 </div>
 @endsection
-
-
-
-
-
