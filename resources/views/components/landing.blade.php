@@ -1,26 +1,34 @@
 <div id="landingCard" class="landing-cover relative mx-auto justify-self-center w-full h-full">
-    <div style="
-        content: '';
-        position: absolute;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background: url('{{ Storage::disk(env('FILESYSTEM_DISK'))->url($wedding->wedding_landing_image) }}');
-        background-size: cover;
-        background-position: center;
-        filter: blur(50px);
-        transform: scale(3);
-        z-index: -2;
-        height:10%
-        ">
-    </div>
-    <div style="
-        content: '';
-        position: absolute;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background: linear-gradient(to bottom, transparent, #121212 60%, #121212 100%);
-        z-index: -1;">
-    </div>
-    <div style="position: relative; z-index: 2;">
-            <div class="min-h-screen max-w-xl mx-auto justify-items-center" style="position: relative; z-index: 2;">
+    <style>
+        .wedding-landing-background {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('{{ Storage::disk(env('FILESYSTEM_DISK'))->url($wedding->wedding_landing_image) }}');
+            background-size: cover;
+            background-position: center;
+            filter: blur(50px);
+            transform: scale(3);
+            z-index: -2;
+            height: 10%;
+        }
+    </style>
+    <div class="wedding-landing-background"></div>
+    <style>
+        .landing-cover::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to bottom, transparent, #121212 60%, #121212 100%);
+            z-index: -1;
+        }
+    </style>
+    <div class="landing-cover::after"></div>
+    <div class="landing-header">
+            <div class="min-h-screen max-w-xl mx-auto justify-items-center landing-header-after">
                 <div class="relative px-4 pt-4">
                     <img src="{{ Storage::disk(env('FILESYSTEM_DISK'))->url($wedding->wedding_landing_image) }}" alt="Landing Image" class="w-80 h-auto mx-auto object-cover"/>
                     <div class="absolute top-6 left-6 right-6 flex items-center justify-between">
