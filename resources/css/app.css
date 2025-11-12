@@ -185,3 +185,41 @@ body {
     max-width: 90%;
     height: auto;
 }
+
+.wedding-header {
+  position: relative; 
+  z-index: 2;
+}
+
+.progressBarEpisode {
+  width: 0%
+}
+
+.landing-header {
+  position: relative; 
+  z-index: 2;
+}
+
+.landing-header-after {
+  position: relative; 
+  z-index: 2;
+}
+
+.gift-qris {
+  display: none;
+}
+
+.image-modal-background {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: center;
+    filter: blur(50px);
+    transform: scale(3);
+    z-index: -2;
+    height: 10%;
+}

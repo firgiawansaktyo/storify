@@ -1,17 +1,19 @@
 <div class="podcast-section">
-  <div style="
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: url('{{ Storage::disk(env('FILESYSTEM_DISK'))->url($wedding->wedding_image) }}');
-    background-size: cover;
-    filter: blur(60px);
-    transform: scale(3);
-    z-index: 1;
-    height:30%
-    ">
-  </div>
-  <div style="position: relative; z-index: 2;">
+  <style>
+      .wedding-background {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: url('{{ Storage::disk(env('FILESYSTEM_DISK'))->url($wedding->wedding_image) }}');
+        background-size: cover;
+        filter: blur(60px);
+        transform: scale(3);
+        z-index: 1;
+        height:30%
+      }
+  </style>
+  <div class="wedding-background"></div>
+  <div class="wedding-header">
       <div class="podcast-header items-center">
         <div class="podcast-content flex flex-row align-center p-6 items-center justify-center gap-6">
           <img
@@ -78,7 +80,7 @@
             <div class="flex items-center space-x-2 text-sm text-[var(--spotify-gray)]">
               <span id="currentTime">0:00</span>
               <div id="progressContainer" class="flex-1 h-1 bg-[var(--spotify-gray)] rounded overflow-hidden">
-                <div id="progressBar" class="h-full bg-[var(--spotify-green)]" style="width:0%"></div>
+                <div id="progressBar" class="h-full bg-[var(--spotify-green)] progressBarEpisode"></div>
               </div>
               <span id="duration">0:00</span>
             </div>

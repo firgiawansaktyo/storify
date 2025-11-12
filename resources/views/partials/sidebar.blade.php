@@ -45,16 +45,16 @@
         <i class="fas fa-calendar"></i>
         <span>Albums</span></a>
 </li>
-<li class="nav-item {{ request()->is('invited-guests') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ route('invited-guests.index')}}">
-        <i class="fas fa-users"></i>
-        <span>Invited Guests</span></a>
-</li>
 <li class="nav-item {{ request()->is('gifts') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('gifts.index') }}">
         <i class="fas fa-gift"></i>
         <span>Gifts</span>
     </a>
+</li>
+<li class="nav-item {{ request()->is('invited-guests') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('invited-guests.index')}}">
+        <i class="fas fa-users"></i>
+        <span>Invited Guests</span></a>
 </li>
 @if(auth()->check() && auth()->user()->is_admin)
 </li>

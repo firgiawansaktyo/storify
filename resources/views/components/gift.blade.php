@@ -77,7 +77,7 @@
         </div>
 
         @if($gift->qris_image)
-            <div class="modal fade" id="{{ $modalId }}" tabindex="-1" aria-labelledby="{{ $modalId }}Label" aria-hidden="true" style="display: none;">
+            <div class="modal fade gift-qris" id="{{ $modalId }}" tabindex="-1" aria-labelledby="{{ $modalId }}Label" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-sm">
                     <div class="modal-qris bg-transparent">
                         <img src="{{ Storage::disk(env('FILESYSTEM_DISK'))->url($gift->qris_image) }}" alt="QRIS {{ $gift->bank->name ?? '' }}" class="rounded-lg shadow-lg">
