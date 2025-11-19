@@ -4,20 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Auth as Auth;
-
+use Illuminate\Support\Facades\Auth;
 
 class FileUploadController extends Controller
 {
     public function store(Request $request, $path)
     {   
-        if(Auth::user()){
+        if (Auth::user()) {
             $validated = [];
             foreach ([
                 'bride_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:204800',
                 'groom_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:204800',
                 'wedding_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:204800',
-                'wedding_video' => 'mimes:mp4,mov,avi,wmv,flv,webm,mkv|max:1024000',
+                'wedding_video' => 'mimes:mp4,mov,avi,wmv,flv,webm,mkv|max:2048000',
                 'wedding_audio' => 'mimes:mp3,wav,ogg,flac,aac,m4a|max:204800',
                 'wedding_landing_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:204800',
                 'wedding_hotnews_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:204800',
@@ -27,9 +26,6 @@ class FileUploadController extends Controller
                 'wedding_throwback_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:204800',
                 'bank_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:204800',
                 'qris_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:204800',
-
-
-
             ] as $field => $rules) {
                 if ($request->hasFile($field)) {
                     $request->validate([$field => $rules]);
@@ -53,7 +49,16 @@ class FileUploadController extends Controller
                     $finalPath = $path . '/' . $folder;
                     $disk = env('FILESYSTEM_DISK', 'local');
                     Storage::disk($disk)->makeDirectory($finalPath);
-                    $validated[$field] = $request->file($field)->store($finalPath, $disk);
+
+                    $storedPath = $request->file($field)->store($finalPath, $disk);
+                    $validated[$field] = $storedPath;
+
+                    $url = Storage::disk($disk)->temporaryUrl(
+                        $storedPath,
+                        now()->addMinutes(30)
+                    );
+
+                    $validated[$field . '_url'] = $url;
                 }
             }
 
@@ -62,8 +67,7 @@ class FileUploadController extends Controller
                 'message' => 'Upload complete.',
                 'paths' => (object) $validated,
             ]);
-        }
-        else {
+        } else {
             return response()->json([
                 'success' => false,
                 'message' => 'Unauthorized.',
