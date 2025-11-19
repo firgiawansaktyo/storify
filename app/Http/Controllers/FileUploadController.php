@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Aws\S3\S3Client;
+use Aws\Exception\AwsException;
 
 class FileUploadController extends Controller
 {
@@ -12,11 +13,12 @@ class FileUploadController extends Controller
     {   
         if (Auth::user()) {
             $validated = [];
+
             foreach ([
                 'bride_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:204800',
                 'groom_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:204800',
                 'wedding_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:204800',
-                'wedding_video' => 'mimes:mp4,mov,avi,wmv,flv,webm,mkv|max:2048000',
+                'wedding_video' => 'mimes:mp4,mov,avi,wmv,flv,webm,mkv|max:1024000',
                 'wedding_audio' => 'mimes:mp3,wav,ogg,flac,aac,m4a|max:204800',
                 'wedding_landing_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:204800',
                 'wedding_hotnews_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:204800',
@@ -47,18 +49,41 @@ class FileUploadController extends Controller
                     };
 
                     $finalPath = $path . '/' . $folder;
-                    $disk = env('FILESYSTEM_DISK', 'local');
-                    Storage::disk($disk)->makeDirectory($finalPath);
 
-                    $storedPath = $request->file($field)->store($finalPath, $disk);
-                    $validated[$field] = $storedPath;
+                    $s3Client = new S3Client([
+                        'driver' => 's3',
+                        'key'    => env('B2_KEY_ID'),
+                        'secret' => env('B2_APP_KEY'),
+                        'region' => env('B2_REGION'),
+                        'bucket' => env('B2_BUCKET_NAME'),
+                        'endpoint' => env('B2_ENDPOINT'),
+                        'use_path_style_endpoint' => true,
+                        'visibility' => 'public',
+                        'throw' => true,
+                        'checksum' => false,
+                        'http' => [
+                            'verify' => false,
+                        ],
+                    ]);
 
-                    $url = Storage::disk($disk)->temporaryUrl(
-                        $storedPath,
-                        now()->addMinutes(30)
-                    );
+                    try {
+                        $file = $request->file($field);
+                        $fileContent = fopen($file->getRealPath(), 'r');
+                        
+                        $result = $s3Client->putObject([
+                            'Bucket' => env('B2_BUCKET_NAME'),
+                            'Key' => $finalPath . '/' . $file->getClientOriginalName(),
+                            'Body' => $fileContent,
+                            'ContentType' => $file->getMimeType(),
+                        ]);
 
-                    $validated[$field . '_url'] = $url;
+                        $validated[$field] = $result['ObjectURL'];
+                    } catch (AwsException $e) {
+                        return response()->json([
+                            'success' => false,
+                            'message' => 'Error uploading to Backblaze B2: ' . $e->getMessage(),
+                        ], 500);
+                    }
                 }
             }
 

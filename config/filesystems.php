@@ -66,13 +66,13 @@ return [
             'region' => env('B2_REGION'),
             'bucket' => env('B2_BUCKET_NAME'),
             'endpoint' => env('B2_ENDPOINT'),
+            'use_path_style_endpoint' => true,
             'visibility' => 'public',
             'throw' => true,
             'checksum' => false,
             'http' => [
                 'verify' => false,
             ],
-            'path_style' => true, 
         ],
 
     ],
