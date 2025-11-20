@@ -46,7 +46,7 @@
                             src="{{ asset('logo/swan-rounded.png') }}" 
                             alt="Sweet Vows Logo" 
                             class="w-6"/>
-                        <span class="px-2 text-md text-[var(--spotify-gray)]">Picked for <span class="font-bold text-[var(--spotify-white)]">{{ $wedding->name }}</span>
+                        <span class="px-2 text-md text-[var(--spotify-gray)]">Picked for <span class="font-bold text-[var(--spotify-white)]">{{ $invitedGuestName }}</span>
                         </span>                        
                     </div>
                     <div class="px-6">
@@ -77,7 +77,7 @@
 
 <div id="detailsSection" class="mx-auto min-h-screen max-w-xl flex flex-col items-center justify-center hidden opacity-0 -translate-y-8 transition-all duration-700">
     <div class="max-w-xl container bg-[var(--spotify-black)]">
-        <x-episode :wedding=$wedding/>
+        <x-episode :wedding=$wedding :invitedGuestName=$invitedGuestName/>
         <x-video-banner :wedding=$wedding/>
         <x-description :wedding=$wedding/>
         <x-hot-news :wedding=$wedding/>

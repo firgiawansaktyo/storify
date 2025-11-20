@@ -3,7 +3,7 @@
         <div class="text-center">
             <x-logo/>
         </div>
-        <h1 class="font-bold text-2xl text-left">Picked For {{ $wedding->name }}</h1>
+        <h1 class="font-bold text-2xl text-left">Picked For {{ $invitedGuestName }}</h1>
         <div class="flex items-center justify-center">
             <div id="LandingBtn" class="group w-full grid grid-cols-2 md:grid-cols-2 rounded-lg p-0.5 hover:bg-[var(--spotify-gray-semibold)] cursor-pointer overflow-hidden hover:scale-105 transition">
                 <div>
@@ -36,5 +36,5 @@
 </div>
 
 <div id="goToLanding" class="hidden opacity-0 -translate-y-8 transition-all duration-700">
-    <x-landing :wedding=$wedding :albums=$albums :throwbacks=$throwbacks :wishes=$wishes :gifts=$gifts :banks=$banks/>
+    <x-landing :wedding=$wedding :albums=$albums :throwbacks=$throwbacks :wishes=$wishes :gifts=$gifts :banks=$banks :invitedGuestName=$invitedGuestName/>
 </div>
