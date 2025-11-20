@@ -1,3 +1,7 @@
+@php
+    $disk = env('FILESYSTEM_DISK', config('filesystems.default'));
+    $baseUrl = rtrim(config("filesystems.disks.$disk.url"), '/');
+@endphp
 <div
   x-data
   x-cloak
@@ -25,7 +29,7 @@
                 x-transition:enter-end="scale-100 opacity-100">
                 <div
                     class="absolute inset-0 bg-cover bg-center blur-3xl scale-200"
-                    x-bind:style="'background-image: url(' + '{{ Storage::disk(env('FILESYSTEM_DISK'))->url('') }}' + $store.imageModal.item.image + ')'" >
+                    x-bind:style="'background-image: url({{ $baseUrl }}/' + $store.imageModal.item.image + ')'"
                 </div>
 
                 <div class="absolute inset-0 bg-black/40"></div>
@@ -44,7 +48,7 @@
 
                     <div class="w-full h-2/3 overflow-hidden px-6">
                         <img
-                            :src="'{{ Storage::disk(env('FILESYSTEM_DISK'))->url('') }}' + $store.imageModal.item.image"
+                            :src="'{{ $baseUrl }}/' + $store.imageModal.item.image"
                             :alt="`image-{$store.imageModal.item.title}`"
                             class="max-w-xs justify-self-center rounded-lg"
                         />
