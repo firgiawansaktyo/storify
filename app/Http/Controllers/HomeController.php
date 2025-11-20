@@ -39,9 +39,9 @@ class HomeController extends Controller
                 'invited_guests.*',
                 'timelines.*',
                 'couples.*',
-                'weddings.*')
+                'weddings.*',)
             ->first();
-
+            $invitedGuestName = $invitedGuest->name;
             $albums = Album::where('user_id', $invitedGuest->user_id)->orderBy('created_at', 'asc')->get();
             $throwbacks = Throwback::where('user_id', $invitedGuest->user_id)->orderBy('created_at', 'asc')->get();
             $wishes = Wish::where('user_id', $invitedGuest->user_id)->orderBy('created_at', 'asc')->get();
@@ -50,7 +50,7 @@ class HomeController extends Controller
             ->orderBy('created_at', 'asc')
             ->get();
             $banks = Bank::whereIn('id', $gifts->pluck('bank_id')->filter()->unique())->get();
-            return view('home', compact('wedding', 'albums', 'throwbacks', 'wishes', 'banks', 'gifts'));
+            return view('home', compact('wedding', 'albums', 'throwbacks', 'wishes', 'banks', 'gifts', 'invitedGuestName'));
         }
     }
 
