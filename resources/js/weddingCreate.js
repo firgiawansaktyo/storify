@@ -25,32 +25,44 @@ document.addEventListener('DOMContentLoaded', () => {
             const file = input.files[0];
             if (!file) return;
 
-            const formData = new FormData();
-            formData.append(fieldName, file);
-
-            status.textContent = 'Starting upload...';
+            status.textContent = 'Preparing upload...';
             progressBar.classList.remove('d-none');
             progressBar.value = 0;
 
-            axios.post(`/admin/upload/${path}`, formData, {
-                headers: { 'Content-Type': 'multipart/form-data' },
-                onUploadProgress: function (e) {
-                    const percent = Math.round((e.loaded * 100) / e.total);
-                    progressBar.value = percent;
-                    status.textContent = `Uploading: ${percent}%`;
-                },
+            axios.post(`/admin/upload/${path}`, {
+                [`${fieldName}_filename`]: file.name,
+                [`${fieldName}_content_type`]: file.type || 'application/octet-stream',
             })
-                .then(function (res) {
-                    if (res.data.paths && res.data.paths[fieldName]) {
-                        storeCallback(res.data.paths[fieldName]);
-                        status.textContent = 'Upload complete!';
-                    } else {
-                        status.textContent = 'Error: path not returned.';
-                    }
-                })
-                .catch(function () {
-                    status.textContent = 'Error during upload.';
-                });
+            .then(function (res) {
+                if (!res.data.paths || !res.data.paths[fieldName]) {
+                    status.textContent = 'Error: upload info not returned.';
+                    throw new Error('No upload info for field ' + fieldName);
+                }
+
+                const info = res.data.paths[fieldName];
+
+                status.textContent = 'Uploading...';
+
+                return axios.put(info.upload_url, file, {
+                    headers: {
+                        'Content-Type': file.type || 'application/octet-stream',
+                    },
+                    onUploadProgress: function (e) {
+                        if (e.total) {
+                            const percent = Math.round((e.loaded * 100) / e.total);
+                            progressBar.value = percent;
+                            status.textContent = `Uploading: ${percent}%`;
+                        }
+                    },
+                }).then(() => info);
+            })
+            .then(function (info) {
+                storeCallback(info);
+                status.textContent = 'Upload complete!';
+            })
+            .catch(function () {
+                status.textContent = 'Error during upload.';
+            });
         });
     }
 
@@ -59,8 +71,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'progressBarWeddingImage',
         'statusWeddingImage',
         'wedding_image',
-        function (uploadedPath) {
-            weddingImagePath = uploadedPath;
+        function (uploadedInfo) {
+            weddingImagePath = uploadedInfo.public_url;
         },
     );
 
@@ -69,8 +81,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'progressBarWeddingVideo',
         'statusWeddingVideo',
         'wedding_video',
-        function (uploadedPath) {
-            weddingVideoPath = uploadedPath;
+        function (uploadedInfo) {
+            weddingVideoPath = uploadedInfo.public_url;
         },
     );
 
@@ -79,8 +91,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'progressBarWeddingAudio',
         'statusWeddingAudio',
         'wedding_audio',
-        function (uploadedPath) {
-            weddingAudioPath = uploadedPath;
+        function (uploadedInfo) {
+            weddingAudioPath = uploadedInfo.public_url;
         },
     );
 
@@ -89,8 +101,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'progressBarLandingImage',
         'statusLandingImage',
         'wedding_landing_image',
-        function (uploadedPath) {
-            weddingLandingPath = uploadedPath;
+        function (uploadedInfo) {
+            weddingLandingPath = uploadedInfo.public_url;
         },
     );
 
@@ -99,8 +111,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'progressBarHotNewsImage',
         'statusHotNewsImage',
         'wedding_hotnews_image',
-        function (uploadedPath) {
-            weddingHotNewsPath = uploadedPath;
+        function (uploadedInfo) {
+            weddingHotNewsPath = uploadedInfo.public_url;
         },
     );
 

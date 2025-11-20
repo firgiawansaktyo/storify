@@ -40,9 +40,6 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::post('upload/{path}', [FileUploadController::class, 'store'])
         ->where('path', '.*')
         ->name('upload.store');
-    Route::get('get-presigned-url/{path}', [FileUploadController::class, 'getPresignedUrl'])
-        ->where('path', '.*')
-        ->name('upload.getPresignedUrl');
     Route::resource('users', UserController::class);
     Route::resource('banks', BankController::class);
     Route::resource('gifts', GiftController::class);

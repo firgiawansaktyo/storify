@@ -22,39 +22,49 @@ document.addEventListener('DOMContentLoaded', () => {
             const file = input.files[0];
             if (!file) return;
 
-            const formData = new FormData();
-            formData.append(fieldName, file);
-
-            status.textContent = 'Starting upload...';
+            status.textContent = 'Preparing upload...';
             progressBar.classList.remove('d-none');
             progressBar.value = 0;
 
-            axios.post(`/admin/upload/${path}`, formData, {
-                headers: { 'Content-Type': 'multipart/form-data' },
-                onUploadProgress: function (e) {
-                    const percent = Math.round((e.loaded * 100) / e.total);
-                    progressBar.value = percent;
-                    status.textContent = `Uploading: ${percent}%`;
-                },
+            axios.post(`/admin/upload/${path}`, {
+                [`${fieldName}_filename`]: file.name,
+                [`${fieldName}_content_type`]: file.type || 'application/octet-stream',
             })
-                .then(function (res) {
-                    if (res.data.paths && res.data.paths[fieldName]) {
-                        const uploadedPath = res.data.paths[fieldName];
-                        storeCallback(uploadedPath);
-                        status.textContent = 'Upload complete!';
+            .then(function (res) {
+                if (!res.data.paths || !res.data.paths[fieldName]) {
+                    status.textContent = 'Error: upload info not returned.';
+                    throw new Error('No upload info for field ' + fieldName);
+                }
 
-                        // Update preview if present
-                        const preview = document.getElementById('imagePreview');
-                        if (preview && uploadedPath) {
-                            preview.src = `/storage/${uploadedPath}`;
+                const info = res.data.paths[fieldName];
+
+                status.textContent = 'Uploading...';
+
+                return axios.put(info.upload_url, file, {
+                    headers: {
+                        'Content-Type': file.type || 'application/octet-stream',
+                    },
+                    onUploadProgress: function (e) {
+                        if (e.total) {
+                            const percent = Math.round((e.loaded * 100) / e.total);
+                            progressBar.value = percent;
+                            status.textContent = `Uploading: ${percent}%`;
                         }
-                    } else {
-                        status.textContent = 'Error: path not returned.';
-                    }
-                })
-                .catch(function () {
-                    status.textContent = 'Error during upload.';
-                });
+                    },
+                }).then(() => info);
+            })
+            .then(function (info) {
+                storeCallback(info);
+                status.textContent = 'Upload complete!';
+
+                const preview = document.getElementById('imagePreview');
+                if (preview && info.public_url) {
+                    preview.src = info.public_url;
+                }
+            })
+            .catch(function () {
+                status.textContent = 'Error during upload.';
+            });
         });
     }
 
@@ -63,8 +73,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'progressBarBankImage',
         'statusBankImage',
         'bank_image',
-        function (uploadedPath) {
-            bankImagePath = uploadedPath;
+        function (uploadedInfo) {
+            bankImagePath = uploadedInfo.public_url;
         },
     );
 
