@@ -1,4 +1,5 @@
 const API_KEY = import.meta.env.VITE_PUBLIC_API_KEY;
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 import Alpine from 'alpinejs';
 import focus from '@alpinejs/focus';
@@ -10,10 +11,17 @@ document.addEventListener('alpine:init', () => {
         isOpen: false,
         item: null,
         async fetch({ id }) {
-            let res = await fetch(`/api/images/${id}`, {
+            const url = `${API_BASE_URL}/images/${id}`;
+
+            let res = await fetch(url, {
                 headers: { 'X-API-KEY': API_KEY }
             });
-            if (!res.ok) throw new Error('failed to load');
+
+            if (!res.ok) {
+                console.error('imageModal fetch failed', res.status, url);
+                throw new Error('failed to load');
+            }
+
             this.dataJson = await res.json();
             this.item = this.dataJson.data;
             this.isOpen = true;
@@ -26,4 +34,3 @@ document.addEventListener('alpine:init', () => {
 
 window.Alpine = Alpine;
 Alpine.start();
-
