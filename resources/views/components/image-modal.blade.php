@@ -1,14 +1,3 @@
-@php
-    $disk = env('FILESYSTEM_DISK', config('filesystems.default', 'public'));
-    $diskUrl = rtrim(config('filesystems.disks.' . $disk . '.url') ?? '', '/');
-    if ($disk === 'b2') {
-        $endpoint = rtrim(env('B2_ENDPOINT'), '/');
-        $bucket   = trim(env('B2_BUCKET_NAME'), '/');
-        $diskUrl  = rtrim($endpoint . '/' . $bucket, '/');
-    }
-@endphp
-
-
 <div
   x-data
   x-cloak
@@ -38,7 +27,7 @@
                 <!-- Blurred background -->
                 <div
                     class="absolute inset-0 bg-cover bg-center blur-3xl scale-200"
-                    x-bind:style="'background-image: url({{ $diskUrl }}/' + $store.imageModal.item.image + ')'"
+                    x-bind:style="'background-image: url(' + $store.imageModal.item.image + ')'"
                 ></div>
 
                 <!-- Dark overlay -->
@@ -60,7 +49,7 @@
 
                     <div class="w-full h-2/3 overflow-hidden px-6 pb-4">
                         <img
-                            :src="'{{ $diskUrl }}/' + $store.imageModal.item.image"
+                            :src="$store.imageModal.item.image"
                             :alt="'image-' + $store.imageModal.item.title"
                             class="max-w-xs justify-self-center rounded-lg"
                         />
