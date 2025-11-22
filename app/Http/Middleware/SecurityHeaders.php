@@ -11,12 +11,10 @@ class SecurityHeaders
     {
         $response = $next($request);
 
-        // Common security headers
         $response->headers->set('X-Frame-Options', 'DENY');
         $response->headers->set('X-Content-Type-Options', 'nosniff');
 
         if (env('APP_ENV') === 'local') {
-            // LOCAL DEV (Vite + Laravel)
             $csp = "default-src 'self'; "
                 . "script-src 'self' http://localhost:5173 http://localhost:8000; "
                 . "style-src 'self' http://localhost:5173 http://localhost:8000; "
@@ -31,7 +29,6 @@ class SecurityHeaders
                 . "manifest-src 'self'; "
                 . "worker-src 'self';";
         } else {
-            // PRODUCTION
             $csp = "default-src 'self'; "
                 . "script-src 'self' https://sweetvows.site; "
                 . "style-src 'self' https://sweetvows.site; "
