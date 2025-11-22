@@ -24,11 +24,8 @@
 
         <div id="carousel-throwback" class="flex overflow-x-auto no-scrollbar scroll-smooth px-1 py-1">
             @foreach ($throwbacks as $throwback )
-                @php
-                    $encryptedId = encrypt($throwback->id);
-                @endphp
                 <div class="carousel-card-throwback flex-shrink-0 w-48 h-64 p-1"
-                        @click="$store.imageModal.fetch({ id: '{{ $encryptedId }}' })"
+                        @click="$store.imageModal.fetch({ id: '{{ $throwback->id }}' })"
                         >
                     <div class="throwback-cover p-1 rounded-lg cursor-pointer hover:bg-[var(--spotify-gray-semibold)] hover:scale-105 transition flex flex-col">
                         <div class="relative aspect-square overflow-hidden w-full rounded-lg">

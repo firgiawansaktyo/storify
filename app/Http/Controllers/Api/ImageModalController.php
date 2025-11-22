@@ -14,9 +14,6 @@ class ImageModalController extends Controller
 {
     public function show(string $id)
     {
-        $encryptedId = $id;
-        $id = decrypt($encryptedId);
-
         if (! Str::isUuid($id)) {
             return new ImageModalResource(false, Response::HTTP_UNPROCESSABLE_ENTITY, []);
         }
@@ -44,7 +41,6 @@ class ImageModalController extends Controller
                 'title'       => $albums->wedding_album_title,
                 'description' => $albums->wedding_album_description,
             ];
-
             return new ImageModalResource(true, Response::HTTP_OK, $images);
         } else {
             return new ImageModalResource(false, Response::HTTP_NOT_FOUND, []);
