@@ -10,7 +10,6 @@ class SecurityHeaders
     public function handle(Request $request, Closure $next)
     {
         $response = $next($request);
-
         $response->headers->set('X-Frame-Options', 'DENY');
         $response->headers->set('X-Content-Type-Options', 'nosniff');
 
@@ -22,13 +21,15 @@ class SecurityHeaders
                 . "media-src 'self' https://*.backblazeb2.com; "
                 . "font-src 'self'; "
                 . "connect-src 'self' ws://localhost:5173 http://localhost:5173 http://localhost:8000 https://*.backblazeb2.com; "
+                . "frame-src 'self' https://www.google.com https://*.google.com; "
+                . "child-src 'self' https://www.google.com https://*.google.com; "
                 . "frame-ancestors 'none'; "
                 . "form-action 'self'; "
-                . "child-src 'none'; "
                 . "object-src 'none'; "
                 . "base-uri 'self'; "
                 . "manifest-src 'self'; "
                 . "worker-src 'self';";
+
         } else {
             $csp = "default-src 'self'; "
                 . "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://sweetvows.site; "
@@ -37,9 +38,10 @@ class SecurityHeaders
                 . "media-src 'self' https://*.backblazeb2.com; "
                 . "font-src 'self' https://sweetvows.site; "
                 . "connect-src 'self' https://sweetvows.site https://*.backblazeb2.com; "
+                . "frame-src 'self' https://www.google.com https://*.google.com; "
+                . "child-src 'self' https://www.google.com https://*.google.com; "
                 . "frame-ancestors 'none'; "
                 . "form-action 'self'; "
-                . "child-src 'none'; "
                 . "object-src 'none'; "
                 . "base-uri 'self'; "
                 . "manifest-src 'self'; "
