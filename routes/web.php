@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AlbumController;
+use App\Http\Controllers\Api\ImageModalController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
@@ -25,6 +26,10 @@ Route::get('/{username}/invite/{id}', [HomeController::class, 'index'])
         'inviteCode' => '[A-Za-z0-9\-]+',
     ])
     ->name('home');
+
+Route::middleware(['throttle:api', 'apikey'])
+    ->get('pictures/{id}', [ImageModalController::class, 'show'])
+    ->name('api.pictures.show');
 
 Route::post('wishes/{user_id}', [WishController::class, 'store'])
     ->name('wishes.store');
