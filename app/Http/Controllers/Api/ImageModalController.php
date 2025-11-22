@@ -10,10 +10,13 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\Response;
 
-class ImageModalControllerAPI extends Controller
+class ImageModalController extends Controller
 {
     public function show(string $id)
     {
+        $encryptedId = $id;
+        $id = decrypt($encryptedId);
+
         if (! Str::isUuid($id)) {
             return new ImageModalResource(false, Response::HTTP_UNPROCESSABLE_ENTITY, []);
         }
