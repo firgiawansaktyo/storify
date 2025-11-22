@@ -12,25 +12,23 @@
             $modalId   = "qrisModal-{$gift->id}";
         @endphp
 
-       <div class="flex items-center rounded-lg p-3 relative">
-            {{-- Bank Logo --}}
+        <div class="flex items-center rounded-lg p-3 relative">
             <img
                 src="{{ $gift->bank && $gift->bank->bank_image ? Storage::disk(env('FILESYSTEM_DISK'))->url($gift->bank->bank_image) : asset('bank/default.jpg') }}"
                 alt="{{ $gift->bank->name ?? 'Bank' }}"
                 class="w-12 h-12 object-contain mr-3 rounded bg-white"
             >
-
-            {{-- Account Info --}}
             <div class="flex-1">
                 <p class="text-sm font-medium text-white tracking-wide">
                     {{ $gift->bank->name ?? 'Bank' }}
                 </p>
-                <p class="text-xs text-gray-400">
-                    a.n <span class="font-medium text-gray-200">{{ $gift->account_holder }}</span>
-                </p>
 
-                {{-- Account number and Copy Button --}}
                 @if (!$gift->qris_image)
+                    <p class="text-xs text-gray-400">
+                        <span class="font-medium text-gray-200">{{ $gift->account_number }}</span>
+                        a.n <span class="font-medium text-gray-200">{{ $gift->account_holder }}</span>
+                    </p>
+
                     <input type="text" id="{{ $inputId }}" value="{{ $gift->account_number }}" class="sr-only" readonly>
 
                     <div class="flex items-center gap-2 absolute right-2 top-1/2 -translate-y-1/2 mr-1">
@@ -58,10 +56,13 @@
                             </span>
                         </button>
                     </div>
+                @else
+                    <p class="text-xs text-gray-400">
+                        a.n <span class="font-medium text-gray-200">{{ $gift->account_holder }}</span>
+                    </p>
                 @endif
             </div>
 
-            {{-- QRIS Button --}}
             @if($gift->qris_image)
                 <button
                     id="modal-toggle-{{ $gift->id }}"
