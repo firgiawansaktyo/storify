@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\Response;
 
-class ImageModalController extends Controller
+class ImageModalControllerAPI extends Controller
 {
     public function show(string $id)
     {
