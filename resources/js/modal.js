@@ -11,7 +11,7 @@ document.addEventListener('alpine:init', () => {
         isOpen: false,
         item: null,
         async fetch({ id }) {
-            const url = `${API_BASE_URL}/api/pictures/${id}`;
+            const url = `${API_BASE_URL}/pictures/${id}`;
 
             let res = await fetch(url, {
                 headers: { 'X-API-KEY': API_KEY }
