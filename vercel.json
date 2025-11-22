@@ -22,7 +22,6 @@
     { "src": "^/storage/(.*)$", "dest": "/public/storage/$1" },
     { "src": "^/build/(.*)$",   "dest": "/public/build/$1" },
     { "src": "^/favicon.ico$",  "dest": "/public/favicon.ico" },
-    { "src": "^/api/pictures/(.*)$", "dest": "/api/index.php" },
     {
       "src": "/(.*)",
       "dest": "/api/index.php"
