@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\AlbumController;
-use App\Http\Controllers\Api\ImageModalController;
+use App\Http\Controllers\ImageModalController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
