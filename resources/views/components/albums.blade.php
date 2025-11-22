@@ -24,9 +24,11 @@
 
         <div id="carousel-albums" class="flex overflow-x-auto no-scrollbar scroll-smooth px-1 py-1">
             @foreach ($albums as $album )
-        
+            @php
+                $encryptedId = encrypt($album->id);
+            @endphp
             <div class="carousel-card-albums flex-shrink-0 w-48 h-64 p-1" 
-            @click="$store.imageModal.fetch({ id: '{{ $album->id }}' })"
+            @click="$store.imageModal.fetch({ id: '{{ $encryptedId }}' })"
             >
                 <div class="p-1 rounded-lg cursor-pointer hover:bg-[var(--spotify-gray-semibold)] hover:scale-105 transition flex flex-col">
                     <div class="aspect-square overflow-hidden w-full rounded-lg">
