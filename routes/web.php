@@ -8,6 +8,7 @@ use App\Http\Controllers\BankController;
 use App\Http\Controllers\CoupleController;
 use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\GiftController;
+use App\Http\Controllers\ImageModalController;
 use App\Http\Controllers\InvitedGuestController;
 use App\Http\Controllers\ThrowbackController;
 use App\Http\Controllers\TimelineController;
@@ -25,6 +26,9 @@ Route::get('/{username}/invite/{id}', [HomeController::class, 'index'])
         'inviteCode' => '[A-Za-z0-9\-]+',
     ])
     ->name('home');
+
+Route::get('/images/{id}', [ImageModalController::class, 'show'])
+    ->name('images.show');
 
 Route::post('wishes/{user_id}', [WishController::class, 'store'])
     ->name('wishes.store');
