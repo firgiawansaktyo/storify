@@ -11,7 +11,7 @@ document.addEventListener('alpine:init', () => {
         error: null,
 
         async fetch({ id }) {
-            const url = `/images/${id}`;
+            const url = `/api/images/${id}`;
 
             this.loading = true;
             this.error   = null;

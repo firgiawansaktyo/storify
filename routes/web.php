@@ -27,7 +27,7 @@ Route::get('/{username}/invite/{id}', [HomeController::class, 'index'])
     ])
     ->name('home');
 
-Route::get('/images/{id}', [ImageModalController::class, 'show'])
+Route::get('/api/images/{id}', [ImageModalController::class, 'show'])
     ->name('images.show');
 
 Route::post('wishes/{user_id}', [WishController::class, 'store'])
