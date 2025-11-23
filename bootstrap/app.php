@@ -15,7 +15,7 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware
-        ->append(SecurityHeaders::class)
+        // ->append(SecurityHeaders::class)
         ->alias([
             'apikey' => RequireApiKey::class,
         ]);
