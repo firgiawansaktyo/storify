@@ -39,8 +39,8 @@
                     </div>
                 </div>
                 <div class="relative bg-gradient-to-b from-transparent via-[var(--spotify-black)] to-[var(--spotify-black)]">
-                    <h2 class="font-bold text-lg relative text-[var(--spotify-white)] pt-2 px-6">{{ $wedding->wedding_landing_title }} Cover: {{ $wedding->bride_name }} and {{ $wedding->groom_name }} ❤️
-                    </h2>
+                    <h2 class="font-bold text-lg relative text-[var(--spotify-white)] pt-2 px-6">{{ $wedding->wedding_landing_title }}</h2>
+                    <p class="text-md relative text-[var(--spotify-white)] px-6">Cover: {{ $wedding->bride_name }} and {{ $wedding->groom_name }} ❤️</p>
                     <div class="px-6 flex flew-row items-center py-1">
                         <img 
                             src="{{ asset('logo/swan-rounded.png') }}" 
