@@ -96,15 +96,12 @@ class FileUploadController extends Controller
 
             $finalPath = trim($path, '/') . '/' . $folder;
             $uniqueName = Str::uuid() . ($extension ? '.' . $extension : '');
-            $key = $finalPath . '/' . $uniqueName;`
-            $cacheControl = 'public, max-age=31536000, immutable';
+            $key = $finalPath . '/' . $uniqueName;
 
             try {
                 $cmd = $s3Client->getCommand('PutObject', [
                     'Bucket' => $bucket,
                     'Key'    => $key,
-                    'ContentType'  => $contentType,
-                    'CacheControl' => $cacheControl,
                 ]);
 
                 $presignedRequest = $s3Client->createPresignedRequest($cmd, '+30 minutes');
