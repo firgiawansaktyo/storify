@@ -27,18 +27,18 @@
     <div class="wedding-landing-background"></div>
 
     <div class="landing-header">
-        <div class="min-h-screen max-w-xl w-full mx-auto landing-header-after px-4 sm:px-6 py-6 grid content-between">
+        <div class="min-h-screen max-w-xl w-full mx-auto landing-header-after px-4 sm:px-6 py-2 grid content-between">
             {{-- Cover image --}}
             <div class="relative pt-4">
                 <img
                     src="{{ Storage::disk(env('FILESYSTEM_DISK'))->url($wedding->wedding_landing_image) }}"
                     alt="Landing Image"
-                    class="w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto rounded-lg object-cover shadow-lg"
+                    class="w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto object-cover shadow-lg"
                 />
             </div>
 
             {{-- Content --}}
-            <div class="relative bg-gradient-to-b from-transparent via-[var(--spotify-black)] to-[var(--spotify-black)] mt-6 sm:mt-8 rounded-xl pb-4">
+            <div class="relative bg-gradient-to-b from-transparent via-[var(--spotify-black)] to-[var(--spotify-black)] mt-6 sm:mt-8 pb-4">
                 <h2 class="font-bold text-base sm:text-lg md:text-xl text-[var(--spotify-white)] pt-3 px-4 sm:px-6">
                     {{ $wedding->wedding_landing_title }}
                 </h2>
@@ -106,9 +106,9 @@
 
 <div
     id="detailsSection"
-    class="mx-auto min-h-screen max-w-xl w-full flex flex-col items-center justify-center px-4 sm:px-6 py-8 hidden opacity-0 -translate-y-8 transition-all duration-700"
+    class="mx-auto min-h-screen max-w-xl w-full flex flex-col items-center justify-center px-4 sm:px-6 hidden opacity-0 -translate-y-8 transition-all duration-700"
 >
-    <div class="w-full container bg-[var(--spotify-black)] rounded-xl overflow-hidden">
+    <div class="w-full container bg-[var(--spotify-black)] overflow-hidden">
         <x-episode :wedding="$wedding" :invitedGuestName="$invitedGuestName" />
         <x-video-banner :wedding="$wedding" />
         <x-description :wedding="$wedding" />
