@@ -38,12 +38,10 @@
             alt="Sweet Vows Logo" 
             class="w-6"/>
           <span class="px-1 text-sm text-[var(--spotify-gray)]">Picked for <span class="font-bold text-[var(--spotify-white)]">{{ $invitedGuestName }}</span></span>
-          <span class="px-1 text-sm text-[var(--spotify-gray)]">•</span>
           <svg class="w-4 h-4 text-[var(--spotify-gray)] border-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
             <path fill-rule="evenodd" d="M8.6 5.2A1 1 0 0 0 7 6v12a1 1 0 0 0 1.6.8l8-6a1 1 0 0 0 0-1.6l-8-6Z" clip-rule="evenodd"/>
           </svg>
           <span class="px-1 text-sm text-[var(--spotify-gray)]">Video</span>
-          <span class="px-1 text-sm text-[var(--spotify-gray)]">•</span>
           <svg class="w-6 info-flipped" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 13V8m0 8h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
           </svg>
