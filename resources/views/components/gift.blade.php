@@ -1,4 +1,4 @@
-<div class="container-sweetvows bg-[var(--spotify-gray-bold)] p-4 sm:p-6 space-y-4">
+<div class="container-sweetvows bg-[var(--spotify-gray-bold)] p-4 sm:p-6">
     <h2 class="text-lg sm:text-xl font-bold text-white">Wedding Gift</h2>
     <p class="text-xs sm:text-sm text-[var(--spotify-gray)]">
         Bagi tamu undangan yang ingin memberikan tanda kasih untuk calon pengantin, dapat diberikan melalui:
