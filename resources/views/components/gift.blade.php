@@ -1,4 +1,4 @@
-<div class="container-sweetvows bg-[var(--spotify-gray-bold)] rounded-xl p-4 sm:p-6 space-y-4">
+<div class="container-sweetvows bg-[var(--spotify-gray-bold)] p-4 sm:p-6 space-y-4">
     <h2 class="text-lg sm:text-xl font-bold text-white">Wedding Gift</h2>
     <p class="text-xs sm:text-sm text-[var(--spotify-gray)]">
         Bagi tamu undangan yang ingin memberikan tanda kasih untuk calon pengantin, dapat diberikan melalui:
@@ -12,7 +12,7 @@
             $modalId   = "qrisModal-{$gift->id}";
         @endphp
 
-        <div class="relative p-3 sm:p-4 bg-[var(--spotify-gray-bold)] flex flex-col sm:flex-row sm:items-center gap-3">
+        <div class="relative rounded-lg p-3 sm:p-4 bg-[var(--spotify-gray-bold)] flex flex-col sm:flex-row sm:items-center gap-3">
             <div class="flex-shrink-0">
                 <img
                     src="{{ $gift->bank && $gift->bank->bank_image ? Storage::disk(env('FILESYSTEM_DISK'))->url($gift->bank->bank_image) : asset('bank/default.jpg') }}"
