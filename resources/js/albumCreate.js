@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return axios.put(info.upload_url, file, {
                     headers: {
                         'Content-Type': file.type || 'application/octet-stream',
+                        'Cache-Control': 'public, max-age=31536000, immutable',
                     },
                     onUploadProgress: function (e) {
                         if (e.total) {
