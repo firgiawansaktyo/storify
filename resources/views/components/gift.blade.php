@@ -12,7 +12,7 @@
             $modalId   = "qrisModal-{$gift->id}";
         @endphp
 
-        <div class="relative rounded-lg p-3 sm:p-4 bg-[var(--spotify-gray-bold)] flex flex-col sm:flex-row sm:items-center gap-3">
+        <div class="relative p-3 sm:p-4 bg-[var(--spotify-gray-bold)] flex flex-col sm:flex-row sm:items-center gap-3">
             <div class="flex-shrink-0">
                 <img
                     src="{{ $gift->bank && $gift->bank->bank_image ? Storage::disk(env('FILESYSTEM_DISK'))->url($gift->bank->bank_image) : asset('bank/default.jpg') }}"
