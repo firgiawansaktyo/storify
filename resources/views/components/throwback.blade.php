@@ -33,7 +33,7 @@
                     <div class="throwback-cover p-1 rounded-lg cursor-pointer hover:bg-[var(--spotify-gray-semibold)] hover:scale-105 transition flex flex-col">
                         <div class="relative aspect-square overflow-hidden w-full rounded-lg">
                             <img
-                            src="{{ Storage::disk(env('FILESYSTEM_DISK'))->url($throwback->wedding_throwback_image) }}"
+                            src="{{ cdn_sweetvows($throwback->wedding_throwback_image) }}"
                             alt="image-{{ $throwback->wedding_throwback_title }}"
                             class="rounded-lg w-full h-full object-cover"
                             />

@@ -15,7 +15,7 @@
         <div class="relative rounded-lg p-3 sm:p-4 bg-[var(--spotify-gray-bold)] flex flex-col sm:flex-row sm:items-center gap-3">
             <div class="flex-shrink-0">
                 <img
-                    src="{{ $gift->bank && $gift->bank->bank_image ? Storage::disk(env('FILESYSTEM_DISK'))->url($gift->bank->bank_image) : asset('bank/default.jpg') }}"
+                    src="{{ $gift->bank && $gift->bank->bank_image ? cdn_sweetvows($gift->bank->bank_image) : asset('bank/default.jpg') }}"
                     alt="{{ $gift->bank->name ?? 'Bank' }}"
                     class="w-10 h-10 sm:w-12 sm:h-12 object-contain rounded bg-white"
                 >
@@ -127,7 +127,7 @@
                 <div class="modal-dialog modal-dialog-centered modal-sm max-w-xs mx-auto">
                     <div class="modal-qris bg-transparent">
                         <img
-                            src="{{ Storage::disk(env('FILESYSTEM_DISK'))->url($gift->qris_image) }}"
+                            src="{{ cdn_sweetvows($gift->qris_image) }}"
                             alt="QRIS {{ $gift->bank->name ?? '' }}"
                             class="rounded-lg shadow-lg w-full h-auto"
                         >
