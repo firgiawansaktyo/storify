@@ -21,10 +21,10 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::get('/{username}/invite/{id}', [HomeController::class, 'index'])
+Route::get('/{username}/invite/{guestSlug}', [HomeController::class, 'index'])
     ->where([
         'username' => '[A-Za-z0-9_]+',
-        'inviteCode' => '[A-Za-z0-9\-]+',
+        'guestSlug' => '[A-Za-z0-9\-]+',
     ])
     ->name('home');
 

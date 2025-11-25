@@ -26,6 +26,18 @@ class InvitedGuest extends Model
                 $model->{$model->getKeyName()} = (string) Str::uuid();
             }
         });
+
+        static::creating(function ($guest) {
+            if (empty($guest->slug) && !empty($guest->name)) {
+                $guest->slug = Str::slug($guest->name);
+            }
+        });
+
+        static::updating(function ($guest) {
+            if ($guest->isDirty('name')) {
+                $guest->slug = Str::slug($guest->name);
+            }
+        });
     }
 
     public function user()
