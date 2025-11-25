@@ -27,9 +27,8 @@ Route::get('/{username}/invite/{id}', [HomeController::class, 'index'])
     ])
     ->name('home');
 
-Route::middleware(['throttle:api', 'apikey'])
-    ->get('pictures/{id}', [ImageModalController::class, 'show'])
-    ->name('api.pictures.show');
+Route::get('pictures/{id}', [ImageModalController::class, 'show'])
+    ->name('pictures.show');
 
 Route::post('wishes/{user_id}', [WishController::class, 'store'])
     ->name('wishes.store');

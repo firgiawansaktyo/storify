@@ -14,11 +14,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        $middleware
-        ->append(SecurityHeaders::class)
-        ->alias([
-            'apikey' => RequireApiKey::class,
-        ]);
+        $middleware->append(SecurityHeaders::class);
         $middleware->trustProxies(at: '*');
     })
     ->withProviders([
