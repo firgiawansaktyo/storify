@@ -52,11 +52,11 @@
             class="text-center justify-center justify-self-center max-w-sm cursor-pointer"
             data-toggle="modal" 
             data-target="#imageModalBrideImage"
-            src="{{ old('bride_image') ? Storage::disk(env('FILESYSTEM_DISK'))->url(old('bride_image')) : (isset($couple) && $couple->bride_image ? Storage::disk(env('FILESYSTEM_DISK'))->url($couple->bride_image) : '') }}">
+            src="{{ old('bride_image') ? cdn_sweetvows(old('bride_image')) : (isset($couple) && $couple->bride_image ? cdn_sweetvows($couple->bride_image) : '') }}">
             <div class="modal fade" id="imageModalBrideImage" tabindex="-1" aria-labelledby="imageModalLabelBrideImage" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-lg">
                     <div class="modal-content">
-                        <img src="{{ Storage::disk(env('FILESYSTEM_DISK'))->url($couple->bride_image) }}" alt="Full Image">
+                        <img src="{{ cdn_sweetvows($couple->bride_image) }}" alt="Full Image">
                     </div>
                 </div>
             </div>
@@ -68,11 +68,11 @@
             class="text-center justify-center justify-self-center max-w-sm cursor-pointer"
             data-toggle="modal" 
             data-target="#imageModalGroomImage"
-            src="{{ old('groom_image') ? Storage::disk(env('FILESYSTEM_DISK'))->url(old('groom_image')) : (isset($couple) && $couple->groom_image ? Storage::disk(env('FILESYSTEM_DISK'))->url($couple->groom_image) : '') }}">
+            src="{{ old('groom_image') ? cdn_sweetvows(old('groom_image')) : (isset($couple) && $couple->groom_image ? cdn_sweetvows($couple->groom_image) : '') }}">
             <div class="modal fade" id="imageModalGroomImage" tabindex="-1" aria-labelledby="imageModalLabelGroomImage" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-lg">
                     <div class="modal-content">
-                        <img src="{{ Storage::disk(env('FILESYSTEM_DISK'))->url($couple->groom_image) }}" alt="Full Image">
+                        <img src="{{ cdn_sweetvows($couple->groom_image) }}" alt="Full Image">
                     </div>
                 </div>
             </div>

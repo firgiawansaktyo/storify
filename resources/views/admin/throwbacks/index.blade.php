@@ -40,13 +40,13 @@
                                         class="text-center justify-center justify-self-center max-w-sm cursor-pointer"
                                         data-toggle="modal" 
                                         data-target="#imageModalThrowbackImage-{{ $throwback->id }}"
-                                        src="{{ old('wedding_throwback_image') ? Storage::disk(env('FILESYSTEM_DISK'))->url(old('wedding_throwback_image')) : (isset($throwback) && $throwback->wedding_throwback_image ? Storage::disk(env('FILESYSTEM_DISK'))->url($throwback->wedding_throwback_image) : '') }}"
+                                        src="{{ old('wedding_throwback_image') ? cdn_sweetvows(old('wedding_throwback_image')) : (isset($throwback) && $throwback->wedding_throwback_image ? cdn_sweetvows($throwback->wedding_throwback_image) : '') }}"
                                         alt="Throwback Image"
                                     >
                                     <div class="modal fade" id="imageModalThrowbackImage-{{ $throwback->id }}" tabindex="-1" aria-labelledby="imageModalLabelThrowbackImage-{{ $throwback->id }}" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered modal-lg">
                                             <div class="modal-content">
-                                                <img src="{{ Storage::disk(env('FILESYSTEM_DISK'))->url($throwback->wedding_throwback_image) }}" alt="Full Image">
+                                                <img src="{{ cdn_sweetvows($throwback->wedding_throwback_image) }}" alt="Full Image">
                                             </div>
                                         </div>
                                     </div>

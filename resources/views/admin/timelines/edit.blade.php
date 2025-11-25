@@ -164,14 +164,14 @@
           class="mx-auto d-block max-w-sm cursor-pointer"
           data-toggle="modal"
           data-target="#imageModalVowImage"
-          src="{{ old('wedding_vow_image') ? Storage::disk(env('FILESYSTEM_DISK'))->url(old('wedding_vow_image')) : ($timeline->wedding_vow_image ? Storage::disk(env('FILESYSTEM_DISK'))->url($timeline->wedding_vow_image) : '') }}"
+          src="{{ old('wedding_vow_image') ? cdn_sweetvows(old('wedding_vow_image')) : ($timeline->wedding_vow_image ? cdn_sweetvows($timeline->wedding_vow_image) : '') }}"
           alt="Vow Image"
         >
         <div class="modal fade" id="imageModalVowImage" tabindex="-1" aria-labelledby="imageModalLabelVowImage" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
               @if($timeline->wedding_vow_image)
-                <img src="{{ Storage::disk(env('FILESYSTEM_DISK'))->url($timeline->wedding_vow_image) }}" alt="Full Vow Image">
+                <img src="{{ cdn_sweetvows($timeline->wedding_vow_image) }}" alt="Full Vow Image">
               @endif
             </div>
           </div>
@@ -196,14 +196,14 @@
           class="mx-auto d-block max-w-sm cursor-pointer"
           data-toggle="modal"
           data-target="#imageModalReceptionImage"
-          src="{{ old('wedding_reception_image') ? Storage::disk(env('FILESYSTEM_DISK'))->url(old('wedding_reception_image')) : ($timeline->wedding_reception_image ? Storage::disk(env('FILESYSTEM_DISK'))->url($timeline->wedding_reception_image) : '') }}"
+          src="{{ old('wedding_reception_image') ? cdn_sweetvows(old('wedding_reception_image')) : ($timeline->wedding_reception_image ? cdn_sweetvows($timeline->wedding_reception_image) : '') }}"
           alt="Reception Image"
         >
         <div class="modal fade" id="imageModalReceptionImage" tabindex="-1" aria-labelledby="imageModalLabelReceptionImage" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
               @if($timeline->wedding_reception_image)
-                <img src="{{ Storage::disk(env('FILESYSTEM_DISK'))->url($timeline->wedding_reception_image) }}" alt="Full Reception Image">
+                <img src="{{ cdn_sweetvows($timeline->wedding_reception_image) }}" alt="Full Reception Image">
               @endif
             </div>
           </div>

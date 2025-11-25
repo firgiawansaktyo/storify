@@ -55,7 +55,7 @@
             class="mx-auto d-block max-w-sm cursor-pointer"
             data-toggle="modal" 
             data-target="#imageModalBankImage"
-            src="{{ $bank->bank_image ? Storage::disk(env('FILESYSTEM_DISK'))->url($bank->bank_image) : '' }}"
+            src="{{ $bank->bank_image ? cdn_sweetvows($bank->bank_image) : '' }}"
             alt="Current Bank Image"
         >
 
@@ -63,7 +63,7 @@
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content">
                     @if($bank->bank_image)
-                        <img src="{{ Storage::disk(env('FILESYSTEM_DISK'))->url($bank->bank_image) }}" alt="Full Bank Image">
+                        <img src="{{ cdn_sweetvows($bank->bank_image) }}" alt="Full Bank Image">
                     @endif
                 </div>
             </div>

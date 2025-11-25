@@ -43,14 +43,14 @@
                                             class="text-center justify-center justify-self-center max-w-sm cursor-pointer"
                                             data-toggle="modal"
                                             data-target="#imageModalQrisImage-{{ $gift->id }}"
-                                            src="{{ old('qris_image') ? Storage::disk(env('FILESYSTEM_DISK'))->url(old('qris_image')) : Storage::disk(env('FILESYSTEM_DISK'))->url($gift->qris_image) }}"
+                                            src="{{ old('qris_image') ? cdn_sweetvows(old('qris_image')) : cdn_sweetvows($gift->qris_image) }}"
                                             alt="QRIS Image">
 
                                         <!-- Modal Preview -->
                                         <div class="modal fade" id="imageModalQrisImage-{{ $gift->id }}" tabindex="-1" aria-labelledby="imageModalLabelQrisImage-{{ $gift->id }}" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered modal-lg">
                                                 <div class="modal-content">
-                                                    <img src="{{ Storage::disk(env('FILESYSTEM_DISK'))->url($gift->qris_image) }}" alt="Full Image">
+                                                    <img src="{{ cdn_sweetvows($gift->qris_image) }}" alt="Full Image">
                                                 </div>
                                             </div>
                                         </div>
