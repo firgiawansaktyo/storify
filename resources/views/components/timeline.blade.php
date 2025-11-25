@@ -14,7 +14,7 @@
 
                 <h3 class="mb-1 text-xl font-semibold">Akad</h3>
                 <time class="block mb-1 text-sm font-normal text-[var(--spotify-gray)]">
-                    {{ \Carbon\Carbon::parse($wedding->wedding_vow_date)->format('d F Y') }},
+                    {{ \Carbon\Carbon::parse($wedding->wedding_vow_date)->locale('id')->translatedFormat('l, d F Y') }}
                     {{ $wedding->wedding_vow_start_time }} - {{ $wedding->wedding_vow_end_time }} WIB
                 </time>
                 <p class="mb-1 text-base font-normal text-[var(--spotify-gray)]">
@@ -38,7 +38,7 @@
                 <h3 class="mb-1 text-xl font-semibold">Resepsi</h3>
 
                 <time class="block mb-1 text-sm font-normal text-[var(--spotify-gray)]">
-                    {{ \Carbon\Carbon::parse($wedding->wedding_reception_date)->format('d F Y') }},
+                    {{ \Carbon\Carbon::parse($wedding->wedding_reception_date)->locale('id')->translatedFormat('l, d F Y') }}
                     {{ $wedding->wedding_reception_start_time }} - {{ $wedding->wedding_reception_end_time }} WIB
                 </time>
 
