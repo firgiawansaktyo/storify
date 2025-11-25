@@ -1,5 +1,3 @@
-// image-modal.js
-
 import Alpine from 'alpinejs';
 import focus from '@alpinejs/focus';
 
@@ -11,7 +9,6 @@ document.addEventListener('alpine:init', () => {
         item: null,
 
         open(item) {
-            // make sure we always have data *before* showing
             this.item = item;
             this.isOpen = true;
         },
