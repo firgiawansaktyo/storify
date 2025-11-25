@@ -1,4 +1,4 @@
-<div class="container-sweetvows bg-[var(--spotify-gray-bold)] p-5 rounded-xl">
+<div class="container-sweetvows bg-[var(--spotify-gray-bold)] p-5">
     <h2 class="text-xl font-bold mb-4">Timeline</h2>
 
     <div class="timeline pl-5">
