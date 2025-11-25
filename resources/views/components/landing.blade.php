@@ -63,7 +63,7 @@
 
                 <div class="px-4 sm:px-6 flex flex-wrap items-center gap-1 text-[var(--spotify-gray)] text-xs sm:text-sm md:text-base">
                     <span>
-                        {{ \Carbon\Carbon::parse($wedding->wedding_vow_datas)->format('l, F j Y') }}
+                        {{ \Carbon\Carbon::parse($wedding->wedding_vow_date)->locale('id')->translatedFormat('l, d F Y') }}
                     </span>
                     <span>•</span>
                     @php
