@@ -36,12 +36,12 @@
                                 class="text-center justify-center justify-self-center max-w-sm cursor-pointer"
                                 data-toggle="modal" 
                                 data-target="#imageModalBankImage-{{ $bank->id }}"
-                                src="{{ old('bank_image') ? Storage::disk(env('FILESYSTEM_DISK'))->url(old('bank_image')) : (isset($bank) && $bank->bank_image ? Storage::disk(env('FILESYSTEM_DISK'))->url($bank->bank_image) : '') }}">
+                                src="{{ old('bank_image') ? cdn_sweetvows(old('bank_image')) : (isset($bank) && $bank->bank_image ? cdn_sweetvows($bank->bank_image) : '') }}">
 
                             <div class="modal fade" id="imageModalBankImage-{{ $bank->id }}" tabindex="-1" aria-labelledby="imageModalLabelBankImage-{{ $bank->id }}" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered modal-lg">
                                     <div class="modal-content">
-                                        <img src="{{ Storage::disk(env('FILESYSTEM_DISK'))->url($bank->bank_image) }}" alt="Full Image">
+                                        <img src="{{ cdn_sweetvows($bank->bank_image) }}" alt="Full Image">
                                     </div>
                                 </div>
                             </div>

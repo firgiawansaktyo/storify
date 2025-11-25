@@ -99,7 +99,7 @@
             class="mx-auto d-block max-w-sm cursor-pointer"
             data-toggle="modal"
             data-target="#imageModalBrideImage"
-            src="{{ old('bride_image') ? Storage::disk(env('FILESYSTEM_DISK'))->url(old('bride_image')) : ($couple->bride_image ? Storage::disk(env('FILESYSTEM_DISK'))->url($couple->bride_image) : '') }}"
+            src="{{ old('bride_image') ? cdn_sweetvows(old('bride_image')) : ($couple->bride_image ? cdn_sweetvows($couple->bride_image) : '') }}"
             alt="Bride Image"
           >
 
@@ -107,7 +107,7 @@
             <div class="modal-dialog modal-dialog-centered modal-lg">
               <div class="modal-content">
                 @if($couple->bride_image)
-                  <img src="{{ Storage::disk(env('FILESYSTEM_DISK'))->url($couple->bride_image) }}" alt="Full Bride Image">
+                  <img src="{{ cdn_sweetvows($couple->bride_image) }}" alt="Full Bride Image">
                 @endif
               </div>
             </div>
@@ -138,7 +138,7 @@
             class="mx-auto d-block max-w-sm cursor-pointer"
             data-toggle="modal"
             data-target="#imageModalGroomImage"
-            src="{{ old('groom_image') ? Storage::disk(env('FILESYSTEM_DISK'))->url(old('groom_image')) : ($couple->groom_image ? Storage::disk(env('FILESYSTEM_DISK'))->url($couple->groom_image) : '') }}"
+            src="{{ old('groom_image') ? cdn_sweetvows(old('groom_image')) : ($couple->groom_image ? cdn_sweetvows($couple->groom_image) : '') }}"
             alt="Groom Image"
           >
 
@@ -146,7 +146,7 @@
             <div class="modal-dialog modal-dialog-centered modal-lg">
               <div class="modal-content">
                 @if($couple->groom_image)
-                  <img src="{{ Storage::disk(env('FILESYSTEM_DISK'))->url($couple->groom_image) }}" alt="Full Groom Image">
+                  <img src="{{ cdn_sweetvows($couple->groom_image) }}" alt="Full Groom Image">
                 @endif
               </div>
             </div>

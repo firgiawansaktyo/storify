@@ -71,14 +71,14 @@
             class="mx-auto d-block max-w-sm cursor-pointer"
             data-toggle="modal"
             data-target="#imageModalQrisImage"
-            src="{{ old('qris_image') ? Storage::disk(env('FILESYSTEM_DISK'))->url(old('qris_image')) : Storage::disk(env('FILESYSTEM_DISK'))->url($gift->qris_image) }}"
+            src="{{ old('qris_image') ? cdn_sweetvows(old('qris_image')) : cdn_sweetvows($gift->qris_image) }}"
             alt="QRIS Image"
           >
 
           <div class="modal fade" id="imageModalQrisImage" tabindex="-1" aria-labelledby="imageModalLabelQrisImage" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-lg">
               <div class="modal-content">
-                <img src="{{ Storage::disk(env('FILESYSTEM_DISK'))->url($gift->qris_image) }}" alt="Full Image">
+                <img src="{{ cdn_sweetvows($gift->qris_image) }}" alt="Full Image">
               </div>
             </div>
           </div>

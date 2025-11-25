@@ -40,12 +40,12 @@
                                 class="text-center justify-center justify-self-center max-w-sm cursor-pointer"
                                 data-toggle="modal" 
                                 data-target="#imageModalAlbumImage-{{ $album->id }}"
-                                src="{{ old('wedding_album_image') ? Storage::disk(env('FILESYSTEM_DISK'))->url(old('wedding_album_image')) : (isset($album) && $album->wedding_album_image ? Storage::disk(env('FILESYSTEM_DISK'))->url($album->wedding_album_image) : '') }}">
+                                src="{{ old('wedding_album_image') ? cdn_sweetvows(old('wedding_album_image')) : (isset($album) && $album->wedding_album_image ? cdn_sweetvows($album->wedding_album_image) : '') }}">
                                 
                             <div class="modal fade" id="imageModalAlbumImage-{{ $album->id }}" tabindex="-1" aria-labelledby="imageModalLabelAlbumImage-{{ $album->id }}" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered modal-lg">
                                     <div class="modal-content">
-                                        <img src="{{ Storage::disk(env('FILESYSTEM_DISK'))->url($album->wedding_album_image) }}" alt="Full Image">
+                                        <img src="{{ cdn_sweetvows($album->wedding_album_image) }}" alt="Full Image">
                                     </div>
                                 </div>
                             </div>

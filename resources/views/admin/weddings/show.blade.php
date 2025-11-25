@@ -56,11 +56,11 @@
           class="text-center justify-center justify-self-center max-w-sm cursor-pointer"
           data-toggle="modal" 
           data-target="#imageModalWeddingImage"
-          src="{{ old('wedding_image') ? Storage::disk(env('FILESYSTEM_DISK'))->url(old('wedding_image')) : (isset($wedding) && $wedding->wedding_image ? Storage::disk(env('FILESYSTEM_DISK'))->url($wedding->wedding_image) : '') }}">
+          src="{{ old('wedding_image') ? cdn_sweetvows(old('wedding_image')) : (isset($wedding) && $wedding->wedding_image ? cdn_sweetvows($wedding->wedding_image) : '') }}">
         <div class="modal fade" id="imageModalWeddingImage" tabindex="-1" aria-labelledby="imageModalLabelWeddingImage" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered modal-lg">
               <div class="modal-content">
-                  <img src="{{ Storage::disk(env('FILESYSTEM_DISK'))->url($wedding->wedding_image) }}" alt="Full Image">
+                  <img src="{{ cdn_sweetvows($wedding->wedding_image) }}" alt="Full Image">
               </div>
           </div>
         </div>
@@ -75,7 +75,7 @@
           id="videoPreview"
           class="text-center justify-center justify-self-center max-w-sm cursor-pointer"
           controls
-          src="{{ old('wedding_video') ? Storage::disk(env('FILESYSTEM_DISK'))->url(old('wedding_video')) : (isset($wedding) && $wedding->wedding_video ? Storage::disk(env('FILESYSTEM_DISK'))->url($wedding->wedding_video) : '') }}">
+          src="{{ old('wedding_video') ? cdn_sweetvows(old('wedding_video')) : (isset($wedding) && $wedding->wedding_video ? cdn_sweetvows($wedding->wedding_video) : '') }}">
       </div>
 
       <div class="form-group">
@@ -87,7 +87,7 @@
           id="imagePreview"
           class="text-center justify-center justify-self-center max-w-sm cursor-pointer"
           controls
-          src="{{ old('wedding_audio') ? Storage::disk(env('FILESYSTEM_DISK'))->url(old('wedding_audio')) : (isset($wedding) && $wedding->wedding_audio ? Storage::disk(env('FILESYSTEM_DISK'))->url($wedding->wedding_audio) : '') }}">
+          src="{{ old('wedding_audio') ? cdn_sweetvows(old('wedding_audio')) : (isset($wedding) && $wedding->wedding_audio ? cdn_sweetvows($wedding->wedding_audio) : '') }}">
       </div>
 
       <div class="form-group">
@@ -100,11 +100,11 @@
           class="text-center justify-center justify-self-center max-w-sm cursor-pointer"
           data-toggle="modal" 
           data-target="#imageModalWeddingLandingImage"
-          src="{{ old('wedding_landing_image') ? Storage::disk(env('FILESYSTEM_DISK'))->url(old('wedding_landing_image')) : (isset($wedding) && $wedding->wedding_landing_image ? Storage::disk(env('FILESYSTEM_DISK'))->url($wedding->wedding_landing_image) : '') }}">
+          src="{{ old('wedding_landing_image') ? cdn_sweetvows(old('wedding_landing_image')) : (isset($wedding) && $wedding->wedding_landing_image ? cdn_sweetvows($wedding->wedding_landing_image) : '') }}">
         <div class="modal fade" id="imageModalWeddingLandingImage" tabindex="-1" aria-labelledby="imageModalLabelWeddingLandingImage" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered modal-lg">
               <div class="modal-content">
-                  <img src="{{ Storage::disk(env('FILESYSTEM_DISK'))->url($wedding->wedding_landing_image) }}" alt="Full Image">
+                  <img src="{{ cdn_sweetvows($wedding->wedding_landing_image) }}" alt="Full Image">
               </div>
           </div>
         </div>
@@ -120,11 +120,11 @@
           class="text-center justify-center justify-self-center max-w-sm cursor-pointer"
           data-toggle="modal" 
           data-target="#imageModalWeddingHotNewsImage"
-          src="{{ old('wedding_hotnews_image') ? Storage::disk(env('FILESYSTEM_DISK'))->url(old('wedding_hotnews_image')) : (isset($wedding) && $wedding->wedding_hotnews_image ? Storage::disk(env('FILESYSTEM_DISK'))->url($wedding->wedding_hotnews_image) : '') }}">
+          src="{{ old('wedding_hotnews_image') ? cdn_sweetvows(old('wedding_hotnews_image')) : (isset($wedding) && $wedding->wedding_hotnews_image ? cdn_sweetvows($wedding->wedding_hotnews_image) : '') }}">
         <div class="modal fade" id="imageModalWeddingHotNewsImage" tabindex="-1" aria-labelledby="imageModalLabelWeddingHotNewsImage" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered modal-lg">
               <div class="modal-content">
-                  <img src="{{ Storage::disk(env('FILESYSTEM_DISK'))->url($wedding->wedding_hotnews_image) }}" alt="Full Image">
+                  <img src="{{ cdn_sweetvows($wedding->wedding_hotnews_image) }}" alt="Full Image">
               </div>
           </div>
         </div>
