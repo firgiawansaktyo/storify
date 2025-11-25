@@ -6,11 +6,11 @@ export default defineConfig({
     server: {
         host: 'localhost',
         port: 5173,
-        // headers: {
-        // 'X-Content-Type-Options': 'nosniff',
-        // 'Referrer-Policy': 'no-referrer-when-downgrade',
-        // 'Cross-Origin-Resource-Policy': 'same-origin',
-        // },
+        headers: {
+        'X-Content-Type-Options': 'nosniff',
+        'Referrer-Policy': 'no-referrer-when-downgrade',
+        'Cross-Origin-Resource-Policy': 'same-origin',
+        },
     },
     plugins: [
         laravel({

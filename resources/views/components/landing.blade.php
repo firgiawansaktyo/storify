@@ -3,7 +3,7 @@
         content: '';
         position: absolute;
         inset: 0;
-        background: url('{{ Storage::disk(env('FILESYSTEM_DISK'))->url($wedding->wedding_landing_image) }}');
+        background: url('{{ cdn_sweetvows($wedding->wedding_landing_image) }}');
         background-size: cover;
         background-position: center;
         filter: blur(50px);
@@ -31,7 +31,7 @@
             {{-- Cover image --}}
             <div class="relative pt-4">
                 <img
-                    src="{{ Storage::disk(env('FILESYSTEM_DISK'))->url($wedding->wedding_landing_image) }}"
+                    src="{{ cdn_sweetvows($wedding->wedding_landing_image) }}"
                     alt="Landing Image"
                     class="w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto object-cover shadow-lg"
                 />

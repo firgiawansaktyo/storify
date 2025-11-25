@@ -1,6 +1,6 @@
 <div class="container-sweetvows bg-[var(--spotify-gray-bold)] max-w-3xl mx-auto">
     <h2 class="text-xl font-bold">Hot News</h2>
-    <img class="rounded-md w-full h-full" src="{{ Storage::disk(env('FILESYSTEM_DISK'))->url($wedding->wedding_hotnews_image) }}">
+    <img class="rounded-md w-full h-full" src="{{ cdn_sweetvows($wedding->wedding_hotnews_image) }}">
     <p class="pt-2 text-[var(--spotify-gray)]">
         {{ $wedding->wedding_hotnews_description }}
     </p>

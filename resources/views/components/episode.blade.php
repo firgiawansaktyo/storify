@@ -4,7 +4,7 @@
         content: '';
         position: absolute;
         top: 0; left: 0; right: 0; bottom: 0;
-        background: url('{{ Storage::disk(env('FILESYSTEM_DISK'))->url($wedding->wedding_image) }}');
+        background: url('{{ cdn_sweetvows($wedding->wedding_image) }}');
         background-size: cover;
         filter: blur(60px);
         transform: scale(3);
@@ -18,13 +18,13 @@
         <div class="podcast-content flex flex-row align-center p-6 items-center justify-center gap-6">
           <img
             class="podcast-cover rounded-lg"
-            src="{{ Storage::disk(env('FILESYSTEM_DISK'))->url($wedding->wedding_image) }}"
+            src="{{ cdn_sweetvows($wedding->wedding_image) }}"
             alt="Episode Cover Art"
           />
           <div class="podcast-text flex-1 gap-6">
             <div class="podcast-label flex align-center">
             <span class="text-sm">•</span>
-              <span class="text-xs sm:text-xs md:text-base lg:text-sm xl:text-md font-semibold">New Podcast Episode</span>
+              <span class="text-xs sm:text-xs md:text-base lg:text-sm xl:text-md font-semibold">New Album Release</span>
             </div>
             <h1 class="podcast-title text-sm sm:text-md md:text-lg lg:text-xl xl:text-2xl font-bold">{{ $wedding->wedding_title }}</h1>
             <div class="podcast-subtitle text-sm sm:text-lg md:text-xl font-medium">{{ $wedding->wedding_sub_title }}</div>

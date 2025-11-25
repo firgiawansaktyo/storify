@@ -21,7 +21,7 @@
                     {{ $wedding->wedding_vow_location }}
                 </p>
                 @if ($wedding->wedding_vow_image)
-                    <img src="{{ Storage::disk(env('FILESYSTEM_DISK'))->url($wedding->wedding_vow_image) }}"
+                    <img src="{{ cdn_sweetvows($wedding->wedding_vow_image) }}"
                          alt="Akad Image"
                          class="w-1/4 h-auto rounded-lg mt-2" />
                 @endif
@@ -47,7 +47,7 @@
                 </p>
 
                 @if ($wedding->wedding_reception_image)
-                    <img src="{{ Storage::disk(env('FILESYSTEM_DISK'))->url($wedding->wedding_reception_image) }}"
+                    <img src="{{ cdn_sweetvows($wedding->wedding_reception_image) }}"
                          alt="Resepsi Image"
                          class="w-1/4 h-auto rounded-lg mt-2" />
                 @endif
