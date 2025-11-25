@@ -48,7 +48,9 @@
           <span class="px-1 text-sm]">Hot Released</span>
         </div>
         <div>
-          <span class="text-sm text-[var(--spotify-gray)]">{{ \Carbon\Carbon::parse($wedding->wedding_vow_datas)->format('l, F j Y') }}</span>
+          <span class="text-sm text-[var(--spotify-gray)]">
+              {{ \Carbon\Carbon::parse($wedding->wedding_vow_date)->locale('id')->translatedFormat('l, d F Y') }}
+          </span>
           <span class="text-sm text-[var(--spotify-gray)]">•</span>
           @php
               $start = \Carbon\Carbon::createFromFormat('H:i', $wedding->wedding_vow_start_time);
