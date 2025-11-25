@@ -3,7 +3,11 @@
         <div class="text-center">
             <x-logo/>
         </div>
-        <h1 class="font-bold text-2xl flex flex-col items-center justify-center justify-self-center">Picked For {{ $invitedGuestName }}</h1>
+        <div class="w-full flex justify-center">
+            <h1 class="font-bold text-2xl text-center">
+                Picked For {{ $invitedGuestName }}
+            </h1>
+        </div>
         <div class="flex items-center justify-center">
             <div id="LandingBtn" class="group w-full grid grid-cols-2 md:grid-cols-2 rounded-lg p-0.5 hover:bg-[var(--spotify-gray-semibold)] cursor-pointer overflow-hidden hover:scale-105 transition">
                 <div>
