@@ -84,7 +84,7 @@
                     class="mt-4 flex flex-col items-center justify-center mx-auto text-xs sm:text-sm md:text-base text-[var(--spotify-white)] hover:text-[var(--spotify-gray)] py-2"
                 >
                     <span class="font-semibold tracking-wider uppercase">
-                        Show more
+                        Lihat lebih banyak
                     </span>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"

@@ -268,3 +268,7 @@ body {
     z-index: -2;
     height: 10%;
 }
+
+[x-cloak] {
+    display: none !important;
+}

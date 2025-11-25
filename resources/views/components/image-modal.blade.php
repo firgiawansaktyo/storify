@@ -1,7 +1,7 @@
 <div
-  x-data
+  x-data="{ isOpen: false, item: { image: '', title: '', description: '' } }"
   x-cloak
-  x-show="$store.imageModal.isOpen && $store.imageModal.item"
+  x-show="$store.imageModal.isOpen && $store.imageModal.item.image"
   x-trap.inert.noscroll="$store.imageModal.isOpen && $store.imageModal.item"
   x-transition.opacity
   x-on:keydown.esc.window="$store.imageModal.close()"
