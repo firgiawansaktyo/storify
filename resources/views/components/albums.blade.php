@@ -23,27 +23,33 @@
         </button>
 
         <div id="carousel-albums" class="flex overflow-x-auto no-scrollbar scroll-smooth px-1 py-1">
-            @foreach ($albums as $album )
-            @php
-                $encryptedId = encrypt($album->id);
-            @endphp
-            <div class="carousel-card-albums flex-shrink-0 w-48 h-64 p-1" 
-            @click="$store.imageModal.fetch({ id: '{{ $encryptedId }}' })"
-            >
-                <div class="p-1 rounded-lg cursor-pointer hover:bg-[var(--spotify-gray-semibold)] hover:scale-105 transition flex flex-col">
-                    <div class="aspect-square overflow-hidden w-full rounded-lg">
-                        <img
-                        src="{{ cdn_sweetvows($album->wedding_album_image) }}"
-                        alt="image-{{ $album->wedding_album_title }}"
-                        class="rounded-lg w-full h-full object-cover"
-                        />
-                    </div>
-                    <div class="flex flex-col justify-center pt-2 h-15">
-                        <span class="text-sm font-semibold truncate">{{ $album->wedding_album_title }}</span>
-                        <p class="text-[var(--spotify-gray)] text-xs line-clamp-2">{{ $album->wedding_album_description }}</p>
+            @foreach ($albums as $album)
+                <div
+                    class="carousel-card-albums flex-shrink-0 w-48 h-64 p-1"
+                    @click="$store.imageModal.open({
+                        image: '{{ cdn_sweetvows($album->wedding_album_image) }}',
+                        title: @js($album->wedding_album_title),
+                        description: @js($album->wedding_album_description),
+                    })"
+                >
+                    <div class="p-1 rounded-lg cursor-pointer hover:bg-[var(--spotify-gray-semibold)] hover:scale-105 transition flex flex-col">
+                        <div class="aspect-square overflow-hidden w-full rounded-lg">
+                            <img
+                                src="{{ cdn_sweetvows($album->wedding_album_image) }}"
+                                alt="image-{{ $album->wedding_album_title }}"
+                                class="rounded-lg w-full h-full object-cover"
+                            />
+                        </div>
+                        <div class="flex flex-col justify-center pt-2 h-15">
+                            <span class="text-sm font-semibold truncate">
+                                {{ $album->wedding_album_title }}
+                            </span>
+                            <p class="text-[var(--spotify-gray)] text-xs line-clamp-2">
+                                {{ $album->wedding_album_description }}
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
             @endforeach
         </div>
     </div>
