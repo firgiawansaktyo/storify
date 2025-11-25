@@ -14,50 +14,6 @@
       z-index: 1;
       height: 30%;
     }
-
-    #playPause {
-      position: relative; 
-    }
-
-    .tooltip {
-      visibility: visible;
-      opacity: 1;
-      transition: opacity 0.3s ease-in-out;
-      font-size: 9px;
-      padding: 0.4em;
-      border-radius: 4px;
-      background-color: black;
-      color: white;
-      text-align: center;
-      position: absolute;
-      bottom: 48px;
-      transform: translateX(-18%);
-      z-index: 10;
-    }
-
-    .tooltip:before {
-      content: '';
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      border-left: 5px solid transparent;
-      border-right: 5px solid transparent;
-      border-top: 5px solid black;
-    }
-
-    #closeTooltip {
-      font-weight: bold;
-      margin-left: 10px;
-      cursor: pointer;
-      color: gray;
-      top: 5px;
-      right: 5px;
-    }
-
-    #closeTooltip:hover {
-      color: white;
-    }
   </style>
 
   <div class="wedding-background"></div>
@@ -144,11 +100,3 @@
     </div>
   </div>
 </div>
-
-<script>
-  document.getElementById('closeTooltip').addEventListener('click', function() {
-    var tooltip = document.getElementById('tooltip');
-    tooltip.style.visibility = 'hidden';
-    tooltip.style.opacity = '0';
-  });
-</script>
