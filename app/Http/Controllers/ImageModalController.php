@@ -21,8 +21,6 @@ class ImageModalController extends Controller
             return new ImageModalResource(false, Response::HTTP_UNPROCESSABLE_ENTITY, []);
         }
 
-        $disk = env('FILESYSTEM_DISK', config('filesystems.default', 'public'));
-
         $throwbacks = Throwback::find($id);
         $albums     = Album::find($id);
 
@@ -30,7 +28,7 @@ class ImageModalController extends Controller
             $imagePath = $throwbacks->wedding_throwback_image;
 
             $images = [
-                'image'       => Storage::disk($disk)->url($imagePath),
+                'image'       => cdn_sweetvows($imagePath),
                 'title'       => $throwbacks->wedding_throwback_title,
                 'description' => $throwbacks->wedding_throwback_description,
             ];
@@ -40,7 +38,7 @@ class ImageModalController extends Controller
             $imagePath = $albums->wedding_album_image;
 
             $images = [
-                'image'       => Storage::disk($disk)->url($imagePath),
+                'image'       => cdn_sweetvows($imagePath),
                 'title'       => $albums->wedding_album_title,
                 'description' => $albums->wedding_album_description,
             ];
