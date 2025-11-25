@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\Wish;
 use App\Models\Bank;
 use App\Models\Gift;
+use App\Models\Hashtag;
 use Illuminate\Support\Str;
 
 
@@ -33,13 +34,14 @@ class HomeController extends Controller
             ->join('timelines', 'timelines.user_id', '=', 'users.id')
             ->join('couples', 'couples.user_id', '=', 'users.id')
             ->join('weddings', 'weddings.user_id', '=', 'users.id')
+            ->join('hashtags', 'hashtags.user_id', '=', 'users.id')
             ->select(
                 'users.id as user_id',
                 'users.name as user_name',
                 'invited_guests.*',
                 'timelines.*',
                 'couples.*',
-                'weddings.*',)
+                'weddings.*')
             ->first();
             $invitedGuestName = $invitedGuest->name;
             $albums = Album::where('user_id', $invitedGuest->user_id)->orderBy('created_at', 'asc')->get();
@@ -50,7 +52,8 @@ class HomeController extends Controller
             ->orderBy('created_at', 'asc')
             ->get();
             $banks = Bank::whereIn('id', $gifts->pluck('bank_id')->filter()->unique())->get();
-            return view('home', compact('wedding', 'albums', 'throwbacks', 'wishes', 'banks', 'gifts', 'invitedGuestName'));
+            $hashtags = Hashtag::where('user_id', $invitedGuest->user_id)->orderBy('created_at', 'asc')->get();
+            return view('home', compact('wedding', 'albums', 'throwbacks', 'wishes', 'banks', 'gifts', 'invitedGuestName', 'hashtags'));
         }
     }
 
