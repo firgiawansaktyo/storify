@@ -33,9 +33,9 @@ class SecurityHeaders
         } else {
             $csp = "default-src 'self'; "
                 . "script-src 'self' 'unsafe-eval' 'unsafe-inline' "
-                    . "https://sweetvows.site "
-                    . "https://cdn.sweetvows.site "
-                    . "https://static.cloudflareinsights.com; "
+                . "https://sweetvows.site "
+                . "https://cdn.sweetvows.site "
+                // . "https://static.cloudflareinsights.com; "
                 . "style-src 'self' 'unsafe-inline' https://sweetvows.site https://cdn.sweetvows.site; "
                 . "img-src 'self' data: blob: https://sweetvows.site https://cdn.sweetvows.site https://*.backblazeb2.com; "
                 . "media-src 'self' https://cdn.sweetvows.site https://*.backblazeb2.com; "
