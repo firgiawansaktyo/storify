@@ -72,7 +72,7 @@
                                 </button>
 
                                 <div class="social-share-buttons">
-                                    <a href="https://api.whatsapp.com/send?text={{ rawurlencode(($messageTemplate ?? '') . "\n\n" . url(($userName ?? 'user') . '/invite/'. $invitedGuest->id)) }}"
+                                    <a href="https://api.whatsapp.com/send?text={{ rawurlencode(($messageTemplate ?? '') . "\n\n" . url(($userName ?? 'user') . '/invite/'. $invitedGuest->slug)) }}"
                                        target="_blank"
                                        class="btn btn-sm btn-success">
                                         <i class="fab fa-whatsapp"></i>
