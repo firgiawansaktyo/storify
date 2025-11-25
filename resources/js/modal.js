@@ -13,12 +13,10 @@ document.addEventListener('alpine:init', () => {
         },
 
         open(item) {
-            this.item = item || {
-                image: '',
-                title: '',
-                description: '',
-            };
-            this.isOpen = true;
+            if (item && item.image) {
+                this.item = item;
+                this.isOpen = true;
+            }
         },
 
         close() {
@@ -31,6 +29,7 @@ document.addEventListener('alpine:init', () => {
         }
     });
 });
+
 
 window.Alpine = Alpine;
 Alpine.start();
