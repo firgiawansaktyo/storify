@@ -16,7 +16,6 @@
         x-transition:enter-start="scale-90 opacity-0"
         x-transition:enter-end="scale-100 opacity-100"
     >
-        <!-- Close button -->
         <button
             @click="$store.imageModal.close()"
             aria-label="Close modal"
@@ -29,14 +28,12 @@
             </svg>
         </button>
 
-        <!-- Blurred background -->
         <div
-            class="absolute inset-0 bg-cover bg-center blur-3xl scale-200 -z-10"
+            class="absolute inset-0 bg-cover bg-center blur-3xl scale-200"
             x-bind:style="'background-image: url(' + $store.imageModal.item.image + ')'"
         ></div>
-        <div class="absolute inset-0 bg-black/40 -z-10"></div>
+        <div class="absolute inset-0 bg-black/40"></div>
 
-        <!-- Content -->
         <div class="relative z-10 flex flex-col px-6 pb-6 pt-6">
             <div class="w-full overflow-hidden">
                 <img
