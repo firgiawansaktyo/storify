@@ -3,9 +3,6 @@
     <p class="text-[var(--spotify-gray)]">
         {{ $wedding->wedding_description }}
     </p>
-    <p class="italic text-[var(--spotify-gray)]">
-        {{ $wedding->wedding_prayer_verse ??  null }}
-    </p>
 </div>
 
 <div class="container-sweetvows bg-[var(--spotify-gray-bold)]">
