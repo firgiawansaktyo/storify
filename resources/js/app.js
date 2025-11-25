@@ -8,7 +8,6 @@ import './carousel-album';
 import './carousel-throwback';
 import './wish';
 import './qris';
-import './tooltip';
 
 
 
