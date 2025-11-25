@@ -13,7 +13,6 @@
         @endphp
 
         <div class="relative rounded-lg p-3 sm:p-4 bg-[var(--spotify-gray-bold)]">
-            {{-- Main content: image + text (mobile & desktop) --}}
             <div class="flex gap-3 sm:gap-4">
                 <div class="flex-shrink-0">
                     <img
@@ -24,12 +23,10 @@
                 </div>
 
                 <div class="flex-1 min-w-0">
-                    {{-- Bank name --}}
                     <p class="text-sm sm:text-base font-medium text-white tracking-wide truncate">
                         {{ $gift->bank->name ?? 'Bank' }}
                     </p>
 
-                    {{-- Account info --}}
                     @if (!$gift->qris_image)
                         <p class="mt-1 text-xs sm:text-sm text-gray-400 break-words">
                             <span class="font-medium text-gray-200">{{ $gift->account_number }}</span>
@@ -49,7 +46,6 @@
                         </p>
                     @endif
 
-                    {{-- MOBILE BUTTONS (only show on mobile) --}}
                     <div class="mt-3 flex flex-wrap items-center gap-2 sm:hidden">
                         @if (!$gift->qris_image)
                             <button
@@ -93,7 +89,6 @@
                 </div>
             </div>
 
-            {{-- Actions on desktop/tablet: floated to the right --}}
             <div class="hidden sm:flex items-center gap-2 absolute right-3 top-1/2 -translate-y-1/2">
                 @if (!$gift->qris_image)
                     <button
