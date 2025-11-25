@@ -61,7 +61,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const res = await axios.get(jsonUrl); 
             renderWishes(res.data.wishes);
         } catch (err) {
-            console.error("Failed to load wishes:", err);
         }
     }
 
@@ -76,7 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
             wishForm.reset();
             loadWishes();
         } catch (err) {
-            console.error("Failed to submit wish:", err);
         }
     });
 });
