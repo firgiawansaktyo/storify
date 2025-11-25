@@ -15,10 +15,13 @@ class WishController extends Controller
             'message' => 'required|string|min:10|max:1000',
         ]);
 
+        $safeName = strip_tags($validated['name']);
+        $safeMessage = strip_tags($validated['message']);
+
         Wish::create([
             'user_id' => $user_id,
-            'name' => $validated['name'],
-            'message' => $validated['message'],
+            'name' => $safeName,
+            'message' => $safeMessage,
         ]);
         return redirect()->back()->with('success', 'Your wish has been sent!');
     }
