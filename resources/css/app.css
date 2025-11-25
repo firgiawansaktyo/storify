@@ -147,12 +147,6 @@ body {
     margin-top: -10px;
 }
 
-.episode-text {
-  margin-top: -5px;
-  padding-left: 24px;
-  padding-right: 24px;
-}
-
 .galleries {
   border-radius: 8px;
 }
@@ -173,11 +167,7 @@ body {
     overflow: hidden;
   }
 
-.landing-cover {
-    position: relative;
-    overflow: hidden;
-    z-index: 0;
-  }
+
 
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
@@ -248,6 +238,12 @@ body {
 .landing-header-after {
   position: relative; 
   z-index: 2;
+}
+
+.landing-cover {
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
 }
 
 .gift-qris {
