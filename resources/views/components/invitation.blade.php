@@ -10,16 +10,30 @@
                     <img src="{{ cdn_sweetvows($wedding->wedding_image) }}" alt="Wedding Cover" class="w-full h-auto object-cover rounded-l-lg"/>
                 </div>
                 <div class="relative group flex flex-col items-start md:items-start justify-center
-                        space-y-2 bg-[var(--spotify-gray-bold)] px-6 py-4 rounded-r-lg">
-                    <h2 class="text-sm sm:text-md md:text-lg lg:text-xl xl:text-2xl font-bold text-start md:text-left">{{ $wedding->wedding_title }}</h2>
+                            space-y-2 bg-[var(--spotify-gray-bold)] px-6 py-4 rounded-r-lg">
+
+                    <h2 class="text-sm sm:text-md md:text-lg lg:text-xl xl:text-2xl font-bold text-start md:text-left">
+                        {{ $wedding->wedding_title }}
+                    </h2>
+
                     <p class="text-xs sm:text-sm md:text-md text-[var(--spotify-gray)]">
                         {{ $wedding->wedding_sub_title }}
                     </p>
+
+                    <div class="flex flex-wrap gap-1">
+                        @forelse ($hashtags as $tag)
+                            <span class="text-xs sm:text-sm md:text-md rounded-full">
+                                #{{ $tag->name }}
+                            </span>
+                        @empty
+                        @endforelse
+                    </div>
+
                     <div class="absolute inset-0 p-2 transition-colors duration-200 flex items-center justify-center rounded-l-lg">
                         <button class="button-spotify absolute bottom-4 right-4 bg-[var(--spotify-green)] p-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="black">
-                            <path d="M8 5v14l11-7z"/>
-                        </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="black">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
                         </button>
                     </div>
                 </div>

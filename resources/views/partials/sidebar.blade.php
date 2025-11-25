@@ -56,6 +56,12 @@
         <i class="fas fa-users"></i>
         <span>Invited Guests</span></a>
 </li>
+<li class="nav-item {{ request()->is('hashtags') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('hashtags.index')}}">
+        <i class="fa fa-hashtag"></i>
+        <span>Hashtags</span>
+    </a>
+</li>
 @if(auth()->check() && auth()->user()->is_admin)
 </li>
 <li class="nav-item {{ request()->is('banks') ? 'active' : '' }}">

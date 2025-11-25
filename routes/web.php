@@ -9,6 +9,7 @@ use App\Http\Controllers\BankController;
 use App\Http\Controllers\CoupleController;
 use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\GiftController;
+use App\Http\Controllers\HashtagController;
 use App\Http\Controllers\InvitedGuestController;
 use App\Http\Controllers\ThrowbackController;
 use App\Http\Controllers\TimelineController;
@@ -51,6 +52,7 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::resource('timelines', TimelineController::class);
     Route::resource('couples', CoupleController::class);
     Route::resource('invited-guests', InvitedGuestController::class);
+    Route::resource('hashtags', HashtagController::class);
     Route::post('/import', [InvitedGuestController::class, 'import'])->name('import.handle');
     Route::resource('throwbacks', ThrowbackController::class);
 
