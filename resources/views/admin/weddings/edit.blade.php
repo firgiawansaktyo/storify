@@ -159,7 +159,7 @@
       </div>
 
       {{-- Wedding Audio --}}
-      <div class="form-group">
+      {{-- <div class="form-group">
         <label class="text-white">Wedding Audio</label>
         <input
           type="file"
@@ -183,7 +183,7 @@
           controls
           src="{{ old('wedding_audio') ? cdn_sweetvows(old('wedding_audio')) : ($wedding->wedding_audio ? cdn_sweetvows($wedding->wedding_audio) : '') }}"
         ></audio>
-      </div>
+      </div> --}}
 
       {{-- Wedding Landing Image --}}
       <div class="form-group">
@@ -277,7 +277,7 @@
   data-index-route="{{ route('weddings.index') }}"
   data-wedding-image="{{ $wedding->wedding_image }}"
   data-wedding-video="{{ $wedding->wedding_video }}"
-  data-wedding-audio="{{ $wedding->wedding_audio }}"
+  {{-- data-wedding-audio="{{ $wedding->wedding_audio }}" --}}
   data-wedding-landing-image="{{ $wedding->wedding_landing_image }}"
   data-wedding-hotnews-image="{{ $wedding->wedding_hotnews_image }}"
   class="d-none"

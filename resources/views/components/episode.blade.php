@@ -37,21 +37,25 @@
     </div>
 
     <div class="podcast-duration max-w-3xl mx-auto px-6 pt-2.5 pb-2 bg-gradient-to-b from-[var(--spotify-gray-bold)]/40 to-[var(--spotify-gray-bold)]">
-      <div class="flex flew-row items-center">
-        <img 
-          src="{{ asset('logo/swan-rounded.png') }}" 
-          alt="Sweet Vows Logo" 
-          class="w-6"/>
-        <span class="px-1 text-sm text-[var(--spotify-gray)]">Picked for <span class="font-bold text-[var(--spotify-white)]">{{ $invitedGuestName }}</span></span>
-        <svg class="w-4 h-4 text-[var(--spotify-gray)] border-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-          <path fill-rule="evenodd" d="M8.6 5.2A1 1 0 0 0 7 6v12a1 1 0 0 0 1.6.8l8-6a1 1 0 0 0 0-1.6l-8-6Z" clip-rule="evenodd"/>
-        </svg>
-        <span class="px-1 text-sm text-[var(--spotify-gray)]">Video</span>
-        <svg class="w-6 info-flipped" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 13V8m0 8h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
-        </svg>
-        <span class="px-1 text-sm">Hot Released</span>
+     <div class="flex flex-row items-center justify-between w-full">
+        <div class="flex items-center space-x-2">
+          <img src="{{ asset('logo/swan-rounded.png') }}" alt="Sweet Vows Logo" class="w-4 h-4" />
+          <span class="text-sm text-[var(--spotify-gray)]">
+            Picked for <span class="font-bold text-[var(--spotify-white)]">You</span>
+          </span>
+        </div>
+
+        <div class="flex items-center space-x-2 flex-1 justify-center">
+          <svg class="w-4 h-4 border-1 text-[var(--spotify-gray)]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"> <path fill-rule="evenodd" d="M8.6 5.2A1 1 0 0 0 7 6v12a1 1 0 0 0 1.6.8l8-6a1 1 0 0 0 0-1.6l-8-6Z" clip-rule="evenodd"/> </svg>
+          <span class="text-sm">Video</span>
+        </div>
+
+        <div class="flex items-center space-x-2">
+          <svg class="w-4 h-4 text-[var(--spotify-gray)]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"> <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 13V8m0 8h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/> </svg>
+          <span class="text-sm">Hot Released</span>
+        </div>
       </div>
+
       <div>
         <span class="text-sm text-[var(--spotify-gray)]">
             {{ \Carbon\Carbon::parse($wedding->wedding_vow_date)->locale('id')->translatedFormat('l, d F Y') }}

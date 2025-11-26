@@ -1,5 +1,5 @@
-<div class="container-sweetvows bg-[var(--spotify-gray-bold)]">
-    <h2 class="text-xl font-bold">Location</h2>
+<div class="container-sweetvows bg-[var(--spotify-gray-bold)] max-w-3xl mx-auto">
+    <h3 class="text-md font-bold">Location</h3>
     <div class="grid grid-cols-2 gap-4 justify-center items-center">
         <div x-data x-init="() => {
             let iframe = $el.querySelector('iframe[src*=&quot;google.com/maps/embed&quot;]');
@@ -14,8 +14,8 @@
         </div>
         <div>
             <p class="text-md">{{ $wedding->wedding_vow_location }}</p>
-            <p class="text-sm text-[var(--spotify-gray)]"> {{ $wedding->wedding_vow_address }}</p>
-        <a  class="underline text-center text-sm"
+            <p class="text-xs text-[var(--spotify-gray)]"> {{ $wedding->wedding_vow_address }}</p>
+        <a  class="underline text-center text-xs"
             href="{{ $wedding->wedding_vow_location_link }}"
             target="_blank"
             rel="noopener noreferrer">

@@ -78,7 +78,7 @@
           src="{{ old('wedding_video') ? cdn_sweetvows(old('wedding_video')) : (isset($wedding) && $wedding->wedding_video ? cdn_sweetvows($wedding->wedding_video) : '') }}">
       </div>
 
-      <div class="form-group">
+      {{-- <div class="form-group">
         <label class="text-white">Wedding Audio</label>
         <progress id="progressBarWeddingAudio" value="0" max="100" class="mt-2 w-100 d-none"></progress>
         <p id="statusWeddingAudio"></p>
@@ -88,7 +88,7 @@
           class="text-center justify-center justify-self-center max-w-sm cursor-pointer"
           controls
           src="{{ old('wedding_audio') ? cdn_sweetvows(old('wedding_audio')) : (isset($wedding) && $wedding->wedding_audio ? cdn_sweetvows($wedding->wedding_audio) : '') }}">
-      </div>
+      </div> --}}
 
       <div class="form-group">
         <label class="text-white">Wedding Landing Image</label>

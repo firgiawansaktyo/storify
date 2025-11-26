@@ -1,5 +1,5 @@
 <div class="container-sweetvows bg-[var(--spotify-gray-bold)] p-4 sm:p-6">
-    <h2 class="text-lg sm:text-xl font-bold text-white">Wedding Gift</h2>
+    <h3 class="text-md font-bold">Wedding Gift</h3>
     <p class="text-xs sm:text-sm text-[var(--spotify-gray)]">
         Bagi tamu undangan yang ingin memberikan tanda kasih untuk calon pengantin, dapat diberikan melalui:
     </p>
@@ -23,12 +23,12 @@
                 </div>
 
                 <div class="flex-1 min-w-0">
-                    <p class="text-sm sm:text-base font-medium text-white tracking-wide truncate">
+                    <p class="text-sm tracking-wide truncate">
                         {{ $gift->bank->name ?? 'Bank' }}
                     </p>
 
                     @if (!$gift->qris_image)
-                        <p class="mt-1 text-xs sm:text-sm text-gray-400 break-words">
+                        <p class="mt-1 text-xs text-gray-400 break-words">
                             <span class="font-medium text-gray-200">{{ $gift->account_number }}</span>
                             a.n <span class="font-medium text-gray-200">{{ $gift->account_holder }}</span>
                         </p>
@@ -41,7 +41,7 @@
                             readonly
                         >
                     @else
-                        <p class="mt-1 text-xs sm:text-sm text-gray-400 break-words">
+                        <p class="mt-1 text-xs text-gray-400 break-words">
                             a.n <span class="font-medium text-gray-200">{{ $gift->account_holder }}</span>
                         </p>
                     @endif

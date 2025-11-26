@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const wisher = (wish.name.charAt(0) || '?').toUpperCase();
             const color = generateColor(wish.id.toString());
             
-            avatarDiv.className = 'w-8 h-8 rounded-sm flex-shrink-0 flex items-center justify-center text-white font-bold';
+            avatarDiv.className = 'w-8 h-8 rounded-lg flex-shrink-0 flex items-center justify-center text-md font-bold';
             avatarDiv.style.backgroundColor = color;
             avatarDiv.textContent = wisher; 
 
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
             contentDiv.className = 'flex-1';
             
             const nameP = document.createElement('p');
-            nameP.className = 'text-white text-md text-justify break-words leading-tight';
+            nameP.className = 'text-sm text-justify break-words leading-tight';
             nameP.textContent = wish.name; 
 
             const messageP = document.createElement('p');
