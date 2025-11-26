@@ -13,7 +13,7 @@
             {!! $wedding->wedding_vow_iframe !!}
         </div>
         <div>
-            <p class="text-md">{{ $wedding->wedding_vow_location }}</p>
+            <p class="text-sm">{{ $wedding->wedding_vow_location }}</p>
             <p class="text-xs text-[var(--spotify-gray)]"> {{ $wedding->wedding_vow_address }}</p>
         <a  class="underline text-center text-xs"
             href="{{ $wedding->wedding_vow_location_link }}"
