@@ -1,5 +1,5 @@
 <div class="container-sweetvows bg-[var(--spotify-gray-bold)] p-4 sm:p-6">
-    <h3 class="text-md font-bold">Wedding Gift</h3>
+    <h3 class="text-md font-bold title-sweetvows">Wedding Gift</h3>
     <p class="text-xs sm:text-sm text-[var(--spotify-gray)]">
         Bagi tamu undangan yang ingin memberikan tanda kasih untuk calon pengantin, dapat diberikan melalui:
     </p>
@@ -12,7 +12,7 @@
             $modalId   = "qrisModal-{$gift->id}";
         @endphp
 
-        <div class="relative rounded-lg py-3 sm:p-4 bg-[var(--spotify-gray-bold)]">
+        <div class="relative rounded-lg py-3 sm:py-4 bg-[var(--spotify-gray-bold)]">
             <div class="flex gap-3 sm:gap-4">
                 <div class="flex-shrink-0">
                     <img

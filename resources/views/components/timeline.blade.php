@@ -1,5 +1,5 @@
 <div class="container-sweetvows bg-[var(--spotify-gray-bold)] max-w-3xl mx-auto">
-    <h3 class="text-md font-bold mb-2">Timeline</h3>
+    <h3 class="text-md font-bold title-sweetvows mb-4">Timeline</h3>
     <div class="timeline pl-5">
         <ol class="relative border-s border-white">
             <li class="mb-10 ms-6 ml-8">
