@@ -1,7 +1,7 @@
 <div class="container-sweetvows bg-[var(--spotify-gray-bold)] max-w-3xl mx-auto">
-    <h2 class="text-xl font-bold">Hot News</h2>
-    <img class="rounded-md w-full h-full" src="{{ cdn_sweetvows($wedding->wedding_hotnews_image) }}">
-    <p class="pt-2 text-[var(--spotify-gray)]">
+    <h3 class="text-md font-bold">Hot News</h3>
+    <img class="rounded-lg max-w-full" src="{{ cdn_sweetvows($wedding->wedding_hotnews_image) }}">
+    <p class="text-sm text-[var(--spotify-gray)]">
         {{ $wedding->wedding_hotnews_description }}
     </p>
 </div>

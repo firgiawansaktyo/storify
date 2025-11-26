@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let weddingImagePath = '';
     let weddingVideoPath = '';
-    let weddingAudioPath = '';
+    // let weddingAudioPath = '';
     let weddingLandingPath = '';
     let weddingHotNewsPath = '';
 
@@ -86,15 +86,15 @@ document.addEventListener('DOMContentLoaded', () => {
         },
     );
 
-    setupFileUpload(
-        'wedding_audio',
-        'progressBarWeddingAudio',
-        'statusWeddingAudio',
-        'wedding_audio',
-        function (uploadedInfo) {
-            weddingAudioPath = uploadedInfo.public_url;
-        },
-    );
+    // setupFileUpload(
+    //     'wedding_audio',
+    //     'progressBarWeddingAudio',
+    //     'statusWeddingAudio',
+    //     'wedding_audio',
+    //     function (uploadedInfo) {
+    //         weddingAudioPath = uploadedInfo.public_url;
+    //     },
+    // );
 
     setupFileUpload(
         'wedding_landing_image',
@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
             wedding_description: document.getElementById('wedding_description').value.trim(),
             wedding_prayer_verse: document.getElementById('wedding_prayer_verse').value.trim(),
             wedding_video: weddingVideoPath || null,
-            wedding_audio: weddingAudioPath || null,
+            // wedding_audio: weddingAudioPath || null,
             wedding_message_template: document.getElementById('wedding_message_template').value.trim(),
             wedding_landing_image: weddingLandingPath || null,
             wedding_landing_title: document.getElementById('wedding_landing_title').value.trim(),

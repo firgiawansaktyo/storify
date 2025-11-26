@@ -1,5 +1,5 @@
-<div class="container-sweetvows bg-[var(--spotify-gray-bold)]">
-    <div class="py-4 flex flex-col items-center">
+<div class="bg-[var(--spotify-gray-bold)] max-w-3xl mx-auto">
+    <div class="py-2 flex flex-col items-center">
         <p class="text-xs">Sweet Vows made by <a class="underline" target="_blank" rel="noreferrer" href="https://www.facebook.com/firgiawan.saktyo">Firgiawan Saktyo W</a>
         </p>
     </div>

@@ -155,19 +155,10 @@ body {
   transform: scaleY(-1);
 }
 
-.timeline {
-  padding-top: 10px;
-  padding-left: 24px;
-  padding-right: 24px;
-  gap: 24px;
-}
-
 .throwback-cover {
     position: relative;
     overflow: hidden;
   }
-
-
 
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }

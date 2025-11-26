@@ -127,7 +127,7 @@
         <p id="statusWeddingVideo"></p>
       </div>
 
-      <div class="form-group">
+      {{-- <div class="form-group">
         <label class="text-white">Wedding Audio</label>
         <input
           type="file"
@@ -143,7 +143,7 @@
           class="mt-2 w-100 d-none"
         ></progress>
         <p id="statusWeddingAudio"></p>
-      </div>
+      </div> --}}
 
       <div class="form-group">
         <label class="text-white">Wedding Landing Image</label>
