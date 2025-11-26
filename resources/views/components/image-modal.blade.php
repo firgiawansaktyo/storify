@@ -46,7 +46,7 @@
                     x-text="$store.imageModal.item.title"
                 ></h2>
                 <p
-                    class="text-sm text-[var(--spotify-white)] mt-1 text-center"
+                    class="text-sm text-[var(--spotify-white)] mt-1"
                     x-text="$store.imageModal.item.description"
                 ></p>
             </div>
