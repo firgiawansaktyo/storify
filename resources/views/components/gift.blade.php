@@ -12,7 +12,7 @@
             $modalId   = "qrisModal-{$gift->id}";
         @endphp
 
-        <div class="relative rounded-lg p-3 sm:p-4 bg-[var(--spotify-gray-bold)]">
+        <div class="relative rounded-lg py-3 sm:p-4 bg-[var(--spotify-gray-bold)]">
             <div class="flex gap-3 sm:gap-4">
                 <div class="flex-shrink-0">
                     <img
@@ -145,7 +145,7 @@
             </div>
         @endif
     @empty
-        <div class="rounded-lg p-3 bg-[var(--spotify-black)] text-xs sm:text-sm text-gray-400">
+        <div class="rounded-lg py-3 bg-[var(--spotify-black)] text-xs sm:text-sm text-gray-400">
             Belum ada data gift.
         </div>
     @endforelse

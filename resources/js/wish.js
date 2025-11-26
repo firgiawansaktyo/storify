@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
             nameP.textContent = wish.name; 
 
             const messageP = document.createElement('p');
-            messageP.className = 'text-xs text-[var(--spotify-gray)] text-justify break-all whitespace-pre-wrap leading-snug';
+            messageP.className = 'text-xs text-[var(--spotify-gray)] whitespace-pre-wrap leading-snug';
             messageP.textContent = wish.message; 
             
             contentDiv.appendChild(nameP);
