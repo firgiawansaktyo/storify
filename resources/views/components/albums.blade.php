@@ -1,5 +1,5 @@
 <div x-data class="container-sweetvows bg-[var(--spotify-gray-bold)] max-w-3xl mx-auto">
-    <h3 class="text-md font-bold title-sweetvows mb-4">Albums</h3>
+    <h3 class="text-md font-bold title-sweetvows">Albums</h3>
     <div class="relative w-full max-w-xl">
 
         <button id="prevBtnAlbums"
