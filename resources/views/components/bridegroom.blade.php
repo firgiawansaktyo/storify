@@ -2,17 +2,17 @@
     <h3 class="text-md font-bold">Bride & Groom</h3>
     <div class="grid grid-cols-2 bride-groom">
         <div>
-            <img src="{{ cdn_sweetvows($wedding->bride_image) }}" class="max-w-full bride">
+            <img src="{{ cdn_sweetvows($wedding->bride_image) }}" class="max-w-full bride mb-2">
             <div>
-                <h4 class="text-sm bride-name text-center">{{ $wedding->bride_name }}</h4>
-                <p class="text-xs pt-2 bride-parent text-center text-[var(--spotify-gray)]">Putri dari Bapak {{ $wedding->father_bride_name }} <br/>&amp; <br/> Ibu {{ $wedding->mother_bride_name }}</p>
+                <h4 class="text-sm bride-name">{{ $wedding->bride_name }}</h4>
+                <p class="text-xs pt-2 bride-parent text-[var(--spotify-gray)]">Putri dari Bapak {{ $wedding->father_bride_name }} &amp; Ibu {{ $wedding->mother_bride_name }}</p>
             </div>
         </div>
         <div>
-            <img src="{{ cdn_sweetvows($wedding->groom_image) }}" class="max-w-full groom">
+            <img src="{{ cdn_sweetvows($wedding->groom_image) }}" class="max-w-full groom mb-2">
             <div>
-                <h4 class="text-sm groom-name text-center">{{ $wedding->groom_name }}</h4>
-                <p class="text-xs pt-2 groom-parent text-center text-[var(--spotify-gray)]">Putra dari Bapak {{ $wedding->father_groom_name }} <br/>&amp; <br/> Ibu {{ $wedding->mother_groom_name }}</p>
+                <h4 class="text-sm groom-name">{{ $wedding->groom_name }}</h4>
+                <p class="text-xs pt-2 groom-parent text-[var(--spotify-gray)]">Putra dari Bapak {{ $wedding->father_groom_name }} &amp; Ibu {{ $wedding->mother_groom_name }}</p>
             </div>
         </div>
     </div>
