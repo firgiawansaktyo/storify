@@ -1,5 +1,5 @@
 <div x-data class="container-sweetvows bg-[var(--spotify-gray-bold)] max-w-3xl mx-auto">
-    <h3 class="text-md font-bold">Throwbacks</h3>
+    <h3 class="text-md font-bold title-sweetvows mb-4">Throwbacks</h3>
     <div class="relative w-full max-w-4xl">
 
         <button id="prevBtnThrowback"

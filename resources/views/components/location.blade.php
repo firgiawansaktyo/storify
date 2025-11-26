@@ -1,5 +1,5 @@
 <div class="container-sweetvows bg-[var(--spotify-gray-bold)] max-w-3xl mx-auto">
-    <h3 class="text-md font-bold">Location</h3>
+    <h3 class="text-md font-bold title-sweetvows mb-4">Location</h3>
     <div class="grid grid-cols-2 gap-4 justify-center items-center">
         <div x-data x-init="() => {
             let iframe = $el.querySelector('iframe[src*=&quot;google.com/maps/embed&quot;]');

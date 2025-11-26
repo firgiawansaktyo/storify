@@ -1,5 +1,5 @@
 <div class="container-sweetvows bg-[var(--spotify-gray-bold)] max-w-3xl mx-auto">
-    <h3 class="text-md font-bold mb-2">Wish For The Couple</h3>
+    <h3 class="text-md font-bold title-sweetvows mb-4">Wish For The Couple</h3>
 
     @if(session('success'))
         <div class="alert alert-success text-green-500 mb-4">{{ session('success') }}</div>
