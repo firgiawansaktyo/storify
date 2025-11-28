@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const detailsSection = document.getElementById('detailsSection');
   const landingCard       = document.getElementById('landingCard');
   const landingSentinel   = document.getElementById('landingSentinel');
+  const floatingLanding = document.getElementById('floatingLanding');
   let revealed = false;
 
   function revealDetails() {
@@ -15,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
       behavior: 'smooth',
       block: 'start'
     });
+    floatingLanding.classList.add('hidden');
     observer.disconnect();
   }
   seeDetailBtn.addEventListener('click', revealDetails);

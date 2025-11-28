@@ -25,6 +25,28 @@
       </svg>
     </button>
   </div>
+  <div id="floatingLanding" class="hidden">
+     <button id="seeDetailBtn" class="flex flex-col items-center text-[var(--spotify-white)] hover:text-[var(--spotify-gray)]">
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-7 animate-bounce -mb-3"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+        </svg>
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-7 animate-bounce"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+        </svg>
+      </button>
+  </div>
   @stack('scripts')
 </body>
 </html>

@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const goToLanding = document.getElementById('goToLanding');
   const invitationPage       = document.getElementById('invitationPage');
   const invitationSentinel   = document.getElementById('invitationSentinel');
+  const floatingLanding = document.getElementById('floatingLanding');
   let revealedLanding = false;
 
   function revealDetailsLanding() {
@@ -15,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
       behavior: 'smooth',
       block: 'start'
     });
+    floatingLanding.classList.remove('hidden');
     observerInvitation.disconnect();
   }
   LandingBtn.addEventListener('click', revealDetailsLanding);
