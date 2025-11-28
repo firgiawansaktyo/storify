@@ -23,16 +23,6 @@
                     <p class="text-xs sm:text-sm md:text-md text-[var(--spotify-gray)]">
                         {{ $wedding->wedding_sub_title }}
                     </p>
-
-                    <div class="flex flex-wrap gap-1">
-                        @forelse ($hashtags as $tag)
-                            <span class="text-xs sm:text-sm md:text-md rounded-full">
-                                #{{ $tag->name }}
-                            </span>
-                        @empty
-                        @endforelse
-                    </div>
-
                     <div class="absolute inset-0 p-2 transition-colors duration-200 flex items-center justify-center rounded-l-lg">
                         <button class="button-spotify absolute bottom-4 right-4 bg-[var(--spotify-green)] p-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="black">
@@ -46,7 +36,7 @@
     </div>
     <button id="LandingBtn" class="flex flex-col items-center justify-center justify-self-center hover:text-gray-300 py-4 px-4">
         <svg class="w-6 h-6 animate-bounce" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m5 15 7-7 7 7"/>
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="5" d="m5 15 7-7 7 7"/>
         </svg>
         <span class="font-semibold tracking-wider">Klik sampul album untuk mendengarkan cerita kami</span>
     </button>
