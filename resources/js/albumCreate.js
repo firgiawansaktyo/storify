@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const indexRoute = metaEl.dataset.indexRoute;
 
     let albumImagePath = '';
+    let thumbnailPath = '';
 
     const errorBox = document.getElementById('errorBox');
     const successBox = document.getElementById('successBox');
@@ -73,6 +74,16 @@ document.addEventListener('DOMContentLoaded', () => {
         },
     );
 
+        setupFileUpload(
+        'thumbnail',
+        'progressBarThumbnail',
+        'statusThumbnail',
+        'thumbnail',
+        function (uploadedInfo) {
+            thumbnailPath = uploadedInfo.public_url;
+        },
+    );
+
     const saveButton = document.getElementById('saveButton');
     if (!saveButton) return;
 
@@ -87,6 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
             wedding_album_title: title,
             wedding_album_description: description,
             wedding_album_image: albumImagePath || null,
+            thumbnail: thumbnailPath || null,
         };
 
         if (!title || !description) {

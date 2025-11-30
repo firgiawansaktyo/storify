@@ -53,7 +53,8 @@ class AlbumController extends Controller
             $validated = $request->validate([
                 'wedding_album_title' => 'required|string|max:255',
                 'wedding_album_description' => 'required|string',
-                'wedding_album_image' => 'nullable|string|max:255'
+                'wedding_album_image' => 'nullable|string|max:255',
+                'thumbnail' => 'nullable|string|max:255'
             ]);
 
             Album::create([
@@ -61,6 +62,7 @@ class AlbumController extends Controller
                 'wedding_album_title' => $validated['wedding_album_title'],
                 'wedding_album_description' => $validated['wedding_album_description'],
                 'wedding_album_image' => $validated['wedding_album_image'] ?? null,
+                'thumbnail' => $validated['thumbnail'] ?? null
             ]);
         }
     }
@@ -96,23 +98,32 @@ class AlbumController extends Controller
         } 
         else {
             $user = User::find($validated['user_id']); 
-            $oldAlbumImage = $album->bank_image;         
+            $oldAlbumImage = $album->wedding_album_image;
+            $oldThumbnail = $album->thumbnail;                  
             $validated = $request->validate([
                 'wedding_album_title' => 'required|string|max:255',
                 'wedding_album_description' => 'required|string',
-                'wedding_album_image' => 'nullable|string|max:255'
+                'wedding_album_image' => 'nullable|string|max:255',
+                'thumbnail' => 'nullable|string|max:255'
             ]);
 
             $album->user_id = $user->id;
             $album->wedding_album_title = $validated['wedding_album_title'];
             $album->wedding_album_description = $validated['wedding_album_description'];
             $album->wedding_album_image = isset($validated['wedding_album_image']) ? $validated['wedding_album_image'] : $album->wedding_album_image;
+            $album->thumbnail = isset($validated['thumbnail']) ? $validated['thumbnail'] : $album->thumbnail;
             $album->save();
             if (
                 $oldAlbumImage &&
                 $oldAlbumImage !== $album->wedding_album_image &&
                 Storage::disk(env('FILESYSTEM_DISK'))->exists($oldAlbumImage)) {
                 Storage::disk(env('FILESYSTEM_DISK'))->delete($oldAlbumImage);
+            }
+            if (
+                $oldThumbnail &&
+                $oldThumbnail !== $album->thumbnail &&
+                Storage::disk(env('FILESYSTEM_DISK'))->exists($oldThumbnail)) {
+                Storage::disk(env('FILESYSTEM_DISK'))->delete($oldThumbnail);
             }
         }
     }
@@ -124,6 +135,9 @@ class AlbumController extends Controller
     {
         if ($album->wedding_album_image && Storage::disk(env('FILESYSTEM_DISK'))->exists($album->wedding_album_image)) {
             Storage::disk(env('FILESYSTEM_DISK'))->delete($album->wedding_album_image);
+        }
+        if ($album->thumbnail && Storage::disk(env('FILESYSTEM_DISK'))->exists($album->thumbnail)) {
+            Storage::disk(env('FILESYSTEM_DISK'))->delete($album->thumbnail);
         }
         $album->delete();
         return redirect()->route('albums.index')->with('success', 'Album image deleted successfully!');

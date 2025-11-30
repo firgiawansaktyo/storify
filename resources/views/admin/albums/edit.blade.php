@@ -38,6 +38,18 @@
             src="{{ $album->wedding_album_image ? cdn_sweetvows($album->wedding_album_image) : '' }}">
       </div>
 
+      <div class="form-group">
+        <label class="text-white">Thumbnail</label>
+        <input id="thumbnail" type="file" accept="image/*" class="form-control">
+        <progress id="progressBarThumbnail" value="0" max="100" class="mt-2 w-100 d-none"></progress>
+        <p id="statusThumbnail"></p>
+
+        <p class="text-center pt-2">Current Image</p>
+        <img id="imagePreview" class="mx-auto d-block max-w-sm cursor-pointer"
+            data-toggle="modal" data-target="#imageModalThumbnail"
+            src="{{ $album->thumbnail ? cdn_sweetvows($album->thumbnail) : '' }}">
+      </div>
+
       <a href="{{ route('albums.index') }}" class="btn btn-secondary">Cancel</a>
       <button type="button" id="saveButton" class="btn btn-spotify">
         <i class="fas fa-save"></i> Save

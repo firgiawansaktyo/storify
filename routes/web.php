@@ -21,10 +21,17 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::get('/{username}/invite/{guestSlug}', [HomeController::class, 'index'])
+// Route::get('/{username}/invite/{guestSlug}', [HomeController::class, 'index'])
+//     ->where([
+//         'username' => '[A-Za-z0-9_]+',
+//         'guestSlug' => '[A-Za-z0-9\-]+',
+//     ])
+//     ->name('home');
+
+//BAGIMOMEN
+Route::get('/{username}', [HomeController::class, 'index'])
     ->where([
         'username' => '[A-Za-z0-9_]+',
-        'guestSlug' => '[A-Za-z0-9\-]+',
     ])
     ->name('home');
 

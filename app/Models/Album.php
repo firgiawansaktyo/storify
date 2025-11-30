@@ -16,6 +16,7 @@ class Album extends Model
     protected $fillable = [
         'user_id',
         'wedding_album_image',
+        'thumbnail',
         'wedding_album_title',
         'wedding_album_description',
         'created_at',
