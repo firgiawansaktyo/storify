@@ -18,8 +18,13 @@ use function Laravel\Prompts\text;
 
 class HomeController extends Controller
 {
-    public function index($username, $guestSlug)
+    public function index($username)
     {
+        $rawName = request('to');   
+        if (!$rawName) {
+            abort(404, 'Guest name is required');
+        }
+        $guestSlug = Str::slug($rawName);
         $invitedGuest = InvitedGuest::where('slug', $guestSlug)->first();
 
         if (!$invitedGuest) {

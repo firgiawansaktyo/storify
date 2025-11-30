@@ -35,6 +35,14 @@
         <p id="statusAlbumImage"></p>
       </div>
 
+      <!-- Thumbnail Upload -->
+      <div class="form-group">
+        <label class="text-white">Thumbnail</label>
+        <input id="thumbnail" type="file" accept="image/*" class="form-control">
+        <progress id="progressBarThumbnail" value="0" max="100" class="mt-2 w-100 d-none"></progress>
+        <p id="statusThumbnail"></p>
+      </div>
+
       <a href="{{ route('albums.index') }}" class="btn btn-secondary">Cancel</a>
       <button type="button" id="saveButton" class="btn btn-spotify">
         <i class="fas fa-save"></i> Save

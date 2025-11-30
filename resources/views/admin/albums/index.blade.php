@@ -24,6 +24,7 @@
                     <th class="text-white">Album Title</th>
                     <th class="text-white">Album Description</th>                    
                     <th class="text-white">Album Image</th>
+                    <th class="text-white">Thumbnail</th>
                     <th class="text-white">Action</th>
                 </tr>
                 </thead>
@@ -49,7 +50,22 @@
                                     </div>
                                 </div>
                             </div>
-
+                        </td>
+                        <td>
+                            <img    
+                                id="imagePreview"
+                                class="text-center justify-center justify-self-center max-w-sm cursor-pointer"
+                                data-toggle="modal" 
+                                data-target="#imageModalThumbnail-{{ $album->id }}"
+                                src="{{ old('thumbnail') ? cdn_sweetvows(old('thumbnail')) : (isset($album) && $album->thumbnail ? cdn_sweetvows($album->thumbnail) : '') }}">
+                                
+                            <div class="modal fade" id="imageModalThumbnail-{{ $album->id }}" tabindex="-1" aria-labelledby="imageModalLabelThumbnail-{{ $album->id }}" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-lg">
+                                    <div class="modal-content">
+                                        <img src="{{ cdn_sweetvows($album->thumbnail) }}" alt="Full Image">
+                                    </div>
+                                </div>
+                            </div>
                         </td>
 
                         <td class="text-white">

@@ -30,6 +30,7 @@ class FileUploadController extends Controller
             'wedding_vow_image'       => 'vow-images',
             'wedding_reception_image' => 'reception-images',
             'wedding_album_image'     => 'wedding-album-images',
+            'thumbnail'               => 'thumbnails',
             'wedding_throwback_image' => 'wedding-throwback-images',
             'bank_image'              => 'bank-images',
             'qris_image'              => 'qris-images',
