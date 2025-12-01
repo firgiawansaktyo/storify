@@ -20,7 +20,7 @@
                     <!-- Text Section -->
                     <div>
                         <time class="block mb-1 text-sm">
-                            {{ \Carbon\Carbon::parse($wedding->wedding_vow_date)->locale('id')->translatedFormat('l, d F Y') }}
+                            {{ \Carbon\Carbon::parse($wedding->wedding_vow_date)->locale('id')->translatedFormat('l, d F Y') }}<br>
                             {{ $wedding->wedding_vow_start_time }} - {{ $wedding->wedding_vow_end_time }} WIB
                         </time>
                         <p class="mb-1 text-sm text-[var(--spotify-gray)]">
@@ -49,7 +49,7 @@
                     <!-- Text Section -->
                     <div>
                         <time class="block mb-1 text-sm">
-                            {{ \Carbon\Carbon::parse($wedding->wedding_reception_date)->locale('id')->translatedFormat('l, d F Y') }}
+                            {{ \Carbon\Carbon::parse($wedding->wedding_reception_date)->locale('id')->translatedFormat('l, d F Y') }}<br>
                             {{ $wedding->wedding_reception_start_time }} - {{ $wedding->wedding_reception_end_time }} WIB
                         </time>
                         <p class="mb-1 text-sm text-[var(--spotify-gray)]">
