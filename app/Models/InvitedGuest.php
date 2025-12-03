@@ -48,6 +48,11 @@ class InvitedGuest extends Model
     public function messageTemplate() {
         return $this->hasOne(Wedding::class, 'invited_guest_id', 'id');
     }
+
+    public function getEncodedNameAttribute()
+    {
+        return urlencode($this->name);
+    }
     
 
 }
