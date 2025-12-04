@@ -2,6 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const wishContainer = document.getElementById('wishContainer');
     const wishForm      = document.getElementById('wishForm');
     const jsonUrl       = window.wishes;
+    const submitBtn     = wishForm.querySelector('button[type="submit"]');
+    const originalText  = submitBtn.textContent.trim();
 
     function hashCode(str) {
         let hash = 0;
@@ -69,12 +71,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     wishForm.addEventListener('submit', async e => {
         e.preventDefault();
+        if (submitBtn.disabled) return;
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
         const formData = new FormData(wishForm);
         try {
             await axios.post(wishForm.action, formData); 
             wishForm.reset();
             loadWishes();
         } catch (err) {
+            
+        }
+        finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText || 'Send';
         }
     });
 });
